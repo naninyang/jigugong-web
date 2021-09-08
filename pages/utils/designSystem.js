@@ -1,6 +1,6 @@
-export const sizes = {
-  contentMaxWidth: `${Relative(540)}rem`,
-};
+const paddingHorizontal = 25;
+const defaultWidth = 1134;
+const totalWidth = paddingHorizontal * 2 + defaultWidth;
 
 export const mq = {
   maxMobile: `@media screen and (max-width: ${Relative(481)}rem)`,
@@ -33,6 +33,12 @@ export const colors = {
 };
 
 export const styles = {
+  widthSettings: {
+    width: '100%',
+    maxWidth: `${Relative(totalWidth)}rem`,
+    paddingRight: `${Relative(paddingHorizontal)}rem`,
+    paddingLeft: `${Relative(paddingHorizontal)}rem`,
+  },
   flex: {
     col: '1 0 0%',
   },

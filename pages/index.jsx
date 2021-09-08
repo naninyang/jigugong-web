@@ -3,7 +3,10 @@ import styled from '@emotion/styled';
 import LinkButton from './utils/LinkButton';
 import { mq, fontWeights, Relative } from './utils/designSystem';
 
-const Contents = styled.section();
+const Contents = styled.section({
+  paddingTop: `${Relative(97)}rem`,
+  backgroundImage: 'radial-gradient(circle at 0 0, #dcf5e8, #dcf5e8, #eaf7ff)',
+});
 
 const Button = styled(LinkButton)({
   border: '1px',
