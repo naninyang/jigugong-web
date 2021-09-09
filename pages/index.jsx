@@ -1,21 +1,22 @@
 import React from 'react';
 import styled from '@emotion/styled';
 import LinkButton from './utils/LinkButton';
-import { mq, fontWeights, Relative } from './utils/designSystem';
+import { mq, fontWeights, Rem, Em } from './utils/designSystem';
 
 const Contents = styled.section({
-  paddingTop: `${Relative(97)}rem`,
+  paddingTop: `${Rem(97)}`,
   backgroundImage: 'radial-gradient(circle at 0 0, #dcf5e8, #dcf5e8, #eaf7ff)',
 });
 
 const Button = styled(LinkButton)({
   border: '1px',
   display: 'inline-block',
-  padding: `${Relative(16)}em`,
-  fontSize: `${Relative(16)}rem`,
+  padding: `${Em(16, 16)}`,
+  fontSize: `${Rem(16)}`,
   fontWeight: fontWeights.Bold,
   [mq.maxMobile]: {
-    fontSize: `${Relative(22)}rem`,
+    padding: `${Em(16, 22)}`,
+    fontSize: `${Rem(22)}`,
   },
 });
 

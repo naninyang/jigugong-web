@@ -18,9 +18,20 @@ body, input, button, textarea, select, legend {
   font-family: 'Pretendard';
 }
 
-ul {
+a {
+  text-decoration: none;
+}
+
+p, ul, dl {
   margin-top: 0;
   margin-bottom: 0;
+}
+
+ul {
   padding-left: 0;
   list-style-type: none;
+}
+
+dd {
+  margin-left: 0;
 }

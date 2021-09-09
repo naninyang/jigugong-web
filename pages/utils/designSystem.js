@@ -3,16 +3,16 @@ const defaultWidth = 1134;
 const totalWidth = paddingHorizontal * 2 + defaultWidth;
 
 export const mq = {
-  maxMobile: `@media screen and (max-width: ${Relative(481)}rem)`,
-  maxTablet: `@media screen and (min-width: ${Relative(481)}rem)`,
-  minTablet: `@media screen and (max-width: ${Relative(768)}rem)`,
-  maxXsmall: `@media screen and (min-width: ${Relative(769)}rem)`,
-  minXsmall: `@media screen and (max-width: ${Relative(1024)}rem)`,
-  maxSmall: `@media screen and (min-width: ${Relative(1025)}rem)`,
-  minSmall: `@media screen and (max-width: ${Relative(1200)}rem)`,
-  maxLarge: `@media screen and (min-width: ${Relative(1201)}rem)`,
-  minLarge: `@media screen and (max-width: ${Relative(1920)}rem)`,
-  minXlarge: `@media screen and (min-width: ${Relative(1921)}rem)`,
+  maxMobile: `@media screen and (max-width: ${Rem(481)})`,
+  minTablet: `@media screen and (min-width: ${Rem(481)})`,
+  maxTablet: `@media screen and (max-width: ${Rem(768)})`,
+  minXsmall: `@media screen and (min-width: ${Rem(769)})`,
+  maxXsmall: `@media screen and (max-width: ${Rem(1024)})`,
+  minSmall: `@media screen and (min-width: ${Rem(1025)})`,
+  maxSmall: `@media screen and (max-width: ${Rem(1200)})`,
+  minLarge: `@media screen and (min-width: ${Rem(1201)})`,
+  maxLarge: `@media screen and (max-width: ${Rem(1920)})`,
+  minXlarge: `@media screen and (min-width: ${Rem(1921)})`,
 };
 
 export const fontWeights = {
@@ -35,12 +35,19 @@ export const colors = {
 export const styles = {
   widthSettings: {
     width: '100%',
-    maxWidth: `${Relative(totalWidth)}rem`,
-    paddingRight: `${Relative(paddingHorizontal)}rem`,
-    paddingLeft: `${Relative(paddingHorizontal)}rem`,
+    maxWidth: `${Rem(totalWidth)}`,
+    paddingRight: `${Rem(paddingHorizontal)}`,
+    paddingLeft: `${Rem(paddingHorizontal)}`,
   },
   flex: {
     col: '1 0 0%',
+  },
+  clearfix: {
+    '&::after': {
+      display: 'block',
+      clear: 'both',
+      content: '""',
+    },
   },
   screenReaderOnly: {
     position: 'absolute',
@@ -55,9 +62,14 @@ export const styles = {
   },
 };
 
-export function Relative(px) {
+export function Rem(px) {
   const result = px / 16;
-  return `${result}`;
+  return `${result}rem`;
+};
+
+export function Em(px, base) {
+  const result = px / base;
+  return `${result}em`;
 };
 
 export default {};

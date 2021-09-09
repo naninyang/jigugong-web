@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from '@emotion/styled';
 import LinkButton from '../utils/LinkButton';
-import { Relative, styles } from '../utils/designSystem';
+import { Rem, styles } from '../utils/designSystem';
 import { images } from '../assets';
 
 const Container = styled.header({
@@ -13,7 +13,7 @@ const Container = styled.header({
 
 const Wrapper = styled.div({
   ...styles.widthSettings,
-  height: `${Relative(97)}rem`,
+  height: `${Rem(97)}`,
   margin: '0 auto',
   display: 'flex',
   justifyContent: 'space-between',
@@ -21,8 +21,8 @@ const Wrapper = styled.div({
 });
 
 const ServiceLogo = styled.h1({
-  width: `${Relative(143)}rem`,
-  height: `${Relative(57)}rem`,
+  width: `${Rem(143)}`,
+  height: `${Rem(57)}`,
   '& a': {
     display: 'block',
     width: '100%',
@@ -36,12 +36,13 @@ const ServiceLogo = styled.h1({
 
 const SocialMediaList = styled.ul({
   display: 'flex',
-  height: `${Relative(80)}rem`,
+  marginRight: `-${Rem(24)}`,
+  height: `${Rem(80)}`,
 });
 
 const SocialMediaItem = styled.li({
-  width: `${Relative(80)}rem`,
-  height: `${Relative(80)}rem`,
+  width: `${Rem(80)}`,
+  height: `${Rem(80)}`,
   '& a': {
     width: '100%',
     height: '100%',
@@ -53,11 +54,11 @@ const SocialMediaItem = styled.li({
 });
 
 const InstagramLinkButton = styled(LinkButton)({
-  background: `url(${images.icons.instagram}) no-repeat 50% 50%/32px`,
+  background: `url(${images.icons.instagram}) no-repeat 50% 50%/${Rem(32)}`,
 });
 
 const BlogLinkButton = styled(LinkButton)({
-  background: `url(${images.icons.naverBlog}) no-repeat 50% 50%/32px`,
+  background: `url(${images.icons.naverBlog}) no-repeat 50% 50%/${Rem(32)}`,
 });
 
 function Header() {
