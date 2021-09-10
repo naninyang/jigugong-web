@@ -1,22 +1,22 @@
 import React from 'react';
 import styled from '@emotion/styled';
-import { mq, fontWeights, Rem, Em } from './utils/designSystem';
-import ButtonGreen from './components/ButtonGreen';
+import Main from './sections/landing/Main';
+import Mission from './sections/landing/Mission';
+import Action from './sections/landing/Action';
+import Feature from './sections/landing/Feature';
+import Proposal from './sections/landing/Proposal';
 
-const Contents = styled.section({
-  paddingTop: `${Rem(97)}`,
-  backgroundImage: 'radial-gradient(circle at 0 0, #dcf5e8, #dcf5e8, #eaf7ff)',
-});
+const Container = styled.div();
 
 function index() {
   return (
-    <>
-      <Contents>
-        <ButtonGreen href="/">내부 링크</ButtonGreen>
-        <ButtonGreen href="https://naver.com/">외부 링크</ButtonGreen>
-        <ButtonGreen href="https://jigugong.com/">지구공 도메인(라우터 안씀)</ButtonGreen>
-      </Contents>
-    </>
+    <Container>
+      <Main />
+      <Mission />
+      <Action />
+      <Feature />
+      <Proposal />
+    </Container>
   )
 }
 
