@@ -1,15 +1,18 @@
 import React from 'react';
 import styled from '@emotion/styled';
-import { fontWeights, Rem, Em } from '../utils/designSystem';
+import { mq, fontWeights, Rem, Em } from '../utils/designSystem';
 
 const Paragraph = styled.p({
-  lineHeight: `${Em(40, 24)}`,
+  lineHeight: 1.67,
   fontWeight: fontWeights.Medium,
-  fontSize: `${Rem(24)}`,
+  fontSize: `${Rem(14)}`,
   color: '#5A5A5A',
   '& strong': {
     display: 'block',
     fontWeight: fontWeights.Medium,
+  },
+  [mq.minXsmall]: {
+    fontSize: `${Rem(24)}`,
   },
 });
 

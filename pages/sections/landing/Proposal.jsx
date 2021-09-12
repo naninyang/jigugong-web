@@ -10,6 +10,7 @@ const Proposal = () => {
     event.preventDefault();
     alert('양식 입력')
   }
+
   return (
     <Container>
       <form onSubmit={handleSubmit}>

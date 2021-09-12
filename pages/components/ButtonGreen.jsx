@@ -5,8 +5,8 @@ import { fontWeights, Rem, Em } from '../utils/designSystem';
 const Button = styled(LinkButton)({
   display: 'inline-flex',
   backgroundColor: '#0EAA55',
-  padding: `${Em(10, 20)} ${Em(22, 20)}`,
-  borderRadius: `${Em(15, 20)}`,
+  padding: `${Em(10)} ${Em(22)}`,
+  borderRadius: `${Em(15)}`,
   fontWeight: fontWeights.SemiBold,
   fontSize: `${Rem(20)}`,
   color: '#FFFFFF',

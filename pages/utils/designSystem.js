@@ -3,7 +3,7 @@ const defaultWidth = 1134;
 const totalWidth = paddingHorizontal * 2 + defaultWidth;
 
 export const mq = {
-  maxMobile: `@media screen and (max-width: ${Rem(481)})`,
+  maxMobile: `@media screen and (max-width: ${Rem(480)})`,
   minTablet: `@media screen and (min-width: ${Rem(481)})`,
   maxTablet: `@media screen and (max-width: ${Rem(768)})`,
   minXsmall: `@media screen and (min-width: ${Rem(769)})`,
@@ -67,8 +67,8 @@ export function Rem(px) {
   return `${result}rem`;
 };
 
-export function Em(px, base) {
-  const result = px / base;
+export function Em(px) {
+  const result = px / 16;
   return `${result}em`;
 };
 

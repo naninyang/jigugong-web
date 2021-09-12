@@ -1,13 +1,17 @@
 import React from 'react';
 import styled from '@emotion/styled';
-import { fontWeights, Rem, Em } from '../utils/designSystem';
+import { mq, fontWeights, Rem, Em } from '../utils/designSystem';
 
 const SecondaryHeading = styled.h3({
-  lineHeight: `${Em(70, 50)}`,
+  lineHeight: 1.4,
   fontWeight: fontWeights.Bold,
-  fontSize: `${Rem(50)}`,
-  textShadow: `0 ${Em(1, 50)} ${Em(4, 50)} #c4c4c4`,
+  fontSize: `${Rem(30)}`,
+  textShadow: '0 1px 4px #c4c4c4',
   color: '#5a5a5a',
+  [mq.minXsmall]: {
+    lineHeight: `${Em(70)}`,
+    fontSize: `${Rem(50)}`,
+  },
   '& strong': {
     display: 'block',
     fontWeight: fontWeights.Bold,

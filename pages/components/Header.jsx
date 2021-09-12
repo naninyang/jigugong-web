@@ -13,11 +13,11 @@ const Container = styled.header({
 
 const Wrapper = styled.div({
   ...styles.widthSettings,
-  height: `${Rem(97)}`,
   margin: '0 auto',
   display: 'flex',
-  justifyContent: 'space-between',
+  height: `${Rem(97)}`,
   alignItems: 'center',
+  justifyContent: 'space-between',
 });
 
 const ServiceLogo = styled.h1({

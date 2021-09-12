@@ -40,14 +40,14 @@ const LawInfoList = styled.dl({
 });
 
 const LawInfoTerm = styled.dt({
-  padding: `${Em(9, 22)} ${Em(32, 22)} ${Em(9, 22)} 0`,
+  padding: `${Em(9)} ${Em(32)} ${Em(9)} 0`,
   float: 'left',
   fontWeight: fontWeights.Medium,
   fontSize: `${Rem(22)}`,
 });
 
 const LawInfoDescription = styled.dd({
-  padding: `${Em(9, 22)} 0`,
+  padding: `${Em(9)} 0`,
   fontWeight: fontWeights.Regular,
   fontSize: `${Rem(22)}`,
   color: '#5a5a5a',
@@ -91,7 +91,7 @@ const ContactInfoTerm = styled.dt({
 
 const ContactInfoDescription = styled.dd({
   margin: `${Rem(9)} 0`,
-  paddingLeft: `${Em(33, 22)}`,
+  paddingLeft: `${Em(33)}`,
   width: `calc(100% - ${Rem(49)})`,
   '& a': {
     fontWeight: fontWeights.Regular,
@@ -101,8 +101,8 @@ const ContactInfoDescription = styled.dd({
 });
 
 const Notice = styled.div({
-  marginTop: `${Em(30, 22)}`,
-  lineHeight: `${Em(30, 22)}`,
+  marginTop: `${Em(30)}`,
+  lineHeight: `${Em(30)}`,
   fontSize: `${Rem(22)}`,
   fontWeight: fontWeights.Regular,
   color: '#5A5A5A',

@@ -18,8 +18,8 @@ const Mission = () => {
         <strong>사회공헌으로</strong>
       </HeadingSecondary>
       <Description>
-        <strong>채식, 제로플라스틱, 분리배출, 업사이클링, 플로깅 등</strong>
-        나만의 방식으로 환경보호를 실천하고 공유해보세요.
+        <strong>지구공에서 환경보호 미션에 참여해보세요.</strong>
+        개인의 작은 실천이 모여 커다란 사회공헌이 됩니다.
       </Description>
       <ButtonGreen href="/">내부 링크</ButtonGreen>
       <ButtonGreen href="https://naver.com/">외부 링크</ButtonGreen>

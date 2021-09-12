@@ -62,3 +62,7 @@ ul {
 dd {
   margin-left: 0;
 }
+
+button {
+  cursor: pointer;
+}
