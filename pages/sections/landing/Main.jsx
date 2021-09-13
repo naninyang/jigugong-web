@@ -9,6 +9,9 @@ import Description from '../../components/Description';
 const Container = styled.main({
   paddingTop: `${Rem(97)}`,
   backgroundImage: 'radial-gradient(circle at 0 0, #dcf5e8, #dcf5e8, #eaf7ff)',
+  [mq.minSmall]: {
+    overflow: 'hidden',
+  },
 });
 
 const Contents = styled.div({
@@ -18,11 +21,11 @@ const Contents = styled.div({
   flexDirection: 'column',
   padding: `${Em(100)} ${Em(25)}`,
   [mq.minTablet]: {
-    padding: `${Em(100)} ${Em(40)}`,
+    padding: `${Em(100)} ${Em(40)} 0`,
   },
   [mq.minSmall]: {
     margin: '0 auto',
-    padding: 0,
+    padding: `0 0 0 ${Em(68)}`,
     justifyContent: 'center',
     minHeight: Rem(97 + 874),
     height: `calc(100vh - ${Rem(97)})`,
@@ -38,6 +41,8 @@ const MainHeading = styled.h1({
   textShadow: '0 1px 4px #c4c4c4',
   color: '#0EAA55',
   [mq.minXsmall]: {
+    position: 'relative',
+    zIndex: 999999,
     marginBottom: `${Em(40)}`,
     fontSize: `${Rem(50)}`,
   },
@@ -58,7 +63,12 @@ const MainHeading = styled.h1({
   },
 });
 
-const MainDescription = styled(Description)();
+const MainDescription = styled(Description)({
+  [mq.minXsmall]: {
+    position: 'relative',
+    zIndex: 999999,
+  },
+});
 
 const Point = styled.strong({
   color: '#0EAA55',
@@ -74,9 +84,12 @@ const LinkGroup = styled.div({
   margin: `${Em(50)} 0`,
   flexDirection: 'column-reverse',
   [mq.minXsmall]: {
-    margin: `${Em(50)} -${Em(15)} 0`,
+    margin: `${Em(50)} -${Em(15)}`,
     flexDirection: 'row',
-  }
+  },
+  [mq.minSmall]: {
+    marginBottom: 0,
+  },
 });
 
 const LinkItem = styled.div({
@@ -128,16 +141,17 @@ const Button = styled.button({
 });
 
 const MockupImages = styled.div({
-  margin: `-${Em(60)} 0 -${Em(80)}`,
-  [mq.minTablet]: {
-    margin: '0 auto',
+  paddingBottom: Em(40),
+  [mq.minXsmall]: {
     position: 'relative',
-    maxWidth: Rem(768),
+    margin: `-${Em(60)} 0 -${Em(80)}`,
+    paddingBottom: 0,
     width: '100%',
-    height: Rem(575),
+    height: Rem(740),
   },
   [mq.minSmall]: {
     position: 'static',
+    margin: 0,
     width: 'auto',
     height: 'auto',
   },
@@ -145,45 +159,51 @@ const MockupImages = styled.div({
 
 const MockupImage1 = styled.div({
   position: 'relative',
-  width: '100%',
-  maxWidth: Rem(481),
+  margin: `-${Em(40)} -${Em(25)} -${Em(80)}`,
   paddingTop: '145.11434511%',
   background: `url(${images.mockup.main00}) no-repeat 50% 50%/contain`,
   [mq.minXsmall]: {
     position: 'absolute',
-    top: `-${Rem(25)}`,
-    left: `-${Rem(125)}`,
-    paddingTop: '95.114345%',
+    top: 0,
+    left: `-${Rem(123)}`,
+    margin: 0,
+    paddingTop: '91.114345%',
+    width: Rem(521),
+    backgroundPosition: '0 0',
   },
   [mq.minSmall]: {
     top: '50%',
     left: '50%',
     transform: 'translate(-50%, -50%)',
-    marginTop: `-${Rem(60)}`,
-    marginLeft: `${Rem(80)}`,
+    marginTop: `-${Em(110)}`,
+    marginLeft: `${Em(138)}`,
     paddingTop: '59.114345%',
+    maxWidth: Rem(521),
+    width: '100%',
   },
 });
 
 const MockupImage2 = styled.div({
   position: 'relative',
-  width: '100%',
-  maxWidth: Rem(481),
+  margin: `-${Em(80)} -${Em(25)} -${Em(40)}`,
   paddingTop: '145.11434511%',
-  background: `url(${images.mockup.main01}) no-repeat 50% 50%/contain`,
+  background: `url(${images.mockup.main01}) no-repeat 0 0/contain`,
   [mq.minXsmall]: {
     position: 'absolute',
-    top: `${Rem(116)}`,
-    left: `${Rem(201)}`,
-    paddingTop: '95.114345%',
+    top: `${Rem(176)}`,
+    left: `${Rem(203)}`,
+    paddingTop: '91.114345%',
+    width: Rem(521),
+    backgroundPosition: '0 0',
   },
   [mq.minSmall]: {
     top: '50%',
     left: '50%',
     transform: 'translate(-50%, -50%)',
-    marginTop: `${Rem(116)}`,
-    marginLeft: `${Rem(406)}`,
+    margin: `${Em(66)} 0 0 ${Em(464)}`,
     paddingTop: '59.114345%',
+    maxWidth: Rem(521),
+    width: '100%',
   },
 });
 
