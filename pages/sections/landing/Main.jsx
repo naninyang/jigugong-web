@@ -169,6 +169,7 @@ const MockupImage1 = styled.div({
     margin: 0,
     paddingTop: '91.114345%',
     width: Rem(521),
+    height: 0,
     backgroundPosition: '0 0',
   },
   [mq.minSmall]: {
@@ -194,6 +195,7 @@ const MockupImage2 = styled.div({
     left: `${Rem(203)}`,
     paddingTop: '91.114345%',
     width: Rem(521),
+    height: 0,
     backgroundPosition: '0 0',
   },
   [mq.minSmall]: {

@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from '@emotion/styled';
-import { mq, fontWeights, Rem, Em } from '../utils/designSystem';
+import { mq, fontWeights, Rem } from '../utils/designSystem';
 
 const Paragraph = styled.p({
   lineHeight: 1.67,
