@@ -1,10 +1,20 @@
 import React, { useState } from 'react';
+import { useMediaQuery } from 'react-responsive';
 import styled from '@emotion/styled';
 import { mq, fontWeights, Rem, Em, styles } from '../../utils/designSystem';
 import LinkButton from '../../utils/LinkButton';
 import { images } from '../../assets/';
 import ButtonGreen from '../../components/ButtonGreen';
 import Description from '../../components/Description';
+
+const Desktop = ({ children }) => {
+  const isDesktop = useMediaQuery({ minWidth: 481 })
+  return isDesktop ? children : null
+}
+const Mobile = ({ children }) => {
+  const isMobile = useMediaQuery({ maxWidth: 480 })
+  return isMobile ? children : null
+}
 
 const Container = styled.main({
   paddingTop: `${Rem(97)}`,
@@ -33,11 +43,11 @@ const Contents = styled.div({
 });
 
 const MainHeading = styled.h1({
-  marginBottom: `${Em(40)}`,
+  marginBottom: `${Em(20)}`,
   display: 'flex',
   flexDirection: 'column',
   fontWeight: fontWeights.ExtraBold,
-  fontSize: `${Rem(30)}`,
+  fontSize: `${Rem(32)}`,
   textShadow: '0 1px 4px #c4c4c4',
   color: '#0EAA55',
   [mq.minXsmall]: {
@@ -47,26 +57,23 @@ const MainHeading = styled.h1({
     fontSize: `${Rem(50)}`,
   },
   '& strong': {
-    marginTop: `${Rem(20)}`,
+    marginTop: `${Rem(10)}`,
     fontWeight: fontWeights.ExtraBold,
+    [mq.minXsmall]: {
+      marginTop: `${Rem(20)}`,
+    }
   },
   '&::before': {
     content: '""',
-    marginBottom: `${Rem(60)}`,
+    marginBottom: `${Rem(30)}`,
     width: `${Rem(70)}`,
     height: `${Rem(78)}`,
     background: `url(${images.icons.jigugong}) no-repeat 50% 50%/contain`,
     [mq.minXsmall]: {
+      marginBottom: `${Rem(60)}`,
       width: `${Rem(113)}`,
       height: `${Rem(126)}`,
     },
-  },
-});
-
-const MainDescription = styled(Description)({
-  [mq.minXsmall]: {
-    position: 'relative',
-    zIndex: 999999,
   },
 });
 
@@ -74,6 +81,8 @@ const Point = styled.strong({
   color: '#0EAA55',
   '&~ span': {
     display: 'block',
+    position: 'relative',
+    zIndex: 999999,
   },
 });
 
@@ -81,7 +90,7 @@ const LinkGroup = styled.div({
   position: 'relative',
   zIndex: 999999,
   display: 'flex',
-  margin: `${Em(50)} 0`,
+  margin: `${Em(25)} 0`,
   flexDirection: 'column-reverse',
   [mq.minXsmall]: {
     margin: `${Em(50)} -${Em(15)}`,
@@ -142,70 +151,46 @@ const Button = styled.button({
 
 const MockupImages = styled.div({
   paddingBottom: Em(40),
-  [mq.minXsmall]: {
-    position: 'relative',
-    margin: `-${Em(60)} 0 -${Em(80)}`,
+  [mq.minTablet]: {
+    margin: `-${Em(60)} -${Em(92)} -${Em(80)}`,
     paddingBottom: 0,
-    width: '100%',
-    height: Rem(740),
+  },
+  [mq.minXsmall]: {
+    margin: `-${Em(60)} -${Em(150)} -${Em(80)}`,
   },
   [mq.minSmall]: {
-    position: 'static',
     margin: 0,
-    width: 'auto',
-    height: 'auto',
   },
 });
 
 const MockupImage1 = styled.div({
   position: 'relative',
   margin: `-${Em(40)} -${Em(25)} -${Em(80)}`,
-  paddingTop: '145.11434511%',
-  background: `url(${images.mockup.main00}) no-repeat 50% 50%/contain`,
-  [mq.minXsmall]: {
-    position: 'absolute',
-    top: 0,
-    left: `-${Rem(123)}`,
-    margin: 0,
-    paddingTop: '91.114345%',
-    width: Rem(521),
-    height: 0,
-    backgroundPosition: '0 0',
-  },
-  [mq.minSmall]: {
-    top: '50%',
-    left: '50%',
-    transform: 'translate(-50%, -50%)',
-    marginTop: `-${Em(110)}`,
-    marginLeft: `${Em(138)}`,
-    paddingTop: '59.114345%',
-    maxWidth: Rem(521),
-    width: '100%',
-  },
+  paddingTop: '258.114345%',
+  background: `url(${images.mockup.main00}) no-repeat 50% 50%/cover`,
 });
 
 const MockupImage2 = styled.div({
   position: 'relative',
   margin: `-${Em(80)} -${Em(25)} -${Em(40)}`,
-  paddingTop: '145.11434511%',
-  background: `url(${images.mockup.main01}) no-repeat 0 0/contain`,
-  [mq.minXsmall]: {
-    position: 'absolute',
-    top: `${Rem(176)}`,
-    left: `${Rem(203)}`,
-    paddingTop: '91.114345%',
-    width: Rem(521),
-    height: 0,
-    backgroundPosition: '0 0',
-  },
+  paddingTop: '258.114345%',
+  background: `url(${images.mockup.main01}) no-repeat 50% 50%/cover`,
+});
+
+const MockupImage = styled.div({
+  background: `url(${images.mockup.mainMerge}) no-repeat 50% 50%/contain`,
+  paddingTop: '91.114345%',
+  height: 0,
+  backgroundPosition: '0 0',
+  backgroundSize: 'contain',
   [mq.minSmall]: {
+    position: 'absolute',
     top: '50%',
     left: '50%',
     transform: 'translate(-50%, -50%)',
-    margin: `${Em(66)} 0 0 ${Em(464)}`,
-    paddingTop: '59.114345%',
-    maxWidth: Rem(521),
-    width: '100%',
+    margin: `-${Em(20)} 0 0 ${Em(280)}`,
+    paddingTop: '74.114345%',
+    width: Rem(807),
   },
 });
 
@@ -228,11 +213,11 @@ const Main = () => {
           개인의 실천을 모아
           <strong>세상을 변화시킵니다.</strong>
         </MainHeading>
-        <MainDescription>
+        <Description>
           <Point>지구를 구하는 공동체, 지구공은</Point>
           미션과 실천을 중심으로
           <span>환경보호 문화를 확산시키는 친환경 플랫폼입니다.</span>
-        </MainDescription>
+        </Description>
         <LinkGroup>
           <LinkItem>
             {!notMobile && <ButtonGreen href='https://earthyguna.com/v1/deeplink/'>앱 다운로드</ButtonGreen>}
@@ -257,8 +242,13 @@ const Main = () => {
           <LinkItem><ButtonGreen href="https://naver.com/">회사소개서 다운로드</ButtonGreen></LinkItem>
         </LinkGroup>
         <MockupImages>
-          <MockupImage1 />
-          <MockupImage2 />
+          <Mobile>
+            <MockupImage1 />
+            <MockupImage2 />
+          </Mobile>
+          <Desktop>
+            <MockupImage />
+          </Desktop>
         </MockupImages>
       </Contents>
     </Container>

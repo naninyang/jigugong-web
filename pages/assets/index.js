@@ -10,6 +10,7 @@ export const images = {
     jigugongHorizontal: require('./images/logos/jigugong-horizontal.svg'),
   },
   mockup: {
+    mainMerge: require('./images/mockups/main-merge.png'),
     main00: require('./images/mockups/main00.png'),
     main01: require('./images/mockups/main01.png'),
     mission00: require('./images/mockups/mission00.png'),
