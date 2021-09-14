@@ -19,9 +19,12 @@ const Mobile = ({ children }) => {
 const Container = styled.main({
   paddingTop: `${Rem(97)}`,
   backgroundImage: 'radial-gradient(circle at 0 0, #dcf5e8, #dcf5e8, #eaf7ff)',
+  [mq.maxMobile]: {
+    overflowX: 'hidden',
+  },
   [mq.minSmall]: {
     overflowX: 'hidden',
-  }
+  },
 });
 
 const Contents = styled.div({
@@ -81,8 +84,6 @@ const Point = styled.strong({
   color: '#0EAA55',
   '&~ span': {
     display: 'block',
-    position: 'relative',
-    zIndex: 999999,
   },
 });
 

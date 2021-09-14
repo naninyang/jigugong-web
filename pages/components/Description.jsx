@@ -8,12 +8,14 @@ const Paragraph = styled.p({
   fontSize: `${Rem(16)}`,
   letterSpacing: `-${Rem(.5)}`,
   color: '#5A5A5A',
+  [mq.minXsmall]: {
+    position: 'relative',
+    zIndex: 999999,
+    fontSize: `${Rem(24)}`,
+  },
   '& strong': {
     display: 'block',
     fontWeight: fontWeights.Medium,
-  },
-  [mq.minXsmall]: {
-    fontSize: `${Rem(24)}`,
   },
 });
 

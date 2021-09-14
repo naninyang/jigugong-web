@@ -17,6 +17,7 @@ export const images = {
     mission00: require('./images/mockups/mission00.png'),
     mission01: require('./images/mockups/mission01.png'),
     mission02: require('./images/mockups/mission02.png'),
+    featuresAction: require('./images/mockups/features-action.png'),
   },
 }
 

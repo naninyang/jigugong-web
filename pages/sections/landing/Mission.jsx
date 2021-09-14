@@ -83,7 +83,7 @@ const MockupImage1 = styled.div({
 
 const MockupImage2 = styled.div({
   position: 'relative',
-  margin: `0 -${Em(192)}`,
+  margin: 0,
   paddingTop: '125.196548%',
   height: 0,
   background: `url(${images.mockup.mission01}) no-repeat 50% 50%/cover`,
@@ -91,7 +91,7 @@ const MockupImage2 = styled.div({
 
 const MockupImage3 = styled.div({
   position: 'relative',
-  margin: `0 -${Em(192)}`,
+  margin: 0,
   paddingTop: '125.196548%',
   height: 0,
   background: `url(${images.mockup.mission02}) no-repeat 50% 50%/cover`,
