@@ -20,8 +20,8 @@ const Container = styled.main({
   paddingTop: `${Rem(97)}`,
   backgroundImage: 'radial-gradient(circle at 0 0, #dcf5e8, #dcf5e8, #eaf7ff)',
   [mq.minSmall]: {
-    overflow: 'hidden',
-  },
+    overflowX: 'hidden',
+  }
 });
 
 const Contents = styled.div({
@@ -152,11 +152,11 @@ const Button = styled.button({
 const MockupImages = styled.div({
   paddingBottom: Em(40),
   [mq.minTablet]: {
-    margin: `-${Em(60)} -${Em(92)} -${Em(80)}`,
+    margin: `-${Em(60)} -${Em(92)} -${Em(60)}`,
     paddingBottom: 0,
   },
   [mq.minXsmall]: {
-    margin: `-${Em(60)} -${Em(150)} -${Em(80)}`,
+    margin: `-${Em(60)} -${Em(150)} -${Em(100)}`,
   },
   [mq.minSmall]: {
     margin: 0,
@@ -167,6 +167,7 @@ const MockupImage1 = styled.div({
   position: 'relative',
   margin: `-${Em(40)} -${Em(25)} -${Em(80)}`,
   paddingTop: '258.114345%',
+  height: 0,
   background: `url(${images.mockup.main00}) no-repeat 50% 50%/cover`,
 });
 
@@ -174,6 +175,7 @@ const MockupImage2 = styled.div({
   position: 'relative',
   margin: `-${Em(80)} -${Em(25)} -${Em(40)}`,
   paddingTop: '258.114345%',
+  height: 0,
   background: `url(${images.mockup.main01}) no-repeat 50% 50%/cover`,
 });
 

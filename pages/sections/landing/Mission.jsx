@@ -1,4 +1,5 @@
 import React from 'react';
+import { useMediaQuery } from 'react-responsive';
 import styled from '@emotion/styled';
 import { mq, styles, Rem, Em } from '../../utils/designSystem';
 import { images } from '../../assets/';
@@ -8,11 +9,18 @@ import HeadingSecondary from '../../components/HeadingSecondary';
 import Description from '../../components/Description';
 import ArticleList from '../../components/ArticleList';
 
+const Desktop = ({ children }) => {
+  const isDesktop = useMediaQuery({ minWidth: 481 })
+  return isDesktop ? children : null
+}
+const Mobile = ({ children }) => {
+  const isMobile = useMediaQuery({ maxWidth: 480 })
+  return isMobile ? children : null
+}
+
 const Container = styled.section({
   backgroundColor: '#eaf7ff',
-  [mq.minSmall]: {
-    overflow: 'hidden',
-  },
+  overflow: 'hidden',
 });
 
 const Contents = styled.div({
@@ -37,7 +45,7 @@ const LinkGroup = styled.div({
   zIndex: 999999,
   display: 'flex',
   margin: `${Em(50)} 0`,
-  flexDirection: 'column-reverse',
+  flexDirection: 'column',
   [mq.minXsmall]: {
     flexDirection: 'row',
   },
@@ -46,98 +54,64 @@ const LinkGroup = styled.div({
   },
 });
 
+const LinkItem = styled.div({
+  margin: `${Em(15)} 0`,
+  position: 'relative',
+});
+
 const MockupImages = styled.div({
   paddingBottom: Em(40),
-  [mq.minXsmall]: {
-    position: 'relative',
-    marginTop: `-${Em(60)}`,
+  [mq.minTablet]: {
+    margin: `-${Em(60)} -${Em(92)} 0`,
     paddingBottom: 0,
-    width: '100%',
-    height: Rem(663),
+  },
+  [mq.minXsmall]: {
+    margin: `-${Em(60)} -${Em(150)} 0`,
   },
   [mq.minSmall]: {
-    position: 'static',
     margin: 0,
-    width: 'auto',
-    height: 'auto',
   },
 });
 
 const MockupImage1 = styled.div({
   position: 'relative',
-  margin: `-${Em(40)} -${Em(25)} -${Em(80)}`,
-  paddingTop: '145.11434511%',
-  background: `url(${images.mockup.mission00}) no-repeat 50% 50%/contain`,
-  [mq.minXsmall]: {
-    position: 'absolute',
-    bottom: 0,
-    left: `-${Rem(123)}`,
-    margin: 0,
-    paddingTop: '83.114345%',
-    width: Rem(509),
-    height: 0,
-    backgroundPosition: '0 0',
-  },
-  [mq.minSmall]: {
-    left: '50%',
-    transform: 'translate(-50%, 0)',
-    marginTop: 0,
-    marginLeft: `${Em(250)}`,
-    paddingTop: '59.114345%',
-    maxWidth: Rem(509),
-    width: '100%',
-    backgroundPosition: '100% 100%',
-  },
+  margin: `-${Em(80)} -${Em(25)} 0`,
+  paddingTop: '265.114345%',
+  height: 0,
+  background: `url(${images.mockup.mission00}) no-repeat 50% 50%/cover`,
 });
 
 const MockupImage2 = styled.div({
   position: 'relative',
-  margin: `-${Em(80)} -${Em(25)} -${Em(40)}`,
-  paddingTop: '145.11434511%',
-  background: `url(${images.mockup.mission01}) no-repeat 0 0/contain`,
-  [mq.minXsmall]: {
-    position: 'absolute',
-    bottom: 0,
-    left: `${Rem(203)}`,
-    margin: 0,
-    paddingTop: '42.114345%',
-    width: Rem(284),
-    height: 0,
-    backgroundPosition: '0 0',
-  },
-  [mq.minSmall]: {
-    left: '50%',
-    transform: 'translate(-50%, 0)',
-    margin: `0 0 0 ${Em(510)}`,
-    paddingTop: '28.114345%',
-    maxWidth: Rem(284),
-    width: '100%',
-  },
+  margin: `0 -${Em(192)}`,
+  paddingTop: '125.196548%',
+  height: 0,
+  background: `url(${images.mockup.mission01}) no-repeat 50% 50%/cover`,
 });
 
 const MockupImage3 = styled.div({
   position: 'relative',
-  margin: `-${Em(80)} -${Em(25)} -${Em(40)}`,
-  paddingTop: '145.11434511%',
-  background: `url(${images.mockup.mission02}) no-repeat 0 0/contain`,
-  [mq.minXsmall]: {
-    position: 'absolute',
-    bottom: 0,
-    left: `${Rem(430)}`,
-    margin: 0,
-    paddingTop: '42.114345%',
-    width: Rem(284),
-    height: 0,
-    backgroundPosition: '0 0',
-  },
+  margin: `0 -${Em(192)}`,
+  paddingTop: '125.196548%',
+  height: 0,
+  background: `url(${images.mockup.mission02}) no-repeat 50% 50%/cover`,
+});
+
+const MockupImage = styled.div({
+  background: `url(${images.mockup.missionMerge}) no-repeat 50% 50%/contain`,
+  margin: `0 ${Em(20)}`,
+  paddingTop: '75.114345%',
+  height: 0,
+  backgroundPosition: '0 0',
+  backgroundSize: 'contain',
   [mq.minSmall]: {
-    bottom: 0,
+    position: 'absolute',
+    top: '50%',
     left: '50%',
-    transform: 'translate(-50%, 0)',
-    margin: `0 0 0 ${Em(770)}`,
-    paddingTop: '28.114345%',
-    maxWidth: Rem(284),
-    width: '100%',
+    transform: 'translate(-50%, -50%)',
+    margin: `-${Em(20)} 0 0 ${Em(440)}`,
+    paddingTop: '61.114345%',
+    width: Rem(923),
   },
 });
 
@@ -155,12 +129,17 @@ const Mission = () => {
           개인의 작은 실천이 모여 커다란 사회공헌이 됩니다.
         </Description>
         <LinkGroup>
-          <ButtonGreen href="/">미션목록 보러가기</ButtonGreen>
+          <LinkItem><ButtonGreen href="/">미션목록 보러가기</ButtonGreen></LinkItem>
         </LinkGroup>
         <MockupImages>
-          <MockupImage1 />
-          <MockupImage2 />
-          <MockupImage3 />
+          <Mobile>
+            <MockupImage1 />
+            <MockupImage2 />
+            <MockupImage3 />
+          </Mobile>
+          <Desktop>
+            <MockupImage />
+          </Desktop>
         </MockupImages>
       </Contents>
       <ArticleList heading={'지구공과 함께한 파트너'}>

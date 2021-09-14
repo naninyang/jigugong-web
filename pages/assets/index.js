@@ -13,6 +13,7 @@ export const images = {
     mainMerge: require('./images/mockups/main-merge.png'),
     main00: require('./images/mockups/main00.png'),
     main01: require('./images/mockups/main01.png'),
+    missionMerge: require('./images/mockups/mission-merge.png'),
     mission00: require('./images/mockups/mission00.png'),
     mission01: require('./images/mockups/mission01.png'),
     mission02: require('./images/mockups/mission02.png'),
