@@ -14,7 +14,7 @@ body {
   word-break: keep-all;
 }
 
-body, input, button, textarea, select, legend {
+body, pre, input, button, textarea, select, legend {
   font-family: 'Pretendard';
 }
 
@@ -49,7 +49,7 @@ label {
   cursor: pointer;
 }
 
-p, ul, dl {
+p, ul, dl, pre {
   margin-top: 0;
   margin-bottom: 0;
 }

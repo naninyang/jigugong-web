@@ -5,6 +5,8 @@ export const images = {
     phone: require('./images/icons/phone.svg'),
     email: require('./images/icons/email.svg'),
     jigugong: require('./images/icons/jigugong.svg'),
+    checkBoxFalse: require('./images/icons/check-box-false.svg'),
+    checkBoxTrue: require('./images/icons/check-box-true.svg'),
   },
   logos: {
     jigugongHorizontal: require('./images/logos/jigugong-horizontal.svg'),
