@@ -2,7 +2,6 @@ import React from 'react';
 import styled from '@emotion/styled';
 import { mq, styles, Rem, Em } from '../../utils/designSystem';
 import { images } from '../../assets/';
-import ButtonGreen from '../../components/ButtonGreen';
 import HeadingPrimary from '../../components/HeadingPrimary';
 import HeadingSecondary from '../../components/HeadingSecondary';
 import Description from '../../components/Description';

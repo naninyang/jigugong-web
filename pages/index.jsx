@@ -13,8 +13,8 @@ function index() {
     <Container>
       <Main />
       <Mission />
-      <Commerce />
       <Feature />
+      <Commerce />
       <Proposal />
     </Container>
   )
