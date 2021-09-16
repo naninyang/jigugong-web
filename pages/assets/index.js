@@ -20,6 +20,8 @@ export const images = {
     mission01: require('./images/mockups/mission01.png'),
     mission02: require('./images/mockups/mission02.png'),
     featuresAction: require('./images/mockups/features-action.png'),
+    featuresConversation: require('./images/mockups/features-conversation.png'),
+    featuresStore: require('./images/mockups/features-store.png'),
     commerce: require('./images/mockups/commerce.png'),
   },
 }

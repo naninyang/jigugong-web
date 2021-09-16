@@ -1,6 +1,6 @@
 (function () {
   "use strict";
-  var url = '/assets/fonts/PretendardSubset.css';
+  var url = '/assets/fonts/pretendard-subset.css';
 
   function on(el, ev, callback) {
     if (el.addEventListener) {

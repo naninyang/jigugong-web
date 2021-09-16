@@ -22,7 +22,7 @@ function App({ Component, pageProps }) {
         <meta property="og:image" content={`https://jigugong.com/jigugong-og-image.png?${Math.random().toString(36).substr(2, 11)}`} />
         <meta property="og:type" content="website" />
         <meta property="og:site_name" content="지구공" />
-        <script src="/assets/fonts/fontLoader.js"></script>
+        <script src="/assets/fonts/font-loader.js"></script>
       </Head>
       <Header />
       <Component {...pageProps} />

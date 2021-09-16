@@ -64,7 +64,7 @@ const MainHeading = styled.h1({
     fontWeight: fontWeights.ExtraBold,
     [mq.minXsmall]: {
       marginTop: `${Rem(20)}`,
-    }
+    },
   },
   '&::before': {
     content: '""',
@@ -150,14 +150,28 @@ const Button = styled.button({
   color: '#FFFFFF',
 });
 
+const MockupImageModule = styled.div({
+  overflow: 'hidden',
+  margin: `0 -${Em(25)}`,
+  [mq.minTablet]: {
+    paddingBottom: Em(60),
+  },
+  [mq.minXsmall]: {
+    paddingBottom: Em(100),
+  },
+  [mq.minSmall]: {
+    overflow: 'visible',
+    margin: 0,
+  },
+});
+
 const MockupImages = styled.div({
   paddingBottom: Em(40),
   [mq.minTablet]: {
-    margin: `-${Em(60)} -${Em(92)} -${Em(60)}`,
-    paddingBottom: 0,
+    margin: `-${Em(60)} -${Em(67)} -${Em(60)}`,
   },
   [mq.minXsmall]: {
-    margin: `-${Em(60)} -${Em(150)} -${Em(100)}`,
+    margin: `-${Em(60)} -${Em(125)} -${Em(100)}`,
   },
   [mq.minSmall]: {
     margin: 0,
@@ -244,15 +258,17 @@ const Main = () => {
           </LinkItem>
           <LinkItem><ButtonGreen href="https://naver.com/">회사소개서 다운로드</ButtonGreen></LinkItem>
         </LinkGroup>
-        <MockupImages>
-          <Mobile>
-            <MockupImage1 />
-            <MockupImage2 />
-          </Mobile>
-          <Desktop>
-            <MockupImage />
-          </Desktop>
-        </MockupImages>
+        <MockupImageModule>
+          <MockupImages>
+            <Mobile>
+              <MockupImage1 />
+              <MockupImage2 />
+            </Mobile>
+            <Desktop>
+              <MockupImage />
+            </Desktop>
+          </MockupImages>
+        </MockupImageModule>
       </Contents>
     </Container>
   )
