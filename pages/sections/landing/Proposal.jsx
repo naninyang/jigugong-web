@@ -146,14 +146,11 @@ const Proposal = () => {
   const { register, handleSubmit, formState: { errors } } = useForm();
   const onSubmit = (data) => {
     alert(JSON.stringify(data));
-    console.log(data.agreement);
   };
 
   const handleChecked = (event) => {
     setIsChecked(event.target.checked);
   };
-
-  console.log(isChecked);
 
   return (
     <Container>
@@ -167,7 +164,12 @@ const Proposal = () => {
               <InputControl id={'organization'}
                 placeholder={'단체/기업명'}
                 type={'text'}
-                {...register('organization', { required: true })}
+                {...register
+                  ('organization', {
+                    required: true,
+                    minLength: 2,
+                  })
+                }
               />
               {errors.organization && <Error>단체/기업명을 정확하게 입력해 주세요</Error>}
             </FieldGroup>
@@ -176,7 +178,12 @@ const Proposal = () => {
               <InputControl id={'officer'}
                 placeholder={'홍길동'}
                 type={'text'}
-                {...register('officer', { required: true })}
+                {...register
+                  ('officer', {
+                    required: true,
+                    minLength: 2,
+                  })
+                }
               />
               {errors.officer && <Error>담당자명을 정확하게 입력해 주세요</Error>}
             </FieldGroup>
@@ -185,7 +192,13 @@ const Proposal = () => {
               <InputControl id={'contact'}
                 placeholder={'숫자만 입력 가능'}
                 type={'tel'}
-                {...register('contact', { required: true, maxLength: 11, minLength: 8 })}
+                {...register
+                  ('contact', {
+                    required: true,
+                    maxLength: 11,
+                    minLength: 8
+                  })
+                }
               />
               {errors.contact && <Error>연락처를 정확하게 입력해 주세요</Error>}
             </FieldGroup>
@@ -194,11 +207,14 @@ const Proposal = () => {
               <InputControl id={'email'}
                 placeholder={'example@example.com'}
                 type={'email'}
-                {...register('email', {
-                  required: true,
-                  minLength: 7,
-                  pattern: /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
-                })}
+                {...register
+                  ('email', {
+                    required: true,
+                    minLength: 7,
+                    maxLength: 320,
+                    pattern: /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
+                  })
+                }
               />
               {errors.email && <Error>이메일을 정확하게 입력해 주세요</Error>}
             </FieldGroup>
@@ -217,12 +233,12 @@ const Proposal = () => {
             <CheckBoxGroup>
               <CheckBoxControl
                 {...register('agreement', { required: true })}
+                id={'agreement'}
                 type={'checkbox'}
                 checked={isChecked}
                 onChange={handleChecked}
-                id={'agreement'}
               />
-              <CheckBoxControlDesign />
+              <CheckBoxControlDesign isChecked={isChecked} />
               <CheckBoxLabel htmlFor='agreement'>개인정보 수집 및 이용에 동의합니다</CheckBoxLabel>
               {errors.agreement && <Error>동의하지 않으면 제출이 불가합니다</Error>}
             </CheckBoxGroup>
