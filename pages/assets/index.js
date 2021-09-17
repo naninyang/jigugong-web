@@ -9,6 +9,11 @@ export const images = {
     checkBoxTrue: require('./images/icons/check-box-true.svg'),
     sliderPrevious: require('./images/icons/slider-previous.svg'),
     sliderNext: require('./images/icons/slider-next.svg'),
+    heartFalse: require('./images/icons/heart-false.svg'),
+    heartTrue: require('./images/icons/heart-true.svg'),
+    chatbox: require('./images/icons/chatbox.svg'),
+    bookmarkFalse: require('./images/icons/bookmark-false.svg'),
+    bookmarkTrue: require('./images/icons/bookmark-true.svg'),
   },
   logos: {
     jigugongHorizontal: require('./images/logos/jigugong-horizontal.svg'),

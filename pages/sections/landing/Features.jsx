@@ -1,6 +1,10 @@
 import React from 'react';
+import Slider from 'react-slick';
+import axios from 'axios';
 import styled from '@emotion/styled';
-import { mq, styles, Rem, Em } from '../../utils/designSystem';
+import 'slick-carousel/slick/slick.css';
+import 'slick-carousel/slick/slick-theme.css';
+import { mq, styles, fontWeights, Clamp, Rem, Em } from '../../utils/designSystem';
 import { images } from '../../assets/';
 import ButtonGreen from '../../components/ButtonGreen';
 import HeadingPrimary from '../../components/HeadingPrimary';
@@ -207,7 +211,262 @@ const LinkItem = styled.div({
   position: 'relative',
 });
 
+const SliderControl = styled.div({
+  margin: '0 auto',
+  padding: `0 ${Em(20)}`,
+  width: '100%',
+  [mq.minTablet]: {
+    padding: `0 ${Em(28)}`,
+  },
+  [mq.minSmall]: {
+    padding: `0 ${Em(70)}`,
+    maxWidth: Rem(1188),
+  },
+});
+
+const StyledSlider = styled(Slider)({
+  width: '100%',
+  '& .slick-slide div': {
+    outline: 'none',
+  },
+  '& .slick-dots': {
+    display: 'none!important',
+  },
+});
+
+const ButtonPrevious = styled.button({
+  left: `-${Rem(20)}`,
+  zIndex: 9,
+  width: Rem(25),
+  height: '100%',
+  background: `#f6f6f6 url(${images.icons.sliderPrevious}) no-repeat 50% 50%/${Rem(13)} ${Rem(23)}`,
+  [mq.minTablet]: {
+    left: `-${Rem(28)}`,
+    width: Rem(40),
+  },
+  [mq.minSmall]: {
+    left: `-${Rem(70)}`,
+    width: Rem(70),
+    backgroundSize: `${Rem(18)} ${Rem(33)}`,
+  },
+  '&:hover, &:focus': {
+    background: `url(${images.icons.sliderPrevious}) no-repeat 50% 50%/${Rem(13)} ${Rem(23)}`,
+    [mq.minSmall]: {
+      backgroundSize: `${Rem(18)} ${Rem(33)}`,
+    },
+  },
+  '&::before': {
+    display: 'none',
+  },
+});
+
+const ButtonNext = styled.button({
+  right: `-${Rem(20)}`,
+  zIndex: 9,
+  width: Rem(25),
+  height: '100%',
+  background: `url(${images.icons.sliderNext}) no-repeat 50% 50%/${Rem(13)} ${Rem(23)}`,
+  [mq.minTablet]: {
+    right: `-${Rem(28)}`,
+    width: Rem(40),
+  },
+  [mq.minSmall]: {
+    right: `-${Rem(70)}`,
+    width: Rem(70),
+    backgroundSize: `${Rem(18)} ${Rem(33)}`,
+  },
+  '&:hover, &:focus': {
+    background: `url(${images.icons.sliderNext}) no-repeat 50% 50%/${Rem(13)} ${Rem(23)}`,
+    [mq.minSmall]: {
+      backgroundSize: `${Rem(18)} ${Rem(33)}`,
+    },
+  },
+  '&::before': {
+    display: 'none',
+  },
+});
+
+const ActionInfo = styled.div({
+  margin: `0 ${Em(5)}`,
+  [mq.minTablet]: {
+    margin: `0 ${Em(10)}`,
+  },
+});
+
+const ActionImageModule = styled.div({
+  position: 'relative',
+  paddingTop: '89.6%',
+  height: 0,
+});
+
+const ActionImage = styled.img({
+  position: 'absolute',
+  top: 0,
+  left: 0,
+  width: '100%',
+  height: '100%',
+  objectFit: 'cover',
+});
+
+const ActionFigure = styled.div({
+  padding: `${Em(14)} ${Em(20)}`,
+  height: Rem(201),
+  backgroundColor: '#ffffff',
+});
+
+const ItemCategory = styled.div({
+  fontSize: Rem(16),
+  fontWeight: fontWeights.Regular,
+  color: '#5a5a5a',
+});
+
+const ItemSummary = styled.strong({
+  display: 'block',
+  margin: `${Em(8)} 0`,
+  fontSize: Rem(24),
+  fontWeight: fontWeights.SemiBold,
+  ...styles.ellipsis,
+});
+
+const ItemUser = styled.div({
+  display: 'flex',
+  alignItems: 'center',
+});
+
+const ItemUserThumbnail = styled.div({
+  borderRadius: '100%',
+  overflow: 'hidden',
+  width: Rem(24),
+  height: Rem(24),
+});
+
+const ItemUserThumbnailImage = styled.img({
+  width: '100%',
+  height: '100%',
+  objectFit: 'cover',
+});
+
+const ItemUserName = styled.cite({
+  paddingLeft: Em(10),
+  fontSize: Rem(16),
+  fontWeight: fontWeights.Regular,
+  fontStyle: 'normal',
+  color: '#5a5a5a',
+});
+
+const ItemDescription = styled.div`
+  ${Clamp(2, 38)};
+  margin: ${Em(10)} 0 ${Em(12)};
+  height: ${Rem(38)};
+  font-size: ${Rem(16)};
+  font-weight: ${fontWeights.Regular};
+`;
+
+const ItemOptions = styled.div({
+  display: 'flex',
+});
+
+const ItemOptionLike = styled.span({
+  display: 'flex',
+  alignItems: 'center',
+});
+
+const ItemOptionLikeIcon = styled.span({
+  display: 'flex',
+  alignItems: 'center',
+  width: Rem(24),
+  height: Rem(28),
+});
+
+const ItemOptionLikeIconImage = styled.img({
+  width: Rem(23),
+});
+
+const ItemOptionStatus = styled.span({
+  margin: `0 ${Em(7)}`,
+  paddingTop: Em(2),
+  fontSize: Rem(18),
+  fontWeight: fontWeights.Regular,
+});
+
+const ItemOptionReply = styled.div({
+  display: 'flex',
+  alignItems: 'center',
+  margin: `0 ${Em(22)} 0 ${Em(20)}`,
+});
+
+const ItemOptionReplyIcon = styled.div({
+  width: Rem(24),
+  height: Rem(28),
+  background: `url(${images.icons.chatbox}) no-repeat 50% 50%/${Rem(24)} ${Rem(24)}`,
+});
+
+const ItemOptionBookmark = styled.span({
+  display: 'flex',
+  alignItems: 'center',
+  '& span': {
+    marginLeft: 0,
+  },
+});
+
+const ItemOptionBookmarkIcon = styled.div({
+  display: 'flex',
+  alignItems: 'center',
+  width: Rem(24),
+  height: Rem(28),
+});
+
+const ItemOptionBookmarkIconImage = styled.img({
+  width: Rem(20),
+});
+
+function PreviousArrow(props) {
+  const { className, onClick, label } = props;
+  return <ButtonPrevious className={className} onClick={onClick} aria-label={label} />
+}
+
+function NextArrow(props) {
+  const { className, onClick } = props;
+  return <ButtonNext className={className} onClick={onClick} />
+}
+
 const Feature = () => {
+  const [action, setAction] = React.useState(null);
+  const url = '/api/action';
+  React.useEffect(() => {
+    axios.get(url).then((response) => {
+      setAction(response.data);
+    });
+  }, []);
+
+  const settings = {
+    dots: true,
+    infinite: true,
+    speed: 500,
+    slidesToShow: 4,
+    slidesToScroll: 1,
+    prevArrow: <PreviousArrow label={'이전으로 이동'} />,
+    nextArrow: <NextArrow label={'다음으로 이동'} />,
+    responsive: [
+      {
+        breakpoint: 769,
+        settings: {
+          dots: true,
+          slidesToShow: 3,
+          slidesToScroll: 1,
+        },
+      },
+      {
+        breakpoint: 481,
+        settings: {
+          dots: true,
+          slidesToShow: 2,
+          slidesToScroll: 2,
+        },
+      },
+    ],
+  };
+
   return (
     <Container>
       <Practical>
@@ -227,7 +486,62 @@ const Feature = () => {
         </Action>
       </Practical>
       <ArticleList heading={'인기 실천글'}>
-        실천글 목록
+        <SliderControl>
+          <StyledSlider {...settings}>
+            {action && action.map(item => (
+              <div key={item._id}>
+                <ActionInfo>
+                  <ActionImageModule><ActionImage src={item.thumbnail} alt={''} /></ActionImageModule>
+                  <ActionFigure>
+                    <ItemCategory>{item.category}</ItemCategory>
+                    <ItemSummary>{item.summary}</ItemSummary>
+                    <ItemUser>
+                      <ItemUserThumbnail><ItemUserThumbnailImage src={item.user.avatar} alt={''} /></ItemUserThumbnail>
+                      <ItemUserName>{item.user.name}</ItemUserName>
+                    </ItemUser>
+                    <ItemDescription>{item.description}</ItemDescription>
+                    <ItemOptions>
+                      <ItemOptionLike>
+                        <ItemOptionLikeIcon>
+                          {item.option.like.active ?
+                            <ItemOptionLikeIconImage
+                              src={`${images.icons.heartTrue}`}
+                              alt={'찜됨'}
+                            /> :
+                            <ItemOptionLikeIconImage
+                              src={`${images.icons.heartFalse}`}
+                              alt={'찜안됨'}
+                            />
+                          }
+                        </ItemOptionLikeIcon>
+                        <ItemOptionStatus aria-label={'찜 개수'}>{item.option.like.count}</ItemOptionStatus>
+                      </ItemOptionLike>
+                      <ItemOptionReply>
+                        <ItemOptionReplyIcon />
+                        <ItemOptionStatus aria-label={'댓글 개수'}>{item.option.reply}</ItemOptionStatus>
+                      </ItemOptionReply>
+                      <ItemOptionBookmark>
+                        <ItemOptionBookmarkIcon>
+                          {item.option.bookmark.active ?
+                            <ItemOptionBookmarkIconImage
+                              src={`${images.icons.bookmarkTrue}`}
+                              alt={'북마크 됨'}
+                            /> :
+                            <ItemOptionLikeIconImage
+                              src={`${images.icons.bookmarkFalse}`}
+                              alt={'북마크 안됨'}
+                            />
+                          }
+                        </ItemOptionBookmarkIcon>
+                        <ItemOptionStatus aria-label={'북마크 개수'}>{item.option.bookmark.count}</ItemOptionStatus>
+                      </ItemOptionBookmark>
+                    </ItemOptions>
+                  </ActionFigure>
+                </ActionInfo>
+              </div>
+            ))}
+          </StyledSlider>
+        </SliderControl>
       </ArticleList>
       <Activity>
         <Conversation>

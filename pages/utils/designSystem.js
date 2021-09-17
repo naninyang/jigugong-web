@@ -42,6 +42,11 @@ export const styles = {
   flex: {
     col: '1 0 0%',
   },
+  ellipsis: {
+    overflow: 'hidden',
+    textOverflow: 'ellipsis',
+    whiteSpace: 'nowrap',
+  },
   clearfix: {
     '&::after': {
       display: 'block',
@@ -61,6 +66,16 @@ export const styles = {
     border: 0,
   },
 };
+
+export const Clamp = (line, height, lineheight = '1.2') => (`
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: ${line};
+  max-height: ${height / 16}rem;
+  line-height: ${lineheight};
+`);
 
 export function Rem(px) {
   const result = px / 16;

@@ -227,8 +227,8 @@ const OrganizationName = styled.strong({
 });
 
 function PreviousArrow(props) {
-  const { className, onClick } = props;
-  return <ButtonPrevious className={className} onClick={onClick} />
+  const { className, onClick, label } = props;
+  return <ButtonPrevious className={className} onClick={onClick} aria-label={label} />
 }
 
 function NextArrow(props) {
@@ -251,8 +251,8 @@ const Mission = () => {
     speed: 500,
     slidesToShow: 4,
     slidesToScroll: 1,
-    prevArrow: <PreviousArrow />,
-    nextArrow: <NextArrow />,
+    prevArrow: <PreviousArrow label={'이전으로 이동'} />,
+    nextArrow: <NextArrow label={'다음으로 이동'} />,
     responsive: [
       {
         breakpoint: 769,
@@ -305,7 +305,7 @@ const Mission = () => {
             {organization && organization.map(item => (
               <div key={item._id}>
                 <OrganizationInfo>
-                  <OrganizationImageModule><OrganizationImage src={item.picture} /></OrganizationImageModule>
+                  <OrganizationImageModule><OrganizationImage src={item.picture} alt={''} /></OrganizationImageModule>
                   <OrganizationName>{item.organization}</OrganizationName>
                 </OrganizationInfo>
               </div>
