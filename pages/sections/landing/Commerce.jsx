@@ -1,6 +1,10 @@
 import React from 'react';
+import Slider from 'react-slick';
+import axios from 'axios';
 import styled from '@emotion/styled';
-import { mq, styles, Rem, Em } from '../../utils/designSystem';
+import 'slick-carousel/slick/slick.css';
+import 'slick-carousel/slick/slick-theme.css';
+import { mq, styles, fontWeights, Rem, Em } from '../../utils/designSystem';
 import { images } from '../../assets/';
 import HeadingPrimary from '../../components/HeadingPrimary';
 import Description from '../../components/Description';
@@ -66,7 +70,213 @@ const MockupImage = styled.div({
   },
 });
 
+const SliderControl = styled.div({
+  margin: '0 auto',
+  padding: `0 ${Em(20)}`,
+  width: '100%',
+  [mq.minTablet]: {
+    padding: `0 ${Em(28)}`,
+  },
+  [mq.minSmall]: {
+    padding: `0 ${Em(70)}`,
+    maxWidth: Rem(1188),
+  },
+});
+
+const StyledSlider = styled(Slider)({
+  width: '100%',
+  '& .slick-slide div': {
+    outline: 'none',
+  },
+  '& .slick-dots': {
+    display: 'none!important',
+  },
+});
+
+const ButtonPrevious = styled.button({
+  left: `-${Rem(20)}`,
+  zIndex: 9,
+  width: Rem(25),
+  height: '100%',
+  background: `#f6f6f6 url(${images.icons.sliderPrevious}) no-repeat 50% 50%/${Rem(13)} ${Rem(23)}`,
+  [mq.minTablet]: {
+    left: `-${Rem(28)}`,
+    width: Rem(40),
+  },
+  [mq.minSmall]: {
+    left: `-${Rem(70)}`,
+    width: Rem(70),
+    backgroundSize: `${Rem(18)} ${Rem(33)}`,
+  },
+  '&:hover, &:focus': {
+    background: `url(${images.icons.sliderPrevious}) no-repeat 50% 50%/${Rem(13)} ${Rem(23)}`,
+    [mq.minSmall]: {
+      backgroundSize: `${Rem(18)} ${Rem(33)}`,
+    },
+  },
+  '&::before': {
+    display: 'none',
+  },
+});
+
+const ButtonNext = styled.button({
+  right: `-${Rem(20)}`,
+  zIndex: 9,
+  width: Rem(25),
+  height: '100%',
+  background: `url(${images.icons.sliderNext}) no-repeat 50% 50%/${Rem(13)} ${Rem(23)}`,
+  [mq.minTablet]: {
+    right: `-${Rem(28)}`,
+    width: Rem(40),
+  },
+  [mq.minSmall]: {
+    right: `-${Rem(70)}`,
+    width: Rem(70),
+    backgroundSize: `${Rem(18)} ${Rem(33)}`,
+  },
+  '&:hover, &:focus': {
+    background: `url(${images.icons.sliderNext}) no-repeat 50% 50%/${Rem(13)} ${Rem(23)}`,
+    [mq.minSmall]: {
+      backgroundSize: `${Rem(18)} ${Rem(33)}`,
+    },
+  },
+  '&::before': {
+    display: 'none',
+  },
+});
+
+const ProductInfo = styled.div({
+  margin: `0 ${Em(5)}`,
+  [mq.minTablet]: {
+    margin: `0 ${Em(10)}`,
+  },
+});
+
+const ProductImage = styled.div({
+  position: 'relative',
+  paddingTop: '89.6%',
+  height: 0,
+});
+
+const ProductThumbnail = styled.img({
+  position: 'absolute',
+  top: 0,
+  left: 0,
+  width: '100%',
+  height: '100%',
+  objectFit: 'cover',
+});
+
+const ProductFigure = styled.div({
+  padding: `${Em(14)} ${Em(20)}`,
+});
+
+const ItemBrand = styled.div({
+  fontSize: Rem(16),
+  fontWeight: fontWeights.Regular,
+  color: '#5a5a5a',
+});
+
+const ItemProduct = styled.strong({
+  display: 'block',
+  margin: `${Em(1.5)} 0`,
+  fontSize: Rem(22),
+  fontWeight: fontWeights.SemiBold,
+  ...styles.ellipsis,
+});
+
+const ItemPrice = styled.div();
+
+const PriceReduced = styled.div({
+  display: 'flex',
+  alignItems: 'center',
+  margin: `${Em(9)} 0 ${Em(8)}`,
+});
+
+const PricePercentage = styled.div({
+  paddingRight: Em(7),
+  fontSize: Rem(17),
+  fontWeight: fontWeights.Medium,
+  color: '#f13434',
+});
+
+const PriceResult = styled.strong({
+  fontSize: Rem(17),
+  fontWeight: fontWeights.Medium,
+});
+
+const PriceDiscount = styled.del({
+  paddingLeft: Em(7),
+  fontSize: Rem(17),
+  fontWeights: fontWeights.Regular,
+  color: '#5a5a5a',
+});
+
+const PriceEarthy = styled.div({
+  display: 'flex',
+  alignItems: 'center',
+});
+
+const EarthyDiscount = styled.strong({
+  fontSize: Rem(17),
+  fontWeight: fontWeights.Regular,
+  color: '#0EAA55',
+});
+
+const EarthyDescription = styled.span({
+  marginLeft: Em(9),
+  fontSize: Rem(13),
+  fontWeight: fontWeights.Regular,
+  color: '#0EAA55',
+});
+
+function PreviousArrow(props) {
+  const { className, onClick, label } = props;
+  return <ButtonPrevious className={className} onClick={onClick} aria-label={label} />
+}
+
+function NextArrow(props) {
+  const { className, onClick } = props;
+  return <ButtonNext className={className} onClick={onClick} />
+}
+
 const Commerce = () => {
+  const [product, setProduct] = React.useState(null);
+  const url = '/api/product';
+  React.useEffect(() => {
+    axios.get(url).then((response) => {
+      setProduct(response.data);
+    });
+  }, []);
+
+  const settings = {
+    dots: true,
+    infinite: true,
+    speed: 500,
+    slidesToShow: 4,
+    slidesToScroll: 1,
+    prevArrow: <PreviousArrow label={'이전으로 이동'} />,
+    nextArrow: <NextArrow label={'다음으로 이동'} />,
+    responsive: [
+      {
+        breakpoint: 769,
+        settings: {
+          dots: true,
+          slidesToShow: 3,
+          slidesToScroll: 1,
+        },
+      },
+      {
+        breakpoint: 481,
+        settings: {
+          dots: true,
+          slidesToShow: 2,
+          slidesToScroll: 2,
+        },
+      },
+    ],
+  };
+
   return (
     <Container>
       <Contents>
@@ -82,7 +292,37 @@ const Commerce = () => {
         </MockupImages>
       </Contents>
       <ArticleList heading={'인기 상품'}>
-        상품 목록
+        <SliderControl>
+          <StyledSlider {...settings}>
+            {product && product.map(item => (
+              <div key={item._id}>
+                <ProductInfo>
+                  <ProductImage><ProductThumbnail src={item.thumbnail} alt={''} /></ProductImage>
+                  <ProductFigure>
+                    <ItemBrand>{item.brand}</ItemBrand>
+                    <ItemProduct>{item.product}</ItemProduct>
+                    <ItemPrice>
+                      <PriceReduced>
+                        {item.price.reduced ?
+                          <>
+                            <PricePercentage>{Math.ceil((item.price.result - item.price.reduced) / item.price.result * 100)}%</PricePercentage>
+                            <PriceResult>{item.price.reduced.toLocaleString('ko-KR')}원</PriceResult>
+                            <PriceDiscount>{item.price.result.toLocaleString('ko-KR')}원</PriceDiscount>
+                          </>
+                          : <PriceResult>{item.price.result.toLocaleString('ko-KR')}원</PriceResult>
+                        }
+                      </PriceReduced>
+                      <PriceEarthy>
+                        <EarthyDiscount>{item.price.earthy.toLocaleString('ko-KR')}원</EarthyDiscount>
+                        <EarthyDescription>지구포인트 최대할인가</EarthyDescription>
+                      </PriceEarthy>
+                    </ItemPrice>
+                  </ProductFigure>
+                </ProductInfo>
+              </div>
+            ))}
+          </StyledSlider>
+        </SliderControl>
       </ArticleList>
     </Container>
   )
