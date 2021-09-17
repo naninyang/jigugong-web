@@ -1,7 +1,11 @@
 import React from 'react';
 import { useMediaQuery } from 'react-responsive';
+import Slider from 'react-slick';
+import axios from 'axios';
 import styled from '@emotion/styled';
-import { mq, styles, Rem, Em } from '../../utils/designSystem';
+import 'slick-carousel/slick/slick.css';
+import 'slick-carousel/slick/slick-theme.css';
+import { mq, styles, Rem, Em, fontWeights } from '../../utils/designSystem';
 import { images } from '../../assets/';
 import ButtonGreen from '../../components/ButtonGreen';
 import HeadingPrimary from '../../components/HeadingPrimary';
@@ -115,7 +119,160 @@ const MockupImage = styled.div({
   },
 });
 
+const SliderControl = styled.div({
+  margin: '0 auto',
+  padding: `0 ${Em(20)}`,
+  width: '100%',
+  [mq.minTablet]: {
+    padding: `0 ${Em(28)}`,
+  },
+  [mq.minSmall]: {
+    padding: `0 ${Em(70)}`,
+    maxWidth: Rem(1188),
+  },
+});
+
+const StyledSlider = styled(Slider)({
+  width: '100%',
+  '& .slick-slide div': {
+    outline: 'none',
+  },
+  '& .slick-dots': {
+    display: 'none!important',
+  },
+});
+
+const ButtonPrevious = styled.button({
+  left: `-${Rem(20)}`,
+  zIndex: 9,
+  width: Rem(25),
+  height: '100%',
+  background: `#f6f6f6 url(${images.icons.sliderPrevious}) no-repeat 50% 50%/${Rem(13)} ${Rem(23)}`,
+  [mq.minTablet]: {
+    left: `-${Rem(28)}`,
+    width: Rem(40),
+  },
+  [mq.minSmall]: {
+    left: `-${Rem(70)}`,
+    width: Rem(70),
+    backgroundSize: `${Rem(18)} ${Rem(33)}`,
+  },
+  '&:hover, &:focus': {
+    background: `url(${images.icons.sliderPrevious}) no-repeat 50% 50%/${Rem(13)} ${Rem(23)}`,
+    [mq.minSmall]: {
+      backgroundSize: `${Rem(18)} ${Rem(33)}`,
+    },
+  },
+  '&::before': {
+    display: 'none',
+  },
+});
+
+const ButtonNext = styled.button({
+  right: `-${Rem(20)}`,
+  zIndex: 9,
+  width: Rem(25),
+  height: '100%',
+  background: `url(${images.icons.sliderNext}) no-repeat 50% 50%/${Rem(13)} ${Rem(23)}`,
+  [mq.minTablet]: {
+    right: `-${Rem(28)}`,
+    width: Rem(40),
+  },
+  [mq.minSmall]: {
+    right: `-${Rem(70)}`,
+    width: Rem(70),
+    backgroundSize: `${Rem(18)} ${Rem(33)}`,
+  },
+  '&:hover, &:focus': {
+    background: `url(${images.icons.sliderNext}) no-repeat 50% 50%/${Rem(13)} ${Rem(23)}`,
+    [mq.minSmall]: {
+      backgroundSize: `${Rem(18)} ${Rem(33)}`,
+    },
+  },
+  '&::before': {
+    display: 'none',
+  },
+});
+
+const OrganizationInfo = styled.div({
+  margin: `0 ${Em(5)}`,
+  [mq.minTablet]: {
+    margin: `0 ${Em(10)}`,
+  },
+});
+
+const OrganizationImageModule = styled.div({
+  position: 'relative',
+  paddingTop: '63.0952381%',
+  height: 0,
+});
+
+const OrganizationImage = styled.img({
+  position: 'absolute',
+  top: 0,
+  left: 0,
+  width: '100%',
+  height: '100%',
+  objectFit: 'cover',
+});
+
+const OrganizationName = styled.strong({
+  display: 'flex',
+  alignItems: 'center',
+  padding: `0 ${Em(23)}`,
+  height: Rem(43),
+  backgroundColor: '#e5e5e5',
+  fontSize: Rem(20),
+  fontWeight: fontWeights.Regular,
+});
+
+function PreviousArrow(props) {
+  const { className, onClick } = props;
+  return <ButtonPrevious className={className} onClick={onClick} />
+}
+
+function NextArrow(props) {
+  const { className, onClick } = props;
+  return <ButtonNext className={className} onClick={onClick} />
+}
+
 const Mission = () => {
+  const [organization, setOrganization] = React.useState(null);
+  const url = '/api/organization';
+  React.useEffect(() => {
+    axios.get(url).then((response) => {
+      setOrganization(response.data);
+    });
+  }, []);
+
+  const settings = {
+    dots: true,
+    infinite: true,
+    speed: 500,
+    slidesToShow: 4,
+    slidesToScroll: 1,
+    prevArrow: <PreviousArrow />,
+    nextArrow: <NextArrow />,
+    responsive: [
+      {
+        breakpoint: 769,
+        settings: {
+          dots: true,
+          slidesToShow: 3,
+          slidesToScroll: 1,
+        },
+      },
+      {
+        breakpoint: 481,
+        settings: {
+          dots: true,
+          slidesToShow: 2,
+          slidesToScroll: 2,
+        },
+      },
+    ],
+  };
+
   return (
     <Container>
       <Contents>
@@ -143,7 +300,18 @@ const Mission = () => {
         </MockupImages>
       </Contents>
       <ArticleList heading={'지구공과 함께한 파트너'}>
-        지구공 파트너
+        <SliderControl>
+          <StyledSlider {...settings}>
+            {organization && organization.map(item => (
+              <div key={item._id}>
+                <OrganizationInfo>
+                  <OrganizationImageModule><OrganizationImage src={item.picture} /></OrganizationImageModule>
+                  <OrganizationName>{item.organization}</OrganizationName>
+                </OrganizationInfo>
+              </div>
+            ))}
+          </StyledSlider>
+        </SliderControl>
       </ArticleList>
     </Container>
   )

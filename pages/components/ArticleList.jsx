@@ -12,8 +12,9 @@ const Contents = styled.div({
 
 const PrimaryHeading = styled.div({
   ...styles.widthSettings,
+  paddingBottom: Em(30),
   [mq.minTablet]: {
-    padding: `0 ${Em(40)} 0 ${Em(30)}`,
+    padding: `0 ${Em(40)} ${Em(30)}`,
   },
   [mq.minSmall]: {
     margin: '0 auto',

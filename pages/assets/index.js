@@ -7,6 +7,8 @@ export const images = {
     jigugong: require('./images/icons/jigugong.svg'),
     checkBoxFalse: require('./images/icons/check-box-false.svg'),
     checkBoxTrue: require('./images/icons/check-box-true.svg'),
+    sliderPrevious: require('./images/icons/slider-previous.svg'),
+    sliderNext: require('./images/icons/slider-next.svg'),
   },
   logos: {
     jigugongHorizontal: require('./images/logos/jigugong-horizontal.svg'),

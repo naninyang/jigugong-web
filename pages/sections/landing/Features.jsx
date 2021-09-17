@@ -2,6 +2,7 @@ import React from 'react';
 import styled from '@emotion/styled';
 import { mq, styles, Rem, Em } from '../../utils/designSystem';
 import { images } from '../../assets/';
+import ButtonGreen from '../../components/ButtonGreen';
 import HeadingPrimary from '../../components/HeadingPrimary';
 import HeadingSecondary from '../../components/HeadingSecondary';
 import Description from '../../components/Description';
@@ -188,6 +189,24 @@ const MockupImageStore = styled.div({
   },
 });
 
+const LinkGroup = styled.div({
+  position: 'relative',
+  zIndex: 999999,
+  display: 'flex',
+  flexDirection: 'column',
+  [mq.minXsmall]: {
+    flexDirection: 'row',
+  },
+  [mq.minSmall]: {
+    marginBottom: 0,
+  },
+});
+
+const LinkItem = styled.div({
+  margin: `${Em(15)} 0`,
+  position: 'relative',
+});
+
 const Feature = () => {
   return (
     <Container>
@@ -229,6 +248,9 @@ const Feature = () => {
             <Description>
               환경을 위한 실천에 동참하는
               <strong>제로웨이스트/비건 매장을 소개해드릴게요.</strong>
+              <LinkGroup>
+                <LinkItem><ButtonGreen href="/">매장목록 보러가기</ButtonGreen></LinkItem>
+              </LinkGroup>
             </Description>
           </Contents>
           <MockupImagesStore>
