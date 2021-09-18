@@ -203,15 +203,19 @@ const ButtonNext = styled.button({
 });
 
 const OrganizationInfo = styled.div({
-  margin: `0 ${Em(5)}`,
+  margin: Em(5),
+  boxShadow: `0 ${Em(4)} ${Em(4)} rgba(0, 0, 0, .25)`,
+  borderRadius: Em(20),
   [mq.minTablet]: {
-    margin: `0 ${Em(10)}`,
+    margin: Em(10),
   },
 });
 
 const OrganizationImage = styled.div({
   position: 'relative',
   paddingTop: '63.0952381%',
+  borderRadius: `${Em(20)} ${Em(20)} 0 0`,
+  overflow: 'hidden',
   height: 0,
 });
 
@@ -232,9 +236,10 @@ const OrganizationName = styled.strong({
   backgroundColor: '#e5e5e5',
   fontSize: Rem(16),
   fontWeight: fontWeights.Regular,
+  borderRadius: `0 0 ${Em(16.2)} ${Em(16.2)}`,
   [mq.minXsmall]: {
     fontSize: Rem(20),
-  }
+  },
 });
 
 function PreviousArrow(props) {

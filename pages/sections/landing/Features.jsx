@@ -304,15 +304,19 @@ const ButtonNext = styled.button({
 });
 
 const ActionInfo = styled.div({
-  margin: `0 ${Em(5)}`,
+  margin: Em(5),
+  boxShadow: `0 ${Em(4)} ${Em(4)} rgba(0, 0, 0, .25)`,
+  borderRadius: Em(20),
   [mq.minTablet]: {
-    margin: `0 ${Em(10)}`,
+    margin: Em(10),
   },
 });
 
 const ActionImageModule = styled.div({
   position: 'relative',
   paddingTop: '89.6%',
+  borderRadius: `${Em(20)} ${Em(20)} 0 0`,
+  overflow: 'hidden',
   height: 0,
 });
 
@@ -327,6 +331,7 @@ const ActionImage = styled.img({
 
 const ActionFigure = styled.div({
   padding: `${Em(10)} ${Em(16)}`,
+  borderRadius: `0 0 ${Em(16.2)} ${Em(16.2)}`,
   backgroundColor: '#ffffff',
   [mq.minXsmall]: {
     padding: `${Em(14)} ${Em(20)}`,

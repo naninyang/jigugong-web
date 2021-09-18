@@ -155,6 +155,8 @@ const ProductInfo = styled.div({
 const ProductImage = styled.div({
   position: 'relative',
   paddingTop: '89.6%',
+  borderRadius: Em(5),
+  overflow: 'hidden',
   height: 0,
 });
 
