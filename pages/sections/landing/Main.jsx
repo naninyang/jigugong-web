@@ -120,9 +120,11 @@ const StoreList = styled.ul(({ active }) => ({
   backgroundColor: '#FFFFFF',
   position: 'absolute',
   borderRadius: `${Em(7)}`,
-  top: `${Rem(44)}`,
+  top: Em(20),
   left: 0,
+  paddingTop: Em(20),
   [mq.minXsmall]: {
+    top: Em(30),
     right: 0,
   },
 }));
@@ -144,13 +146,18 @@ const StoreItem = styled.li({
 
 const Button = styled.button({
   display: 'inline-flex',
-  backgroundColor: '#0EAA55',
+  position: 'relative',
+  zIndex: 9,
   padding: `${Em(10)} ${Em(22)}`,
   border: 0,
   borderRadius: `${Em(15)}`,
+  backgroundColor: '#0EAA55',
   fontWeight: fontWeights.SemiBold,
-  fontSize: `${Rem(20)}`,
+  fontSize: `${Rem(16)}`,
   color: '#FFFFFF',
+  [mq.minXsmall]: {
+    fontSize: `${Rem(20)}`,
+  },
 });
 
 const MockupImageModule = styled.div({

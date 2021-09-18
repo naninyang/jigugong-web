@@ -239,16 +239,13 @@ const SliderControl = styled.div({
     padding: `0 ${Em(28)}`,
   },
   [mq.minSmall]: {
-    padding: `0 ${Em(70)}`,
+    padding: `0 ${Em(60)}`,
     maxWidth: Rem(1188),
   },
 });
 
 const StyledSlider = styled(Slider)({
   width: '100%',
-  '& .slick-slide div': {
-    outline: 'none',
-  },
   '& .slick-dots': {
     display: 'none!important',
   },
@@ -265,7 +262,7 @@ const ButtonPrevious = styled.button({
     width: Rem(40),
   },
   [mq.minSmall]: {
-    left: `-${Rem(70)}`,
+    left: `-${Rem(60)}`,
     width: Rem(70),
     backgroundSize: `${Rem(18)} ${Rem(33)}`,
   },
@@ -291,7 +288,7 @@ const ButtonNext = styled.button({
     width: Rem(40),
   },
   [mq.minSmall]: {
-    right: `-${Rem(70)}`,
+    right: `-${Rem(60)}`,
     width: Rem(70),
     backgroundSize: `${Rem(18)} ${Rem(33)}`,
   },
@@ -329,9 +326,11 @@ const ActionImage = styled.img({
 });
 
 const ActionFigure = styled.div({
-  padding: `${Em(14)} ${Em(20)}`,
-  height: Rem(201),
+  padding: `${Em(10)} ${Em(16)}`,
   backgroundColor: '#ffffff',
+  [mq.minXsmall]: {
+    padding: `${Em(14)} ${Em(20)}`,
+  },
 });
 
 const ItemCategory = styled.div({
@@ -343,9 +342,12 @@ const ItemCategory = styled.div({
 const ItemSummary = styled.strong({
   display: 'block',
   margin: `${Em(8)} 0`,
-  fontSize: Rem(24),
+  fontSize: Rem(20),
   fontWeight: fontWeights.SemiBold,
   ...styles.ellipsis,
+  [mq.minXsmall]: {
+    fontSize: Rem(24),
+  },
 });
 
 const ItemUser = styled.div({
@@ -368,22 +370,32 @@ const ItemUserAvartar = styled.img({
 
 const ItemUserName = styled.cite({
   paddingLeft: Em(10),
-  fontSize: Rem(16),
+  fontSize: Rem(14),
   fontWeight: fontWeights.Regular,
   fontStyle: 'normal',
   color: '#5a5a5a',
+  ...styles.ellipsis,
+  [mq.minXsmall]: {
+    fontSize: Rem(16),
+  },
 });
 
 const ItemDescription = styled.div`
-  ${Clamp(2, 38)};
+  ${Clamp(2, 33)};
   margin: ${Em(10)} 0 ${Em(12)};
-  height: ${Rem(38)};
-  font-size: ${Rem(16)};
+  height: ${Rem(33)};
+  font-size: ${Rem(14)};
   font-weight: ${fontWeights.Regular};
+  ${mq.minXsmall} {
+    ${Clamp(2, 38)};
+    height: ${Rem(38)};
+    font-size: ${Rem(16)};
+  };
 `;
 
 const ItemOptions = styled.div({
   display: 'flex',
+  justifyContent: 'space-between',
 });
 
 const ItemOptionLike = styled.span({
@@ -394,50 +406,70 @@ const ItemOptionLike = styled.span({
 const ItemOptionLikeIcon = styled.span({
   display: 'flex',
   alignItems: 'center',
-  width: Rem(24),
-  height: Rem(28),
+  width: Rem(20),
+  height: Rem(23),
+  [mq.minXsmall]: {
+    width: Rem(24),
+    height: Rem(28),
+  },
 });
 
 const ItemOptionLikeIconImage = styled.img({
-  width: Rem(23),
+  width: Rem(19),
+  [mq.minXsmall]: {
+    width: Rem(23),
+  },
 });
 
 const ItemOptionStatus = styled.span({
-  margin: `0 ${Em(7)}`,
-  paddingTop: Em(2),
-  fontSize: Rem(18),
+  padding: `${Em(2)} 0 0 ${Em(5)}`,
+  fontSize: Rem(14),
+  letterSpacing: `-${Rem(.5)}`,
   fontWeight: fontWeights.Regular,
+  [mq.minXsmall]: {
+    fontSize: Rem(18),
+  },
 });
 
-const ItemOptionReply = styled.div({
+const ItemOptionReply = styled.span({
   display: 'flex',
   alignItems: 'center',
-  margin: `0 ${Em(22)} 0 ${Em(20)}`,
 });
 
-const ItemOptionReplyIcon = styled.div({
-  width: Rem(24),
-  height: Rem(28),
-  background: `url(${images.icons.chatbox}) no-repeat 50% 50%/${Rem(24)} ${Rem(24)}`,
+const ItemOptionReplyIcon = styled.span({
+  width: Rem(20),
+  height: Rem(23),
+  background: `url(${images.icons.chatbox}) no-repeat 50% 50%/${Rem(18)} ${Rem(22)}`,
+  [mq.minXsmall]: {
+    width: Rem(24),
+    height: Rem(28),
+    backgroundSize: `${Rem(20)} ${Rem(24)}`,
+  },
 });
 
 const ItemOptionBookmark = styled.span({
   display: 'flex',
+  flexDirection: 'row',
+  justifyContent: 'flex-end',
   alignItems: 'center',
-  '& span': {
-    marginLeft: 0,
+});
+
+const ItemOptionBookmarkIcon = styled.span({
+  display: 'flex',
+  alignItems: 'center',
+  width: Rem(20),
+  height: Rem(23),
+  [mq.minXsmall]: {
+    width: Rem(24),
+    height: Rem(28),
   },
 });
 
-const ItemOptionBookmarkIcon = styled.div({
-  display: 'flex',
-  alignItems: 'center',
-  width: Rem(24),
-  height: Rem(28),
-});
-
 const ItemOptionBookmarkIconImage = styled.img({
-  width: Rem(20),
+  width: Rem(16),
+  [mq.minXsmall]: {
+    width: Rem(20),
+  }
 });
 
 function PreviousArrow(props) {
@@ -469,19 +501,11 @@ const Feature = () => {
     nextArrow: <NextArrow label={'다음으로 이동'} />,
     responsive: [
       {
-        breakpoint: 769,
-        settings: {
-          dots: true,
-          slidesToShow: 3,
-          slidesToScroll: 1,
-        },
-      },
-      {
-        breakpoint: 481,
+        breakpoint: 1025,
         settings: {
           dots: true,
           slidesToShow: 2,
-          slidesToScroll: 2,
+          slidesToScroll: 1,
         },
       },
     ],

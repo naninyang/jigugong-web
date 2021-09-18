@@ -135,7 +135,7 @@ const SliderControl = styled.div({
     padding: `0 ${Em(28)}`,
   },
   [mq.minSmall]: {
-    padding: `0 ${Em(70)}`,
+    padding: `0 ${Em(60)}`,
     maxWidth: Rem(1188),
   },
 });
@@ -161,7 +161,7 @@ const ButtonPrevious = styled.button({
     width: Rem(40),
   },
   [mq.minSmall]: {
-    left: `-${Rem(70)}`,
+    left: `-${Rem(60)}`,
     width: Rem(70),
     backgroundSize: `${Rem(18)} ${Rem(33)}`,
   },
@@ -187,7 +187,7 @@ const ButtonNext = styled.button({
     width: Rem(40),
   },
   [mq.minSmall]: {
-    right: `-${Rem(70)}`,
+    right: `-${Rem(60)}`,
     width: Rem(70),
     backgroundSize: `${Rem(18)} ${Rem(33)}`,
   },
@@ -230,8 +230,11 @@ const OrganizationName = styled.strong({
   padding: `0 ${Em(23)}`,
   height: Rem(43),
   backgroundColor: '#e5e5e5',
-  fontSize: Rem(20),
+  fontSize: Rem(16),
   fontWeight: fontWeights.Regular,
+  [mq.minXsmall]: {
+    fontSize: Rem(20),
+  }
 });
 
 function PreviousArrow(props) {

@@ -22,7 +22,10 @@ const PrimaryHeading = styled.div({
   },
   '& h4': {
     fontWeight: fontWeights.Medium,
-    fontSize: Rem(28),
+    fontSize: Rem(20),
+    [mq.minXsmall]: {
+      fontSize: Rem(28),
+    },
   },
 });
 

@@ -78,7 +78,7 @@ const SliderControl = styled.div({
     padding: `0 ${Em(28)}`,
   },
   [mq.minSmall]: {
-    padding: `0 ${Em(70)}`,
+    padding: `0 ${Em(60)}`,
     maxWidth: Rem(1188),
   },
 });
@@ -104,7 +104,7 @@ const ButtonPrevious = styled.button({
     width: Rem(40),
   },
   [mq.minSmall]: {
-    left: `-${Rem(70)}`,
+    left: `-${Rem(60)}`,
     width: Rem(70),
     backgroundSize: `${Rem(18)} ${Rem(33)}`,
   },
@@ -130,7 +130,7 @@ const ButtonNext = styled.button({
     width: Rem(40),
   },
   [mq.minSmall]: {
-    right: `-${Rem(70)}`,
+    right: `-${Rem(60)}`,
     width: Rem(70),
     backgroundSize: `${Rem(18)} ${Rem(33)}`,
   },
@@ -168,21 +168,30 @@ const ProductThumbnail = styled.img({
 });
 
 const ProductFigure = styled.div({
-  padding: `${Em(14)} ${Em(20)}`,
+  padding: `${Em(10)} 0 ${Em(10)} ${Em(16)}`,
+  [mq.minSmall]: {
+    padding: `${Em(14)} ${Em(20)}`,
+  },
 });
 
 const ItemBrand = styled.div({
-  fontSize: Rem(16),
+  fontSize: Rem(14),
   fontWeight: fontWeights.Regular,
   color: '#5a5a5a',
+  [mq.minXsmall]: {
+    fontSize: Rem(16),
+  },
 });
 
 const ItemProduct = styled.strong({
   display: 'block',
   margin: `${Em(1.5)} 0`,
-  fontSize: Rem(22),
+  fontSize: Rem(18),
   fontWeight: fontWeights.SemiBold,
   ...styles.ellipsis,
+  [mq.minXsmall]: {
+    fontSize: Rem(22),
+  },
 });
 
 const ItemPrice = styled.div();
@@ -195,21 +204,30 @@ const PriceReduced = styled.div({
 
 const PricePercentage = styled.div({
   paddingRight: Em(7),
-  fontSize: Rem(17),
+  fontSize: Rem(12),
   fontWeight: fontWeights.Medium,
   color: '#f13434',
+  [mq.minXsmall]: {
+    fontSize: Rem(17),
+  },
 });
 
 const PriceResult = styled.strong({
-  fontSize: Rem(17),
+  fontSize: Rem(12),
   fontWeight: fontWeights.Medium,
+  [mq.minXsmall]: {
+    fontSize: Rem(17),
+  },
 });
 
 const PriceDiscount = styled.del({
   paddingLeft: Em(7),
-  fontSize: Rem(17),
+  fontSize: Rem(12),
   fontWeights: fontWeights.Regular,
   color: '#5a5a5a',
+  [mq.minXsmall]: {
+    fontSize: Rem(17),
+  },
 });
 
 const PriceEarthy = styled.div({
@@ -218,16 +236,23 @@ const PriceEarthy = styled.div({
 });
 
 const EarthyDiscount = styled.strong({
-  fontSize: Rem(17),
+  fontSize: Rem(12),
   fontWeight: fontWeights.Regular,
   color: '#0EAA55',
+  [mq.minXsmall]: {
+    fontSize: Rem(17),
+  },
 });
 
 const EarthyDescription = styled.span({
   marginLeft: Em(9),
-  fontSize: Rem(13),
+  fontSize: Rem(10),
   fontWeight: fontWeights.Regular,
+  letterSpacing: `-${Rem(.5)}`,
   color: '#0EAA55',
+  [mq.minXsmall]: {
+    fontSize: Rem(13),
+  },
 });
 
 function PreviousArrow(props) {
@@ -259,7 +284,7 @@ const Commerce = () => {
     nextArrow: <NextArrow label={'다음으로 이동'} />,
     responsive: [
       {
-        breakpoint: 769,
+        breakpoint: 1025,
         settings: {
           dots: true,
           slidesToShow: 3,
@@ -267,11 +292,11 @@ const Commerce = () => {
         },
       },
       {
-        breakpoint: 481,
+        breakpoint: 769,
         settings: {
           dots: true,
           slidesToShow: 2,
-          slidesToScroll: 2,
+          slidesToScroll: 1,
         },
       },
     ],
