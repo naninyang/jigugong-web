@@ -32,8 +32,11 @@ const Contents = styled.div({
   position: 'relative',
   display: 'flex',
   flexDirection: 'column',
-  padding: `${Em(100)} ${Em(25)}`,
+  padding: `${Em(40)} ${Em(25)}`,
   [mq.minTablet]: {
+    padding: `${Em(40)} ${Em(40)} 0`,
+  },
+  [mq.minXsmall]: {
     padding: `${Em(100)} ${Em(40)} 0`,
   },
   [mq.minSmall]: {
@@ -152,26 +155,30 @@ const Button = styled.button({
 
 const MockupImageModule = styled.div({
   overflow: 'hidden',
-  margin: `0 -${Em(25)}`,
+  margin: `-${Em(75)} -${Em(25)} 0`,
+  padding: `0 ${Em(27)}`,
   [mq.minTablet]: {
-    paddingBottom: Em(60),
+    margin: `-${Em(40)} -${Em(40)} -${Em(100)}`,
+    padding: 0,
   },
   [mq.minXsmall]: {
-    paddingBottom: Em(100),
+    margin: `-${Em(67)} -${Em(40)} -${Em(100)}`,
   },
   [mq.minSmall]: {
     overflow: 'visible',
     margin: 0,
+    paddingBottom: Em(100),
   },
 });
 
 const MockupImages = styled.div({
   paddingBottom: Em(40),
   [mq.minTablet]: {
-    margin: `-${Em(60)} -${Em(67)} -${Em(60)}`,
+    paddingBottom: 0,
+    margin: `0 0 0 -${Em(33)}`,
   },
   [mq.minXsmall]: {
-    margin: `-${Em(60)} -${Em(125)} -${Em(100)}`,
+    margin: `0 0 0 -${Em(90)}`,
   },
   [mq.minSmall]: {
     margin: 0,
@@ -180,7 +187,7 @@ const MockupImages = styled.div({
 
 const MockupImage1 = styled.div({
   position: 'relative',
-  margin: `-${Em(40)} -${Em(25)} -${Em(80)}`,
+  margin: `0 -${Em(25)} -${Em(80)}`,
   paddingTop: '258.114345%',
   height: 0,
   background: `url(${images.mockup.main00}) no-repeat 50% 50%/cover`,
@@ -200,12 +207,15 @@ const MockupImage = styled.div({
   height: 0,
   backgroundPosition: '0 0',
   backgroundSize: 'contain',
+  [mq.minTablet]: {
+    paddingTop: '109.114345%',
+  },
   [mq.minSmall]: {
     position: 'absolute',
     top: '50%',
     left: '50%',
     transform: 'translate(-50%, -50%)',
-    margin: `-${Em(20)} 0 0 ${Em(280)}`,
+    margin: `-${Em(70)} 0 0 ${Em(280)}`,
     paddingTop: '74.114345%',
     width: Rem(807),
   },

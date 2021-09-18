@@ -48,8 +48,8 @@ const LinkGroup = styled.div({
   position: 'relative',
   zIndex: 999999,
   display: 'flex',
-  margin: `${Em(50)} 0`,
   flexDirection: 'column',
+  margin: `${Em(25)} 0`,
   [mq.minXsmall]: {
     flexDirection: 'row',
   },
@@ -66,11 +66,11 @@ const LinkItem = styled.div({
 const MockupImages = styled.div({
   paddingBottom: Em(40),
   [mq.minTablet]: {
-    margin: `-${Em(60)} -${Em(92)} 0`,
+    margin: `-${Em(60)} -${Em(40)} ${Em(40)}`,
     paddingBottom: 0,
   },
   [mq.minXsmall]: {
-    margin: `-${Em(60)} -${Em(150)} 0`,
+    margin: `-${Em(80)} -${Em(40)} ${Em(40)}`,
   },
   [mq.minSmall]: {
     margin: 0,
@@ -108,12 +108,20 @@ const MockupImage = styled.div({
   height: 0,
   backgroundPosition: '0 0',
   backgroundSize: 'contain',
+  [mq.minTablet]: {
+    marginLeft: `-${Em(25)}`,
+    paddingTop: '78.114345%',
+  },
+  [mq.minXsmall]: {
+    marginLeft: `-${Em(70)}`,
+    paddingTop: '84.114345%',
+  },
   [mq.minSmall]: {
     position: 'absolute',
     top: '50%',
     left: '50%',
     transform: 'translate(-50%, -50%)',
-    margin: `-${Em(20)} 0 0 ${Em(440)}`,
+    margin: `-${Em(35)} 0 0 ${Em(440)}`,
     paddingTop: '61.114345%',
     width: Rem(923),
   },

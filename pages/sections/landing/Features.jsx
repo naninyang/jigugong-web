@@ -31,6 +31,9 @@ const Action = styled.div({
   flexDirection: 'column',
   paddingTop: Em(40),
   [mq.minTablet]: {
+    padding: `${Em(40)} ${Em(40)} 0`,
+  },
+  [mq.minXsmall]: {
     padding: `${Em(100)} ${Em(40)} 0`,
   },
   [mq.minSmall]: {
@@ -168,10 +171,13 @@ const Store = styled.div({
 
 const MockupImagesStore = styled.div({
   overflow: 'hidden',
-  paddingTop: Em(40),
+  [mq.minTablet]: {
+    margin: `-${Em(30)} -${Em(25)} -${Em(50)}`,
+  },
   [mq.minXsmall]: {
     display: 'flex',
     alignItems: 'center',
+    margin: `-${Em(48)} -${Em(25)}`,
     paddingTop: 0,
   },
   [mq.minSmall]: {
@@ -184,6 +190,10 @@ const MockupImageStore = styled.div({
   margin: `-${Em(37)} 0 -${Em(37)} -${Em(70)}`,
   paddingTop: '94.114345%',
   height: 0,
+  [mq.minTablet]: {
+    marginLeft: `-${Em(75)}`,
+    paddingTop: '89.114345%',
+  },
   [mq.minXsmall]: {
     paddingTop: '77.114345%',
     width: `calc(100vh - ${Rem(600)})`,
@@ -198,6 +208,7 @@ const LinkGroup = styled.div({
   zIndex: 999999,
   display: 'flex',
   flexDirection: 'column',
+  margin: `${Em(25)} 0`,
   [mq.minXsmall]: {
     flexDirection: 'row',
   },
