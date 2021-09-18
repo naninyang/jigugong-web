@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { useMediaQuery } from 'react-responsive';
+import { isIOS, isAndroid } from 'react-device-detect';
 import styled from '@emotion/styled';
 import { mq, fontWeights, Rem, Em, styles } from '../../utils/designSystem';
 import LinkButton from '../../utils/LinkButton';
@@ -231,10 +232,7 @@ const MockupImage = styled.div({
 const Main = () => {
   const [active, setActive] = useState(false);
 
-  const isIos = typeof window !== 'undefined' ? navigator.platform.toLowerCase().indexOf('iphone') >= 0 : false;
-  const isIpados = typeof window !== 'undefined' ? navigator.platform.toLowerCase().indexOf('ipad') >= 0 : false;
-  const isAndroid = typeof window !== 'undefined' ? navigator.platform.toLowerCase().indexOf('android') >= 0 : false;
-  const notMobile = !isIos && !isIpados && !isAndroid ? true : false;
+  const isDesktop = !isIOS && !isAndroid ? true : false;
 
   const handleClick = () => {
     setActive(!active);
@@ -254,9 +252,10 @@ const Main = () => {
         </Description>
         <LinkGroup>
           <LinkItem>
-            {!notMobile && <ButtonGreen href='https://earthyguna.com/v1/deeplink/'>앱 다운로드</ButtonGreen>}
+            {isIOS && <ButtonGreen href='itms-apps://itunes.apple.com/kr/app/id1550230253'>앱 다운로드</ButtonGreen>}
+            {isAndroid && <ButtonGreen href='market://details?id=com.jigugong.app'>앱 다운로드</ButtonGreen>}
             {
-              notMobile &&
+              isDesktop &&
               (
                 <NotMobile>
                   <Button
@@ -266,7 +265,7 @@ const Main = () => {
                     앱 다운로드
                   </Button>
                   <StoreList active={active}>
-                    <StoreItem><LinkButton href='https://apps.apple.com/kr/app/%EC%A7%80%EA%B5%AC%EA%B3%B5/id1550230253'>애플 앱스토어</LinkButton></StoreItem>
+                    <StoreItem><LinkButton href='https://apps.apple.com/kr/app/id1550230253'>애플 앱스토어</LinkButton></StoreItem>
                     <StoreItem><LinkButton href='https://play.google.com/store/apps/details?id=com.jigugong.app'>구글 플레이스토어</LinkButton></StoreItem>
                   </StoreList>
                 </NotMobile>
