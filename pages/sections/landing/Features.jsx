@@ -98,19 +98,25 @@ const Activity = styled.div({
 const Contents = styled.div({
   display: 'flex',
   flexDirection: 'column',
-  [mq.minSmall]: {
-    width: Rem(582),
-  },
   [mq.minXsmall]: {
     '&[data-activity=conversation]': {
-      paddingRight: Em(100),
+      paddingRight: Em(40),
       alignItems: 'flex-end',
       textAlign: 'right',
     },
     '&[data-activity=store]': {
-      paddingLeft: Em(100),
+      paddingLeft: Em(40),
       alignItems: 'flex-start',
       textAlign: 'left',
+    },
+  },
+  [mq.minSmall]: {
+    width: Rem(582),
+    '&[data-activity=conversation]': {
+      paddingRight: Em(100),
+    },
+    '&[data-activity=store]': {
+      paddingLeft: Em(100),
     },
   },
 });
@@ -144,9 +150,12 @@ const MockupImageConversation = styled.div({
   background: `url(${images.mockup.featuresConversation}) no-repeat 50% 50% /contain`,
   paddingTop: '78.114345%',
   height: 0,
+  [mq.minTablet]: {
+    paddingTop: '89.114345%',
+  },
   [mq.minXsmall]: {
     paddingTop: '77.114345%',
-    width: `calc(100vh - ${Rem(600)})`,
+    width: `calc(100vh - ${Rem(460)})`,
   },
   [mq.minSmall]: {
     width: Rem(582),
@@ -195,8 +204,8 @@ const MockupImageStore = styled.div({
     paddingTop: '89.114345%',
   },
   [mq.minXsmall]: {
-    paddingTop: '77.114345%',
-    width: `calc(100vh - ${Rem(600)})`,
+    paddingTop: '96.114345%',
+    width: `calc(100vh - ${Rem(430)})`,
   },
   [mq.minSmall]: {
     width: Rem(582),
@@ -344,14 +353,14 @@ const ItemUser = styled.div({
   alignItems: 'center',
 });
 
-const ItemUserThumbnail = styled.div({
+const ItemUserImage = styled.div({
   borderRadius: '100%',
   overflow: 'hidden',
   width: Rem(24),
   height: Rem(24),
 });
 
-const ItemUserThumbnailImage = styled.img({
+const ItemUserAvartar = styled.img({
   width: '100%',
   height: '100%',
   objectFit: 'cover',
@@ -507,7 +516,7 @@ const Feature = () => {
                     <ItemCategory>{item.category}</ItemCategory>
                     <ItemSummary>{item.summary}</ItemSummary>
                     <ItemUser>
-                      <ItemUserThumbnail><ItemUserThumbnailImage src={item.user.avatar} alt={''} /></ItemUserThumbnail>
+                      <ItemUserImage><ItemUserAvartar src={item.user.avatar} alt={''} /></ItemUserImage>
                       <ItemUserName>{item.user.name}</ItemUserName>
                     </ItemUser>
                     <ItemDescription>{item.description}</ItemDescription>

@@ -209,13 +209,13 @@ const OrganizationInfo = styled.div({
   },
 });
 
-const OrganizationImageModule = styled.div({
+const OrganizationImage = styled.div({
   position: 'relative',
   paddingTop: '63.0952381%',
   height: 0,
 });
 
-const OrganizationImage = styled.img({
+const OrganizationBanner = styled.img({
   position: 'absolute',
   top: 0,
   left: 0,
@@ -313,7 +313,7 @@ const Mission = () => {
             {organization && organization.map(item => (
               <div key={item._id}>
                 <OrganizationInfo>
-                  <OrganizationImageModule><OrganizationImage src={item.picture} alt={''} /></OrganizationImageModule>
+                  <OrganizationImage><OrganizationBanner src={item.picture} alt={''} /></OrganizationImage>
                   <OrganizationName>{item.organization}</OrganizationName>
                 </OrganizationInfo>
               </div>
