@@ -9,15 +9,15 @@ import Proposal from './sections/landing/Proposal';
 const Container = styled.div();
 
 const scrollVerticalTrue = `
-    body {
-        background-color: #F6F6F6;
-    }
+  body {
+    background-color: #F6F6F6;
+  }
 `;
 
 const scrollVerticalFalse = `
-    body {
-        background-color: #DCF5E8;
-    }
+  body {
+    background-color: #DCF5E8;
+  }
 `;
 
 function index() {

@@ -172,7 +172,7 @@ const ProductThumbnail = styled.img({
 const ProductFigure = styled.div({
   padding: `${Em(10)} 0 ${Em(10)} ${Em(16)}`,
   [mq.minSmall]: {
-    padding: `${Em(14)} ${Em(20)}`,
+    padding: `${Em(14)} 0 ${Em(14)} ${Em(20)}`,
   },
 });
 
@@ -240,6 +240,7 @@ const PriceEarthy = styled.div({
 const EarthyDiscount = styled.strong({
   fontSize: Rem(12),
   fontWeight: fontWeights.Regular,
+  letterSpacing: `-${Rem(.5)}`,
   color: '#0EAA55',
   [mq.minXsmall]: {
     fontSize: Rem(17),

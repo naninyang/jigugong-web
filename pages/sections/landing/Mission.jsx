@@ -267,10 +267,11 @@ const OrganizationName = styled.strong({
   alignItems: 'center',
   padding: `0 ${Em(23)}`,
   height: Rem(43),
+  borderRadius: `0 0 ${Em(16.2)} ${Em(16.2)}`,
   backgroundColor: '#e5e5e5',
   fontSize: Rem(16),
   fontWeight: fontWeights.Regular,
-  borderRadius: `0 0 ${Em(16.2)} ${Em(16.2)}`,
+  ...styles.ellipsis,
   [mq.minXsmall]: {
     fontSize: Rem(20),
   },
