@@ -256,7 +256,7 @@ const ButtonPrevious = styled.button({
   zIndex: 9,
   width: Rem(25),
   height: '100%',
-  background: `#f6f6f6 url(${images.icons.sliderPrevious}) no-repeat 50% 50%/${Rem(13)} ${Rem(23)}`,
+  background: 'none',
   [mq.minTablet]: {
     left: `-${Rem(28)}`,
     width: Rem(40),
@@ -264,16 +264,33 @@ const ButtonPrevious = styled.button({
   [mq.minSmall]: {
     left: `-${Rem(60)}`,
     width: Rem(70),
-    backgroundSize: `${Rem(18)} ${Rem(33)}`,
   },
-  '&:hover, &:focus': {
+  '&::before, &::after': {
+    content: '""',
+    position: 'absolute',
+    top: 0,
+    left: 0,
+    height: '100%',
+  },
+  '&::before': {
+    zIndex: 1,
+    width: `calc(100% - ${Rem(4)})`,
+    opacity: 1,
+    backgroundColor: '#f6f6f6',
+  },
+  '&::after': {
+    width: '100%',
+    zIndex: 2,
     background: `url(${images.icons.sliderPrevious}) no-repeat 50% 50%/${Rem(13)} ${Rem(23)}`,
     [mq.minSmall]: {
       backgroundSize: `${Rem(18)} ${Rem(33)}`,
     },
-  },
-  '&::before': {
-    display: 'none',
+    '&:hover, &:focus': {
+      background: `url(${images.icons.sliderPrevious}) no-repeat 50% 50%/${Rem(13)} ${Rem(23)}`,
+      [mq.minSmall]: {
+        backgroundSize: `${Rem(18)} ${Rem(33)}`,
+      },
+    },
   },
 });
 
@@ -282,7 +299,7 @@ const ButtonNext = styled.button({
   zIndex: 9,
   width: Rem(25),
   height: '100%',
-  background: `url(${images.icons.sliderNext}) no-repeat 50% 50%/${Rem(13)} ${Rem(23)}`,
+  background: 'none',
   [mq.minTablet]: {
     right: `-${Rem(28)}`,
     width: Rem(40),
@@ -290,16 +307,33 @@ const ButtonNext = styled.button({
   [mq.minSmall]: {
     right: `-${Rem(60)}`,
     width: Rem(70),
-    backgroundSize: `${Rem(18)} ${Rem(33)}`,
   },
-  '&:hover, &:focus': {
+  '&::before, &::after': {
+    content: '""',
+    position: 'absolute',
+    top: 0,
+    right: 0,
+    height: '100%',
+  },
+  '&::before': {
+    zIndex: 1,
+    width: `calc(100% - ${Rem(4)})`,
+    opacity: 1,
+    backgroundColor: '#f6f6f6',
+  },
+  '&::after': {
+    width: '100%',
+    zIndex: 2,
     background: `url(${images.icons.sliderNext}) no-repeat 50% 50%/${Rem(13)} ${Rem(23)}`,
     [mq.minSmall]: {
       backgroundSize: `${Rem(18)} ${Rem(33)}`,
     },
-  },
-  '&::before': {
-    display: 'none',
+    '&:hover, &:focus': {
+      background: `url(${images.icons.sliderNext}) no-repeat 50% 50%/${Rem(13)} ${Rem(23)}`,
+      [mq.minSmall]: {
+        backgroundSize: `${Rem(18)} ${Rem(33)}`,
+      },
+    },
   },
 });
 

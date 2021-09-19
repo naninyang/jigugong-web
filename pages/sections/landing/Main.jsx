@@ -272,7 +272,7 @@ const Main = () => {
               )
             }
           </LinkItem>
-          <LinkItem><ButtonGreen href="https://naver.com/">회사소개서 다운로드</ButtonGreen></LinkItem>
+          <LinkItem><ButtonGreen href="/">회사소개서 다운로드</ButtonGreen></LinkItem>
         </LinkGroup>
         <MockupImageModule>
           <MockupImages>

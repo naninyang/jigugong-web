@@ -10,8 +10,8 @@ const Container = styled.footer({
 const Wrapper = styled.div({
   ...styles.widthSettings,
   margin: '0 auto',
-  paddingTop: '41px',
-  paddingBottom: '41px',
+  paddingTop: Em(45),
+  paddingBottom: Em(45),
   display: 'flex',
   alignItems: 'flex-start',
   [mq.maxXsmall]: {
@@ -25,8 +25,8 @@ const FooterHeading = styled.h1({
 });
 
 const LawInfo = styled.div({
-  flex: 1,
-  [mq.minXsmall]: {
+  width: '100%',
+  [mq.minSmall]: {
     flex: 2,
   },
 });
@@ -40,33 +40,46 @@ const LawInfoList = styled.dl({
 });
 
 const LawInfoTerm = styled.dt({
-  padding: `${Em(9)} ${Em(32)} ${Em(9)} 0`,
+  padding: `${Em(7)} ${Em(28)} ${Em(7)} 0`,
   float: 'left',
   fontWeight: fontWeights.Medium,
-  fontSize: `${Rem(22)}`,
+  fontSize: Rem(18),
+  [mq.minXsmall]: {
+    padding: `${Em(7)} ${Em(32)} ${Em(7)} 0`,
+    fontSize: Rem(22),
+  },
 });
 
 const LawInfoDescription = styled.dd({
-  padding: `${Em(9)} 0`,
+  padding: `${Em(7)} 0`,
   fontWeight: fontWeights.Regular,
-  fontSize: `${Rem(22)}`,
+  fontSize: Rem(18),
   color: '#5a5a5a',
+  [mq.minXsmall]: {
+    padding: `${Em(7)} 0`,
+    fontSize: Rem(22),
+  },
   '& address': {
     fontStyle: 'normal',
   },
 });
 
 const ContactInfo = styled.div({
-  flex: 1,
+  width: '100%',
   [mq.minXsmall]: {
     flex: 2,
   },
 });
 
 const ContactInfoHeading = styled.h2({
+  margin: `${Em(30)} 0 ${Em(10)}`,
   fontWeight: fontWeights.SemiBold,
-  fontSize: `${Rem(22)}`,
+  fontSize: Rem(18),
   textTransform: 'uppercase',
+  [mq.minXsmall]: {
+    margin: `${Em(7)} 0 ${Em(10)}`,
+    fontSize: Rem(22),
+  },
 });
 
 const ContactInfoList = styled.dl({
@@ -76,8 +89,11 @@ const ContactInfoList = styled.dl({
 
 const ContactInfoTerm = styled.dt({
   margin: `${Rem(9)} 0`,
-  height: `${Rem(27)}`,
-  flexBasis: `${Rem(33)}`,
+  height: Rem(23),
+  flexBasis: Rem(33),
+  [mq.minXsmall]: {
+    height: Rem(27),
+  },
   '& span': {
     ...styles.screenReaderOnly,
   },
@@ -90,22 +106,33 @@ const ContactInfoTerm = styled.dt({
 });
 
 const ContactInfoDescription = styled.dd({
+  display: 'flex',
+  alignItems: 'center',
   margin: `${Rem(9)} 0`,
-  paddingLeft: `${Em(33)}`,
+  paddingLeft: Em(25),
   width: `calc(100% - ${Rem(49)})`,
+  [mq.minXsmall]: {
+    paddingLeft: Em(33),
+  },
   '& a': {
     fontWeight: fontWeights.Regular,
-    fontSize: `${Rem(22)}`,
+    fontSize: Rem(18),
     color: '#000000',
+    [mq.minXsmall]: {
+      fontSize: Rem(22),
+    },
   },
 });
 
 const Notice = styled.div({
-  marginTop: `${Em(30)}`,
-  lineHeight: `${Em(30)}`,
-  fontSize: `${Rem(22)}`,
+  marginTop: Em(15),
+  lineHeight: 1.36,
+  fontSize: Rem(18),
   fontWeight: fontWeights.Regular,
   color: '#5A5A5A',
+  [mq.minXsmall]: {
+    fontSize: Rem(22),
+  },
 });
 
 function Footer() {

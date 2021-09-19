@@ -50,6 +50,7 @@ const InputControl = styled.input({
   height: Rem(50),
   padding: `${Em(1)} ${Em(12)}`,
   border: 0,
+  borderRadius: Em(5),
   backgroundColor: '#f6f6f6',
   appearance: 'none',
   fontSize: Rem(14),
