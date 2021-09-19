@@ -11,10 +11,13 @@ const Container = styled.div({
 const Contents = styled.div({
   overflowY: 'scroll',
   height: Rem(166),
-  fontSize: Rem(18),
+  fontSize: Rem(14),
   fontWeight: fontWeights.Regular,
   lineHeight: 1.5,
   color: ' #212529',
+  [mq.minTablet]: {
+    fontSize: Rem(18),
+  },
 });
 
 const DOCUMENT = `내용

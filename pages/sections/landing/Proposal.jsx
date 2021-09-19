@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { useForm } from "react-hook-form";
 import { images } from '../../assets';
 import styled from '@emotion/styled';
-import { fontWeights, styles, Rem, Em } from '../../utils/designSystem';
+import { mq, fontWeights, Rem, Em } from '../../utils/designSystem';
 import AgreementDocument from '../../components/AgreementDocument';
 
 const Container = styled.div({
@@ -11,19 +11,24 @@ const Container = styled.div({
 
 const Contents = styled.div({
   margin: '0 auto',
-  padding: `${Em(80)} ${Em(25)} ${Em(100)}`,
+  padding: `${Em(40)} ${Em(25)} ${Em(50)}`,
   maxWidth: Rem(516),
   width: '100%',
+  [mq.minTablet]: {
+    padding: `${Em(80)} ${Em(25)} ${Em(100)}`,
+  },
 });
 
 const Heading = styled.h2({
   marginBottom: Em(44),
-  fontSize: Rem(24),
+  fontSize: Rem(20),
   fontWeight: fontWeights.SemiBold,
+  [mq.minTablet]: {
+    fontSize: Rem(24),
+  },
 });
 
-const FormGroup = styled.form({
-});
+const FormGroup = styled.form();
 
 const FormFieldset = styled.fieldset({
   display: 'flex',
@@ -40,8 +45,11 @@ const FieldGroup = styled.div({
 const FormLabel = styled.label({
   display: 'inline-block',
   marginBottom: Em(16),
-  fontSize: Rem(20),
+  fontSize: Rem(16),
   fontWeight: fontWeights.Regular,
+  [mq.minTablet]: {
+    fontSize: Rem(20),
+  },
 });
 
 const InputControl = styled.input({
@@ -53,10 +61,13 @@ const InputControl = styled.input({
   borderRadius: Em(5),
   backgroundColor: '#f6f6f6',
   appearance: 'none',
-  fontSize: Rem(14),
+  fontSize: Rem(12),
   fontWeight: fontWeights.Regular,
   lineHeight: 1.5,
   color: ' #212529',
+  [mq.minTablet]: {
+    fontSize: Rem(14),
+  },
 });
 
 const TextAreaControl = styled.textarea({
@@ -69,17 +80,23 @@ const TextAreaControl = styled.textarea({
   backgroundColor: '#f6f6f6',
   resize: 'none',
   appearance: 'none',
-  fontSize: Rem(18),
+  fontSize: Rem(14),
   fontWeight: fontWeights.Regular,
   lineHeight: 1.5,
   color: ' #212529',
+  [mq.minTablet]: {
+    fontSize: Rem(18),
+  },
 });
 
 const AgreementLabel = styled.div({
   display: 'inline-block',
   marginBottom: Em(16),
-  fontSize: Rem(20),
+  fontSize: Rem(16),
   fontWeight: fontWeights.Regular,
+  [mq.minTablet]: {
+    fontSize: Rem(20),
+  },
 });
 
 const CheckBoxGroup = styled.div({
@@ -112,36 +129,48 @@ const CheckBoxLabel = styled.label({
   paddingLeft: Em(12),
   lineHeight: Rem(30),
   verticalAlign: 'super',
-  fontSize: Rem(20),
+  fontSize: Rem(16),
   fontWeight: fontWeights.Light,
+  [mq.minTablet]: {
+    fontSize: Rem(20),
+  },
 });
 
 const ButtonGroup = styled.div({
   marginTop: Em(30),
   width: '100%',
   maxWidth: '100%',
-  flex: '0 0 auto',
-  textAlign: 'center'
+  textAlign: 'center',
 });
 
 const SubmitButton = styled.button({
-  display: 'inline-block',
+  border: 0,
+  display: 'inline-flex',
+  justifyContent: 'center',
+  alignItems: 'center',
+  backgroundColor: '#0EAA55',
+  padding: `${Em(10)} 0`,
   width: Rem(188),
   height: Rem(52),
-  backgroundColor: '#0eaa55',
-  border: 0,
-  borderRadius: Em(12),
-  fontSize: Rem(20),
+  borderRadius: Em(15),
   fontWeight: fontWeights.SemiBold,
-  color: '#ffffff',
+  fontSize: Rem(16),
+  textAlign: 'center',
+  color: '#FFFFFF',
+  [mq.minTablet]: {
+    fontSize: Rem(20),
+  },
 });
 
 const Error = styled.div({
   marginTop: Em(12),
   paddingLeft: Em(10),
-  fontSize: Rem(14),
+  fontSize: Rem(12),
   fontWeight: fontWeights.Regular,
   color: '#de463e',
+  [mq.minTablet]: {
+    fontSize: Rem(14),
+  }
 });
 
 const Proposal = () => {

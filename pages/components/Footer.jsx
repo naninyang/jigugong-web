@@ -44,7 +44,7 @@ const LawInfoTerm = styled.dt({
   float: 'left',
   fontWeight: fontWeights.Medium,
   fontSize: Rem(18),
-  [mq.minXsmall]: {
+  [mq.minTablet]: {
     padding: `${Em(7)} ${Em(32)} ${Em(7)} 0`,
     fontSize: Rem(22),
   },
@@ -55,7 +55,7 @@ const LawInfoDescription = styled.dd({
   fontWeight: fontWeights.Regular,
   fontSize: Rem(18),
   color: '#5a5a5a',
-  [mq.minXsmall]: {
+  [mq.minTablet]: {
     padding: `${Em(7)} 0`,
     fontSize: Rem(22),
   },
@@ -76,7 +76,7 @@ const ContactInfoHeading = styled.h2({
   fontWeight: fontWeights.SemiBold,
   fontSize: Rem(18),
   textTransform: 'uppercase',
-  [mq.minXsmall]: {
+  [mq.minTablet]: {
     margin: `${Em(7)} 0 ${Em(10)}`,
     fontSize: Rem(22),
   },
@@ -111,14 +111,14 @@ const ContactInfoDescription = styled.dd({
   margin: `${Rem(9)} 0`,
   paddingLeft: Em(25),
   width: `calc(100% - ${Rem(49)})`,
-  [mq.minXsmall]: {
+  [mq.minSmall]: {
     paddingLeft: Em(33),
   },
   '& a': {
     fontWeight: fontWeights.Regular,
     fontSize: Rem(18),
     color: '#000000',
-    [mq.minXsmall]: {
+    [mq.minTablet]: {
       fontSize: Rem(22),
     },
   },
@@ -130,7 +130,7 @@ const Notice = styled.div({
   fontSize: Rem(18),
   fontWeight: fontWeights.Regular,
   color: '#5A5A5A',
-  [mq.minXsmall]: {
+  [mq.minSmall]: {
     fontSize: Rem(22),
   },
 });
