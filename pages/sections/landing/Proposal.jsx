@@ -5,7 +5,9 @@ import styled from '@emotion/styled';
 import { fontWeights, styles, Rem, Em } from '../../utils/designSystem';
 import AgreementDocument from '../../components/AgreementDocument';
 
-const Container = styled.div();
+const Container = styled.div({
+  backgroundColor: '#ffffff',
+});
 
 const Contents = styled.div({
   margin: '0 auto',
