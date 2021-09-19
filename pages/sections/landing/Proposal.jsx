@@ -54,9 +54,9 @@ const FormLabel = styled.label({
 
 const InputControl = styled.input({
   display: 'block',
+  padding: `${Em(1)} ${Em(12)}`,
   width: '100%',
   height: Rem(50),
-  padding: `${Em(1)} ${Em(12)}`,
   border: 0,
   borderRadius: Em(5),
   backgroundColor: '#f6f6f6',
@@ -72,9 +72,9 @@ const InputControl = styled.input({
 
 const TextAreaControl = styled.textarea({
   display: 'block',
+  padding: `${Em(15)} ${Em(20)}`,
   width: '100%',
   height: Rem(166),
-  padding: `${Em(15)} ${Em(20)}`,
   border: 0,
   borderRadius: Em(5),
   backgroundColor: '#f6f6f6',

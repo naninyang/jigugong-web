@@ -6,12 +6,12 @@ const Button = styled(LinkButton)({
   display: 'inline-flex',
   backgroundColor: '#0EAA55',
   padding: `${Em(10)} ${Em(22)}`,
-  borderRadius: `${Em(15)}`,
+  borderRadius: Em(15),
   fontWeight: fontWeights.SemiBold,
-  fontSize: `${Rem(16)}`,
+  fontSize: Rem(16),
   color: '#FFFFFF',
   [mq.minXsmall]: {
-    fontSize: `${Rem(20)}`,
+    fontSize: Rem(20),
   },
 });
 

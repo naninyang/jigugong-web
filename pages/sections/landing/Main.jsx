@@ -50,36 +50,36 @@ const Contents = styled.div({
 });
 
 const MainHeading = styled.h1({
-  marginBottom: `${Em(20)}`,
+  marginBottom: Em(20),
   display: 'flex',
   flexDirection: 'column',
   fontWeight: fontWeights.ExtraBold,
-  fontSize: `${Rem(32)}`,
+  fontSize: Rem(32),
   textShadow: '0 1px 4px #c4c4c4',
   color: '#0EAA55',
   [mq.minXsmall]: {
     position: 'relative',
     zIndex: 999999,
-    marginBottom: `${Em(40)}`,
-    fontSize: `${Rem(50)}`,
+    marginBottom: Em(40),
+    fontSize: Rem(50),
   },
   '& strong': {
-    marginTop: `${Rem(10)}`,
+    marginTop: Rem(10),
     fontWeight: fontWeights.ExtraBold,
     [mq.minXsmall]: {
-      marginTop: `${Rem(20)}`,
+      marginTop: Rem(20),
     },
   },
   '&::before': {
     content: '""',
-    marginBottom: `${Rem(30)}`,
-    width: `${Rem(70)}`,
-    height: `${Rem(78)}`,
+    marginBottom: Rem(30),
+    width: Rem(70),
+    height: Rem(78),
     background: `url(${images.icons.jigugong}) no-repeat 50% 50%/contain`,
     [mq.minXsmall]: {
-      marginBottom: `${Rem(60)}`,
-      width: `${Rem(113)}`,
-      height: `${Rem(126)}`,
+      marginBottom: Rem(60),
+      width: Rem(113),
+      height: Rem(126),
     },
   },
 });
@@ -120,7 +120,7 @@ const StoreList = styled.ul(({ active }) => ({
   display: active ? 'block' : 'none',
   backgroundColor: '#FFFFFF',
   position: 'absolute',
-  borderRadius: `${Em(7)}`,
+  borderRadius: Em(7),
   top: Em(20),
   left: 0,
   paddingTop: Em(20),
@@ -139,7 +139,7 @@ const StoreItem = styled.li({
   '& a': {
     display: 'block',
     fontWeight: fontWeights.SemiBold,
-    fontSize: `${Rem(14)}`,
+    fontSize: Rem(14),
     color: '#000000',
     whiteSpace: 'nowrap',
   },
@@ -151,13 +151,13 @@ const Button = styled.button({
   zIndex: 9,
   padding: `${Em(10)} ${Em(22)}`,
   border: 0,
-  borderRadius: `${Em(15)}`,
+  borderRadius: Em(15),
   backgroundColor: '#0EAA55',
   fontWeight: fontWeights.SemiBold,
-  fontSize: `${Rem(16)}`,
+  fontSize: Rem(16),
   color: '#FFFFFF',
   [mq.minXsmall]: {
-    fontSize: `${Rem(20)}`,
+    fontSize: Rem(20),
   },
 });
 
