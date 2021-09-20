@@ -7,6 +7,7 @@ const Button = styled(LinkButton)({
   backgroundColor: '#0EAA55',
   padding: `${Em(10)} ${Em(22)}`,
   borderRadius: Em(15),
+  userSelect: 'none',
   fontWeight: fontWeights.SemiBold,
   fontSize: Rem(16),
   color: '#FFFFFF',

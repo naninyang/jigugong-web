@@ -137,9 +137,12 @@ const Notice = styled.div({
 
 function Footer() {
   return (
-    <Container>
+    <Container
+      role='contentinfo'
+      aria-labelledby='body-footer'
+    >
       <Wrapper>
-        <FooterHeading>법적 정보 및 연락처 정보</FooterHeading>
+        <FooterHeading id='body-footer'>법적 정보 및 연락처 정보</FooterHeading>
         <LawInfo>
           <LawInfoHeading>법정 정보</LawInfoHeading>
           <LawInfoList>
@@ -161,9 +164,9 @@ function Footer() {
           <ContactInfoHeading>Contact</ContactInfoHeading>
           <ContactInfoList>
             <ContactInfoTerm data-item={'phone'}><span>Phone</span></ContactInfoTerm>
-            <ContactInfoDescription><a href="tel:1688-3290">1688-3290</a></ContactInfoDescription>
+            <ContactInfoDescription><a href='tel:1688-3290' role='button'>1688-3290</a></ContactInfoDescription>
             <ContactInfoTerm data-item={'email'}><span>Email</span></ContactInfoTerm>
-            <ContactInfoDescription><a href="mailto:info@jigugong.com">info@jigugong.com</a></ContactInfoDescription>
+            <ContactInfoDescription><a href='mailto:info@jigugong.com' role='button'>info@jigugong.com</a></ContactInfoDescription>
           </ContactInfoList>
           <Notice>
             <p>OPEN AM 10:00 ~ PM 07:00</p>

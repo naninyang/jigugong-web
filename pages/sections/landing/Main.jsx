@@ -239,13 +239,13 @@ const Main = () => {
   };
 
   return (
-    <Container>
-      <Contents>
-        <MainHeading>
+    <Container role='main'>
+      <Contents aria-labelledby='section-main'>
+        <MainHeading id='section-main'>
           개인의 실천을 모아
           <strong>세상을 변화시킵니다.</strong>
         </MainHeading>
-        <Description>
+        <Description role='region'>
           <Point>지구를 구하는 공동체, 지구공은</Point>
           미션과 실천을 중심으로
           <span>환경보호 문화를 확산시키는 친환경 플랫폼입니다.</span>
@@ -260,13 +260,23 @@ const Main = () => {
                 <NotMobile>
                   <Button
                     onClick={handleClick}
-                    type={'button'}
+                    type='button'
+                    aria-haspopup='true'
+                    id='app-download-button'
+                    aria-controls='app-download'
                   >
                     앱 다운로드
                   </Button>
-                  <StoreList active={active}>
-                    <StoreItem><LinkButton href='https://apps.apple.com/kr/app/id1550230253'>애플 앱스토어</LinkButton></StoreItem>
-                    <StoreItem><LinkButton href='https://play.google.com/store/apps/details?id=com.jigugong.app'>구글 플레이스토어</LinkButton></StoreItem>
+                  <StoreList
+                    active={active}
+                    aria-expanded={active}
+                    aria-haspopup='true'
+                    aria-labelledby='app-download-button'
+                    role='menu'
+                    id='app-download'
+                  >
+                    <StoreItem role='menuitem'><LinkButton href='https://apps.apple.com/kr/app/id1550230253'>애플 앱스토어</LinkButton></StoreItem>
+                    <StoreItem role='menuitem'><LinkButton href='https://play.google.com/store/apps/details?id=com.jigugong.app'>구글 플레이스토어</LinkButton></StoreItem>
                   </StoreList>
                 </NotMobile>
               )
@@ -286,7 +296,7 @@ const Main = () => {
           </MockupImages>
         </MockupImageModule>
       </Contents>
-    </Container>
+    </Container >
   )
 }
 

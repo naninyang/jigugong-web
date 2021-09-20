@@ -29,11 +29,11 @@ const PrimaryHeading = styled.div({
   },
 });
 
-const ArticleList = ({ heading, children }) => {
+const ArticleList = ({ aria, heading, children }) => {
   return (
     <Container>
-      <Contents>
-        <PrimaryHeading><h4>{heading}</h4></PrimaryHeading>
+      <Contents aria-labelledby={aria}>
+        <PrimaryHeading><h4 id={aria}>{heading}</h4></PrimaryHeading>
         {children}
       </Contents>
     </Container>

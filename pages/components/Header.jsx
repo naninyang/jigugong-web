@@ -63,7 +63,7 @@ const BlogLinkButton = styled(LinkButton)({
 
 function Header() {
   return (
-    <Container>
+    <Container role='banner'>
       <Wrapper>
         <ServiceLogo>
           <LinkButton href="/">

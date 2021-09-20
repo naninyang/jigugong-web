@@ -153,6 +153,7 @@ const SubmitButton = styled.button({
   width: Rem(188),
   height: Rem(52),
   borderRadius: Em(15),
+  userSelect: 'none',
   fontWeight: fontWeights.SemiBold,
   fontSize: Rem(16),
   textAlign: 'center',
@@ -188,7 +189,7 @@ const Proposal = () => {
     <Container>
       <Contents>
         <Heading>협업제안 및 문의</Heading>
-        <FormGroup onSubmit={handleSubmit(onSubmit)}>
+        <FormGroup role='form' onSubmit={handleSubmit(onSubmit)}>
           <FormFieldset>
             <legend>협업제안 및 문의 양식</legend>
             <FieldGroup>
@@ -196,6 +197,7 @@ const Proposal = () => {
               <InputControl id={'organization'}
                 placeholder={'단체/기업명'}
                 type={'text'}
+                aria-required={'true'}
                 {...register
                   ('organization', {
                     required: true,
@@ -210,6 +212,7 @@ const Proposal = () => {
               <InputControl id={'officer'}
                 placeholder={'홍길동'}
                 type={'text'}
+                aria-required={'true'}
                 {...register
                   ('officer', {
                     required: true,
@@ -224,6 +227,7 @@ const Proposal = () => {
               <InputControl id={'contact'}
                 placeholder={'숫자만 입력 가능'}
                 type={'tel'}
+                aria-required={'true'}
                 {...register
                   ('contact', {
                     required: true,
@@ -239,6 +243,7 @@ const Proposal = () => {
               <InputControl id={'email'}
                 placeholder={'example@example.com'}
                 type={'email'}
+                aria-required={'true'}
                 {...register
                   ('email', {
                     required: true,
@@ -254,6 +259,7 @@ const Proposal = () => {
               <FormLabel htmlFor='context'>내용</FormLabel>
               <TextAreaControl id={'context'}
                 placeholder={''}
+                aria-required={'true'}
                 {...register('context', { required: true })}
               />
               {errors.context && <Error>내용을 입력해 주세요</Error>}
@@ -265,6 +271,7 @@ const Proposal = () => {
             <CheckBoxGroup>
               <CheckBoxControl
                 {...register('agreement', { required: true })}
+                aria-required={'true'}
                 id={'agreement'}
                 type={'checkbox'}
                 checked={isChecked}

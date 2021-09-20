@@ -25,8 +25,8 @@ const LinkButton = ({ href, ...rest }) => {
   return (
     <a
       href={href}
-      target="_blank"
-      rel="noopener noreferrer nofollow"
+      target='_blank'
+      rel='noopener noreferrer nofollow'
       {...rest}
     />
   )

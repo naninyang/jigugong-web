@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from '@emotion/styled';
-import { mq, styles, fontWeights, Rem, Em } from '../utils/designSystem';
+import { mq, fontWeights, Rem, Em } from '../utils/designSystem';
 
 const Container = styled.div({
   padding: `${Em(15)} ${Em(20)}`,
@@ -33,7 +33,11 @@ const DOCUMENT = `내용
 
 const AgreementDocument = ({ label }) => {
   return (
-    <Container aria-labelledby={label}>
+    <Container
+      aria-labelledby={label}
+      role='document'
+      tabIndex={'0'}
+    >
       <Contents>
         <pre>
           {DOCUMENT}
