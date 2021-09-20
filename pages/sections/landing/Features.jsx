@@ -517,8 +517,8 @@ function PreviousArrow(props) {
 }
 
 function NextArrow(props) {
-  const { className, onClick } = props;
-  return <ButtonNext className={className} onClick={onClick} />
+  const { className, onClick, label } = props;
+  return <ButtonNext className={className} onClick={onClick} aria-label={label} />
 }
 
 const Feature = () => {
@@ -553,8 +553,8 @@ const Feature = () => {
   return (
     <Container>
       <Practical>
-        <Action>
-          <HeadingPrimary>실천</HeadingPrimary>
+        <Action aria-labelledby='section-action'>
+          <HeadingPrimary id='section-action'>실천</HeadingPrimary>
           <HeadingSecondary>
             나만의 친환경 실천
             <strong>일상을 공유해요</strong>
@@ -568,13 +568,13 @@ const Feature = () => {
           </MockupImagesAction>
         </Action>
       </Practical>
-      <ArticleList heading={'인기 실천글'}>
+      <ArticleList aria={'section-action'} heading={'인기 실천글'}>
         <SliderControl>
           <StyledSlider {...settings}>
             {action && action.map(item => (
               <div key={item._id}>
                 <ActionInfo>
-                  <ActionImageModule><ActionImage src={item.thumbnail} alt={''} /></ActionImageModule>
+                  <ActionImageModule aria-hidden='true'><ActionImage src={item.thumbnail} alt={''} /></ActionImageModule>
                   <ActionFigure>
                     <ItemCategory>{item.category}</ItemCategory>
                     <ItemSummary>{item.summary}</ItemSummary>
@@ -628,8 +628,11 @@ const Feature = () => {
       </ArticleList>
       <Activity>
         <Conversation>
-          <Contents data-activity='conversation'>
-            <HeadingPrimary>커뮤니티</HeadingPrimary>
+          <Contents
+            data-activity='conversation'
+            aria-labelledby='section-conversation'
+          >
+            <HeadingPrimary id='section-conversation'>커뮤니티</HeadingPrimary>
             <Description>
               환경에 관심 있는 사람들과
               <strong>자유롭게 이야기를 나누고 소통해요.</strong>
@@ -640,13 +643,16 @@ const Feature = () => {
           </MockupImagesConversation>
         </Conversation>
         <Store>
-          <Contents data-activity='store'>
-            <HeadingPrimary>지구+</HeadingPrimary>
+          <Contents
+            data-activity='store'
+            aria-labelledby='section-store'
+          >
+            <HeadingPrimary id='section-store'>지구+</HeadingPrimary>
             <Description>
               환경을 위한 실천에 동참하는
               <strong>제로웨이스트/비건 매장을 소개해드릴게요.</strong>
               <LinkGroup>
-                <LinkItem><ButtonGreen href="/">매장목록 보러가기</ButtonGreen></LinkItem>
+                <LinkItem><ButtonGreen href='/'>매장목록 보러가기</ButtonGreen></LinkItem>
               </LinkGroup>
             </Description>
           </Contents>
