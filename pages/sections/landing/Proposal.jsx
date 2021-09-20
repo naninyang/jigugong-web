@@ -239,7 +239,8 @@ const Proposal = () => {
                   ('contact', {
                     required: true,
                     maxLength: 11,
-                    minLength: 8
+                    minLength: 8,
+                    pattern: /^[0-9]*$/
                   })
                 }
               />
