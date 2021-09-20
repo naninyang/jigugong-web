@@ -1,4 +1,5 @@
 const withImages = require('next-images')
+const withSass = require('path')
 module.exports = withImages({
   reactStrictMode: true,
   images: {
@@ -13,5 +14,8 @@ module.exports = withImages({
         defaultLocale: 'ko-KR',
       },
     ],
+  },
+  sassOptions: {
+    includePaths: [withSass.join(__dirname, 'styles')],
   },
 })

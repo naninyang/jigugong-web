@@ -83,7 +83,7 @@ const TextAreaControl = styled.textarea({
   fontSize: Rem(14),
   fontWeight: fontWeights.Regular,
   lineHeight: 1.5,
-  color: ' #212529',
+  color: '#212529',
   [mq.minTablet]: {
     fontSize: Rem(18),
   },
