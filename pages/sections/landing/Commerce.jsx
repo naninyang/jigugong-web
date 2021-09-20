@@ -264,8 +264,8 @@ function PreviousArrow(props) {
 }
 
 function NextArrow(props) {
-  const { className, onClick } = props;
-  return <ButtonNext className={className} onClick={onClick} />
+  const { className, onClick, label } = props;
+  return <ButtonNext className={className} onClick={onClick} aria-label={label} />
 }
 
 const Commerce = () => {
@@ -307,8 +307,8 @@ const Commerce = () => {
 
   return (
     <Container>
-      <Contents>
-        <HeadingPrimary>상점</HeadingPrimary>
+      <Contents aria-labelledby='section-commerce'>
+        <HeadingPrimary id='section-commerce'>상점</HeadingPrimary>
         <Description>
           우리가 일상에서 사용하는 모든 제품의
           <strong>더 나은 친환경적인 대안을 제시합니다.</strong>
@@ -319,13 +319,13 @@ const Commerce = () => {
           <MockupImage />
         </MockupImages>
       </Contents>
-      <ArticleList heading={'인기 상품'}>
+      <ArticleList aria={'section-product'} heading={'인기 상품'}>
         <SliderControl>
           <StyledSlider {...settings}>
             {product && product.map(item => (
               <div key={item._id}>
                 <ProductInfo>
-                  <ProductImage><ProductThumbnail src={item.thumbnail} alt={''} /></ProductImage>
+                  <ProductImage aria-hidden='true'><ProductThumbnail src={item.thumbnail} alt={''} /></ProductImage>
                   <ProductFigure>
                     <ItemBrand>{item.brand}</ItemBrand>
                     <ItemProduct>{item.product}</ItemProduct>

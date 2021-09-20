@@ -283,8 +283,8 @@ function PreviousArrow(props) {
 }
 
 function NextArrow(props) {
-  const { className, onClick } = props;
-  return <ButtonNext className={className} onClick={onClick} />
+  const { className, onClick, label } = props;
+  return <ButtonNext className={className} onClick={onClick} aria-label={label} />
 }
 
 const Mission = () => {
@@ -326,9 +326,9 @@ const Mission = () => {
 
   return (
     <Container>
-      <Contents>
+      <Contents aria-labelledby='section-mission'>
         <HeadingPrimary>미션</HeadingPrimary>
-        <HeadingSecondary>
+        <HeadingSecondary id='section-mission'>
           개인의 실천이 모여
           <strong>사회공헌으로</strong>
         </HeadingSecondary>
@@ -337,7 +337,7 @@ const Mission = () => {
           개인의 작은 실천이 모여 커다란 사회공헌이 됩니다.
         </Description>
         <LinkGroup>
-          <LinkItem><ButtonGreen href="/">미션목록 보러가기</ButtonGreen></LinkItem>
+          <LinkItem><ButtonGreen href='/'>미션목록 보러가기</ButtonGreen></LinkItem>
         </LinkGroup>
         <MockupImages>
           <Mobile>
@@ -350,13 +350,13 @@ const Mission = () => {
           </Desktop>
         </MockupImages>
       </Contents>
-      <ArticleList heading={'지구공과 함께한 파트너'}>
+      <ArticleList aria={'section-organization'} heading={'지구공과 함께한 파트너'}>
         <SliderControl>
           <StyledSlider {...settings}>
             {organization && organization.map(item => (
               <div key={item._id}>
                 <OrganizationInfo>
-                  <OrganizationImage><OrganizationBanner src={item.picture} alt={''} /></OrganizationImage>
+                  <OrganizationImage aria-hidden='true'><OrganizationBanner src={item.picture} alt={''} /></OrganizationImage>
                   <OrganizationName>{item.organization}</OrganizationName>
                 </OrganizationInfo>
               </div>
