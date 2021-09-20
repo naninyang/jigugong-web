@@ -66,18 +66,18 @@ function Header() {
     <Container role='banner'>
       <Wrapper>
         <ServiceLogo>
-          <LinkButton href="/">
+          <LinkButton href='/'>
             <span>지구공</span>
           </LinkButton>
         </ServiceLogo>
         <SocialMediaList>
           <SocialMediaItem>
-            <InstagramLinkButton href="https://www.instagram.com/jigugong_official/">
+            <InstagramLinkButton href='https://www.instagram.com/jigugong_official/'>
               <span>인스타그램 채널</span>
             </InstagramLinkButton>
           </SocialMediaItem>
           <SocialMediaItem>
-            <BlogLinkButton href="https://blog.naver.com/earthy_company/">
+            <BlogLinkButton href='https://blog.naver.com/earthy_company/'>
               <span>네이버블로그</span>
             </BlogLinkButton>
           </SocialMediaItem>

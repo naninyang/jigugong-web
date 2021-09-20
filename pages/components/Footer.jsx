@@ -164,13 +164,13 @@ function Footer() {
           <ContactInfoHeading>Contact</ContactInfoHeading>
           <ContactInfoList>
             <ContactInfoTerm data-item={'phone'}><span>Phone</span></ContactInfoTerm>
-            <ContactInfoDescription><a href='tel:1688-3290' role='button'>1688-3290</a></ContactInfoDescription>
+            <ContactInfoDescription><a href='tel:1688-3290'>1688-3290</a></ContactInfoDescription>
             <ContactInfoTerm data-item={'email'}><span>Email</span></ContactInfoTerm>
-            <ContactInfoDescription><a href='mailto:info@jigugong.com' role='button'>info@jigugong.com</a></ContactInfoDescription>
+            <ContactInfoDescription><a href='mailto:info@jigugong.com'>info@jigugong.com</a></ContactInfoDescription>
           </ContactInfoList>
-          <Notice>
-            <p>OPEN AM 10:00 ~ PM 07:00</p>
-            <p>SAT.SUN.HOLIDAY OFF</p>
+          <Notice aria-label='주중 오전 10시부터 오후 7시 운영. 주말 및 법정공휴일 제외'>
+            <p aria-hidden='true'>OPEN AM 10:00 ~ PM 07:00</p>
+            <p aria-hidden='true'>SAT.SUN.HOLIDAY OFF</p>
           </Notice>
         </ContactInfo>
       </Wrapper>

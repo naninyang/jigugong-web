@@ -513,12 +513,12 @@ const ItemOptionBookmarkIconImage = styled.img({
 
 function PreviousArrow(props) {
   const { className, onClick, label } = props;
-  return <ButtonPrevious className={className} onClick={onClick} aria-label={label} role='button' />
+  return <ButtonPrevious className={className} onClick={onClick} aria-label={label} />
 }
 
 function NextArrow(props) {
   const { className, onClick, label } = props;
-  return <ButtonNext className={className} onClick={onClick} aria-label={label} role='button' />
+  return <ButtonNext className={className} onClick={onClick} aria-label={label} />
 }
 
 const Feature = () => {
@@ -652,7 +652,7 @@ const Feature = () => {
               환경을 위한 실천에 동참하는
               <strong>제로웨이스트/비건 매장을 소개해드릴게요.</strong>
               <LinkGroup>
-                <LinkItem><ButtonGreen href="/">매장목록 보러가기</ButtonGreen></LinkItem>
+                <LinkItem><ButtonGreen href='/'>매장목록 보러가기</ButtonGreen></LinkItem>
               </LinkGroup>
             </Description>
           </Contents>

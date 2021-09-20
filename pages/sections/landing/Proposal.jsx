@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { useForm } from "react-hook-form";
+import { useForm } from 'react-hook-form';
 import { images } from '../../assets';
 import styled from '@emotion/styled';
 import { mq, fontWeights, Rem, Em } from '../../utils/designSystem';
@@ -163,6 +163,10 @@ const SubmitButton = styled.button({
   },
 });
 
+const AgreementGroup = styled.div({
+  width: '100%',
+});
+
 const Error = styled.div({
   marginTop: Em(12),
   paddingLeft: Em(10),
@@ -198,6 +202,7 @@ const Proposal = () => {
                 placeholder={'단체/기업명'}
                 type={'text'}
                 aria-required={'true'}
+                aria-describedby={errors.organization ? 'error-organization' : ''}
                 {...register
                   ('organization', {
                     required: true,
@@ -205,7 +210,7 @@ const Proposal = () => {
                   })
                 }
               />
-              {errors.organization && <Error>단체/기업명을 정확하게 입력해 주세요</Error>}
+              {errors.organization && <Error id='error-organization'>단체/기업명을 정확하게 입력해 주세요</Error>}
             </FieldGroup>
             <FieldGroup>
               <FormLabel htmlFor='officer'>담당자명</FormLabel>
@@ -213,6 +218,7 @@ const Proposal = () => {
                 placeholder={'홍길동'}
                 type={'text'}
                 aria-required={'true'}
+                aria-describedby={errors.officer ? 'error-officer' : ''}
                 {...register
                   ('officer', {
                     required: true,
@@ -220,7 +226,7 @@ const Proposal = () => {
                   })
                 }
               />
-              {errors.officer && <Error>담당자명을 정확하게 입력해 주세요</Error>}
+              {errors.officer && <Error id='error-officer'>담당자명을 정확하게 입력해 주세요</Error>}
             </FieldGroup>
             <FieldGroup>
               <FormLabel htmlFor='contact'>연락처</FormLabel>
@@ -228,6 +234,7 @@ const Proposal = () => {
                 placeholder={'숫자만 입력 가능'}
                 type={'tel'}
                 aria-required={'true'}
+                aria-describedby={errors.contact ? 'error-contact' : ''}
                 {...register
                   ('contact', {
                     required: true,
@@ -236,7 +243,7 @@ const Proposal = () => {
                   })
                 }
               />
-              {errors.contact && <Error>연락처를 정확하게 입력해 주세요</Error>}
+              {errors.contact && <Error id='error-contact'>연락처를 정확하게 입력해 주세요</Error>}
             </FieldGroup>
             <FieldGroup>
               <FormLabel htmlFor='email'>이메일</FormLabel>
@@ -244,6 +251,7 @@ const Proposal = () => {
                 placeholder={'example@example.com'}
                 type={'email'}
                 aria-required={'true'}
+                aria-describedby={errors.email ? 'error-email' : ''}
                 {...register
                   ('email', {
                     required: true,
@@ -253,36 +261,40 @@ const Proposal = () => {
                   })
                 }
               />
-              {errors.email && <Error>이메일을 정확하게 입력해 주세요</Error>}
+              {errors.email && <Error id='error-email'>이메일을 정확하게 입력해 주세요</Error>}
             </FieldGroup>
             <FieldGroup>
               <FormLabel htmlFor='context'>내용</FormLabel>
               <TextAreaControl id={'context'}
                 placeholder={''}
                 aria-required={'true'}
+                aria-describedby={errors.context ? 'error-context' : ''}
                 {...register('context', { required: true })}
               />
-              {errors.context && <Error>내용을 입력해 주세요</Error>}
+              {errors.context && <Error id='error-context'>내용을 입력해 주세요</Error>}
             </FieldGroup>
-            <FieldGroup>
-              <AgreementLabel id='agreement-document'>개인정보 수집 및 이용 동의</AgreementLabel>
-              <AgreementDocument label='agreement-document' />
-            </FieldGroup>
-            <CheckBoxGroup>
-              <CheckBoxControl
-                {...register('agreement', { required: true })}
-                aria-required={'true'}
-                id={'agreement'}
-                type={'checkbox'}
-                checked={isChecked}
-                onChange={handleChecked}
-              />
-              <CheckBoxControlDesign isChecked={isChecked} />
-              <CheckBoxLabel htmlFor='agreement'>개인정보 수집 및 이용에 동의합니다</CheckBoxLabel>
-              {errors.agreement && <Error>동의하지 않으면 제출이 불가합니다</Error>}
-            </CheckBoxGroup>
+            <AgreementGroup role='group'>
+              <FieldGroup>
+                <AgreementLabel id='agreement-document'>개인정보 수집 및 이용 동의</AgreementLabel>
+                <AgreementDocument label='agreement-document' />
+              </FieldGroup>
+              <CheckBoxGroup>
+                <CheckBoxControl
+                  {...register('agreement', { required: true })}
+                  aria-describedby={errors.agreement ? 'error-agreement' : ''}
+                  aria-required={'true'}
+                  id={'agreement'}
+                  type={'checkbox'}
+                  checked={isChecked}
+                  onChange={handleChecked}
+                />
+                <CheckBoxControlDesign isChecked={isChecked} />
+                <CheckBoxLabel htmlFor='agreement'>개인정보 수집 및 이용에 동의합니다</CheckBoxLabel>
+                {errors.agreement && <Error id='error-agreement'>동의하지 않으면 제출이 불가합니다</Error>}
+              </CheckBoxGroup>
+            </AgreementGroup>
             <ButtonGroup>
-              <SubmitButton type="submit">제출</SubmitButton>
+              <SubmitButton type='submit'>제출</SubmitButton>
             </ButtonGroup>
           </FormFieldset>
         </FormGroup>

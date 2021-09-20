@@ -279,12 +279,12 @@ const OrganizationName = styled.strong({
 
 function PreviousArrow(props) {
   const { className, onClick, label } = props;
-  return <ButtonPrevious className={className} onClick={onClick} aria-label={label} role='button' />
+  return <ButtonPrevious className={className} onClick={onClick} aria-label={label} />
 }
 
 function NextArrow(props) {
   const { className, onClick, label } = props;
-  return <ButtonNext className={className} onClick={onClick} aria-label={label} role='button' />
+  return <ButtonNext className={className} onClick={onClick} aria-label={label} />
 }
 
 const Mission = () => {
@@ -337,7 +337,7 @@ const Mission = () => {
           개인의 작은 실천이 모여 커다란 사회공헌이 됩니다.
         </Description>
         <LinkGroup>
-          <LinkItem><ButtonGreen href="/">미션목록 보러가기</ButtonGreen></LinkItem>
+          <LinkItem><ButtonGreen href='/'>미션목록 보러가기</ButtonGreen></LinkItem>
         </LinkGroup>
         <MockupImages>
           <Mobile>
