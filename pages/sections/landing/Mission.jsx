@@ -6,6 +6,7 @@ import styled from '@emotion/styled';
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
 import { mq, styles, Rem, Em, fontWeights } from '../../utils/designSystem';
+import useScrollFadeIn from '../../utils/useScrollFadeIn';
 import { images } from '../../assets/';
 import ButtonGreen from '../../components/ButtonGreen';
 import HeadingPrimary from '../../components/HeadingPrimary';
@@ -326,7 +327,7 @@ const Mission = () => {
 
   return (
     <Container>
-      <Contents aria-labelledby='section-mission'>
+      <Contents aria-labelledby='section-mission' {...useScrollFadeIn('up', 1, 0, 2)}>
         <HeadingPrimary>미션</HeadingPrimary>
         <HeadingSecondary id='section-mission'>
           개인의 실천이 모여

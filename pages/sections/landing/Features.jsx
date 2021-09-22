@@ -5,6 +5,7 @@ import styled from '@emotion/styled';
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
 import { mq, styles, fontWeights, Clamp, Rem, Em } from '../../utils/designSystem';
+import useScrollFadeIn from '../../utils/useScrollFadeIn';
 import { images } from '../../assets/';
 import ButtonGreen from '../../components/ButtonGreen';
 import HeadingPrimary from '../../components/HeadingPrimary';
@@ -14,8 +15,11 @@ import ArticleList from '../../components/ArticleList';
 
 const Container = styled.section();
 
-const Practical = styled.div({
+const WrapperPractical = styled.div({
   backgroundColor: '#dcf5e8',
+});
+
+const Practical = styled.div({
   [mq.maxTablet]: {
     overflow: 'hidden',
   },
@@ -80,8 +84,11 @@ const MockupImageAction = styled.div({
   },
 });
 
-const Activity = styled.div({
+const WrapperActivity = styled.div({
   backgroundImage: 'linear-gradient(to top, #dcf5e8, #eaf7ff)',
+});
+
+const Activity = styled.div({
   display: 'flex',
   flexDirection: 'column',
   padding: `${Em(40)} ${Em(25)} 0`,
@@ -552,22 +559,24 @@ const Feature = () => {
 
   return (
     <Container>
-      <Practical>
-        <Action aria-labelledby='section-action'>
-          <HeadingPrimary id='section-action'>실천</HeadingPrimary>
-          <HeadingSecondary>
-            나만의 친환경 실천
-            <strong>일상을 공유해요</strong>
-          </HeadingSecondary>
-          <Description>
-            <strong>채식, 제로플라스틱, 분리배출, 업사이클링, 플로깅 등</strong>
-            나만의 방식으로 환경보호를 실천하고 공유해보세요.
-          </Description>
-          <MockupImagesAction>
-            <MockupImageAction />
-          </MockupImagesAction>
-        </Action>
-      </Practical>
+      <WrapperPractical>
+        <Practical {...useScrollFadeIn('up', 1, 0, 2)}>
+          <Action aria-labelledby='section-action'>
+            <HeadingPrimary id='section-action'>실천</HeadingPrimary>
+            <HeadingSecondary>
+              나만의 친환경 실천
+              <strong>일상을 공유해요</strong>
+            </HeadingSecondary>
+            <Description>
+              <strong>채식, 제로플라스틱, 분리배출, 업사이클링, 플로깅 등</strong>
+              나만의 방식으로 환경보호를 실천하고 공유해보세요.
+            </Description>
+            <MockupImagesAction>
+              <MockupImageAction />
+            </MockupImagesAction>
+          </Action>
+        </Practical>
+      </WrapperPractical>
       <ArticleList aria={'section-action'} heading={'인기 실천글'}>
         <SliderControl>
           <StyledSlider {...settings}>
@@ -626,41 +635,43 @@ const Feature = () => {
           </StyledSlider>
         </SliderControl>
       </ArticleList>
-      <Activity>
-        <Conversation>
-          <Contents
-            data-activity='conversation'
-            aria-labelledby='section-conversation'
-          >
-            <HeadingPrimary id='section-conversation'>커뮤니티</HeadingPrimary>
-            <Description>
-              환경에 관심 있는 사람들과
-              <strong>자유롭게 이야기를 나누고 소통해요.</strong>
-            </Description>
-          </Contents>
-          <MockupImagesConversation>
-            <MockupImageConversation />
-          </MockupImagesConversation>
-        </Conversation>
-        <Store>
-          <Contents
-            data-activity='store'
-            aria-labelledby='section-store'
-          >
-            <HeadingPrimary id='section-store'>지구+</HeadingPrimary>
-            <Description>
-              환경을 위한 실천에 동참하는
-              <strong>제로웨이스트/비건 매장을 소개해드릴게요.</strong>
-              <LinkGroup>
-                <LinkItem><ButtonGreen href='/'>매장목록 보러가기</ButtonGreen></LinkItem>
-              </LinkGroup>
-            </Description>
-          </Contents>
-          <MockupImagesStore>
-            <MockupImageStore />
-          </MockupImagesStore>
-        </Store>
-      </Activity>
+      <WrapperActivity>
+        <Activity>
+          <Conversation {...useScrollFadeIn('up', 1, 0, 2)}>
+            <Contents
+              data-activity='conversation'
+              aria-labelledby='section-conversation'
+            >
+              <HeadingPrimary id='section-conversation'>커뮤니티</HeadingPrimary>
+              <Description>
+                환경에 관심 있는 사람들과
+                <strong>자유롭게 이야기를 나누고 소통해요.</strong>
+              </Description>
+            </Contents>
+            <MockupImagesConversation>
+              <MockupImageConversation />
+            </MockupImagesConversation>
+          </Conversation>
+          <Store {...useScrollFadeIn('up', 1, 0, 2)}>
+            <Contents
+              data-activity='store'
+              aria-labelledby='section-store'
+            >
+              <HeadingPrimary id='section-store'>지구+</HeadingPrimary>
+              <Description>
+                환경을 위한 실천에 동참하는
+                <strong>제로웨이스트/비건 매장을 소개해드릴게요.</strong>
+                <LinkGroup>
+                  <LinkItem><ButtonGreen href='/'>매장목록 보러가기</ButtonGreen></LinkItem>
+                </LinkGroup>
+              </Description>
+            </Contents>
+            <MockupImagesStore>
+              <MockupImageStore />
+            </MockupImagesStore>
+          </Store>
+        </Activity>
+      </WrapperActivity>
     </Container>
   )
 }

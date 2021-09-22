@@ -4,6 +4,7 @@ import { isIOS, isAndroid } from 'react-device-detect';
 import styled from '@emotion/styled';
 import { mq, fontWeights, Rem, Em, styles } from '../../utils/designSystem';
 import LinkButton from '../../utils/LinkButton';
+import useScrollFadeIn from '../../utils/useScrollFadeIn';
 import { images } from '../../assets/';
 import ButtonGreen from '../../components/ButtonGreen';
 import Description from '../../components/Description';
@@ -240,7 +241,7 @@ const Main = () => {
 
   return (
     <Container role='main'>
-      <Contents aria-labelledby='section-main'>
+      <Contents aria-labelledby='section-main' {...useScrollFadeIn('up', 1, 0, 1)}>
         <MainHeading id='section-main'>
           개인의 실천을 모아
           <strong>세상을 변화시킵니다.</strong>

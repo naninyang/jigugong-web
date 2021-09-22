@@ -3,6 +3,7 @@ import { useForm } from 'react-hook-form';
 import { images } from '../../assets';
 import styled from '@emotion/styled';
 import { mq, fontWeights, Rem, Em } from '../../utils/designSystem';
+import useScrollFadeIn from '../../utils/useScrollFadeIn';
 import AgreementDocument from '../../components/AgreementDocument';
 
 const Container = styled.div({
@@ -191,7 +192,7 @@ const Proposal = () => {
 
   return (
     <Container>
-      <Contents>
+      <Contents {...useScrollFadeIn('down', 1, 0, 2)}>
         <Heading>협업제안 및 문의</Heading>
         <FormGroup role='form' onSubmit={handleSubmit(onSubmit)}>
           <FormFieldset>

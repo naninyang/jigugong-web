@@ -5,6 +5,7 @@ import styled from '@emotion/styled';
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
 import { mq, styles, fontWeights, Rem, Em } from '../../utils/designSystem';
+import useScrollFadeIn from '../../utils/useScrollFadeIn';
 import { images } from '../../assets/';
 import HeadingPrimary from '../../components/HeadingPrimary';
 import Description from '../../components/Description';
@@ -307,7 +308,7 @@ const Commerce = () => {
 
   return (
     <Container>
-      <Contents aria-labelledby='section-commerce'>
+      <Contents aria-labelledby='section-commerce' {...useScrollFadeIn('up', 1, 0, 2)}>
         <HeadingPrimary id='section-commerce'>상점</HeadingPrimary>
         <Description>
           우리가 일상에서 사용하는 모든 제품의
