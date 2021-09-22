@@ -1,5 +1,6 @@
 import React from 'react';
 import { useMediaQuery } from 'react-responsive';
+import { isIOS, isAndroid } from 'react-device-detect';
 import Slider from 'react-slick';
 import axios from 'axios';
 import styled from '@emotion/styled';
@@ -7,6 +8,7 @@ import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
 import { mq, styles, Rem, Em, fontWeights } from '../../utils/designSystem';
 import useScrollFadeIn from '../../utils/useScrollFadeIn';
+import LinkButton from '../../utils/LinkButton';
 import { images } from '../../assets/';
 import ButtonGreen from '../../components/ButtonGreen';
 import HeadingPrimary from '../../components/HeadingPrimary';
@@ -174,7 +176,7 @@ const ButtonPrevious = styled.button({
   },
   '&::before': {
     zIndex: 1,
-    width: `calc(100% - ${Rem(4)})`,
+    width: `calc(100% - ${Rem(8)})`,
     opacity: 1,
     backgroundColor: '#f6f6f6',
   },
@@ -217,7 +219,7 @@ const ButtonNext = styled.button({
   },
   '&::before': {
     zIndex: 1,
-    width: `calc(100% - ${Rem(4)})`,
+    width: `calc(100% - ${Rem(8)})`,
     opacity: 1,
     backgroundColor: '#f6f6f6',
   },
@@ -237,14 +239,22 @@ const ButtonNext = styled.button({
   },
 });
 
-const OrganizationInfo = styled.div({
-  margin: Em(5),
-  boxShadow: `0 ${Em(4)} ${Em(4)} rgba(0, 0, 0, .25)`,
+const OrganizationInfo = styled(LinkButton)(({ isDesktop }) => ({
+  display: 'block',
+  margin: `${Em(5)} ${Em(5)} ${Em(15)}`,
   borderRadius: Em(20),
-  [mq.minTablet]: {
-    margin: Em(10),
+  boxShadow: `0 ${Em(4)} ${Em(4)} rgba(0, 0, 0, .25)`,
+  transition: 'box-shadow .25s',
+  '&:hover': {
+    boxShadow: isDesktop ? `0 ${Em(8)} ${Em(8)} rgba(0, 0, 0, .25)` : `0 ${Em(4)} ${Em(4)} rgba(0, 0, 0, .25)`,
+    '& img': {
+      transform: isDesktop ? 'scale(1.1)' : 'scale(1)',
+    },
   },
-});
+  [mq.minTablet]: {
+    margin: `${Em(10)} ${Em(10)} ${Em(15)}`,
+  },
+}));
 
 const OrganizationImage = styled.div({
   position: 'relative',
@@ -254,14 +264,16 @@ const OrganizationImage = styled.div({
   height: 0,
 });
 
-const OrganizationBanner = styled.img({
+const OrganizationBanner = styled.img(({ isDesktop }) => ({
   position: 'absolute',
   top: 0,
   left: 0,
   width: '100%',
   height: '100%',
   objectFit: 'cover',
-});
+  transition: 'transform .25s',
+  transform: 'scale(1)',
+}));
 
 const OrganizationName = styled.strong({
   display: 'flex',
@@ -272,6 +284,7 @@ const OrganizationName = styled.strong({
   backgroundColor: '#e5e5e5',
   fontSize: Rem(16),
   fontWeight: fontWeights.Regular,
+  color: '#000000',
   ...styles.ellipsis,
   [mq.minXsmall]: {
     fontSize: Rem(20),
@@ -325,6 +338,8 @@ const Mission = () => {
     ],
   };
 
+  const isDesktop = !isIOS && !isAndroid ? true : false;
+
   return (
     <Container>
       <Contents aria-labelledby='section-mission' {...useScrollFadeIn('up', 1, 0, 2)}>
@@ -356,7 +371,10 @@ const Mission = () => {
           <StyledSlider {...settings}>
             {organization && organization.map(item => (
               <div key={item._id}>
-                <OrganizationInfo>
+                <OrganizationInfo
+                  href='/'
+                  isDesktop={isDesktop}
+                >
                   <OrganizationImage aria-hidden='true'><OrganizationBanner src={item.picture} alt={''} /></OrganizationImage>
                   <OrganizationName>{item.organization}</OrganizationName>
                 </OrganizationInfo>

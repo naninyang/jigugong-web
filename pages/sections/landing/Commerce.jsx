@@ -1,11 +1,13 @@
 import React from 'react';
 import Slider from 'react-slick';
 import axios from 'axios';
+import { isIOS, isAndroid } from 'react-device-detect';
 import styled from '@emotion/styled';
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
 import { mq, styles, fontWeights, Rem, Em } from '../../utils/designSystem';
 import useScrollFadeIn from '../../utils/useScrollFadeIn';
+import LinkButton from '../../utils/LinkButton';
 import { images } from '../../assets/';
 import HeadingPrimary from '../../components/HeadingPrimary';
 import Description from '../../components/Description';
@@ -146,12 +148,18 @@ const ButtonNext = styled.button({
   },
 });
 
-const ProductInfo = styled.div({
+const ProductInfo = styled(LinkButton)(({ isDesktop }) => ({
+  display: 'block',
   margin: `0 ${Em(5)}`,
+  '&:hover': {
+    '& [aria-hidden] img': {
+      transform: isDesktop ? 'scale(1.1)' : 'scale(1)',
+    },
+  },
   [mq.minTablet]: {
     margin: `0 ${Em(10)}`,
   },
-});
+}));
 
 const ProductImage = styled.div({
   position: 'relative',
@@ -168,6 +176,8 @@ const ProductThumbnail = styled.img({
   width: '100%',
   height: '100%',
   objectFit: 'cover',
+  transition: 'transform .25s',
+  transform: 'scale(1)',
 });
 
 const ProductFigure = styled.div({
@@ -191,6 +201,7 @@ const ItemProduct = styled.strong({
   margin: `${Em(1.5)} 0`,
   fontSize: Rem(18),
   fontWeight: fontWeights.SemiBold,
+  color: '#000000',
   ...styles.ellipsis,
   [mq.minXsmall]: {
     fontSize: Rem(22),
@@ -218,6 +229,7 @@ const PricePercentage = styled.div({
 const PriceResult = styled.strong({
   fontSize: Rem(12),
   fontWeight: fontWeights.Medium,
+  color: '#000000',
   [mq.minXsmall]: {
     fontSize: Rem(17),
   },
@@ -306,6 +318,8 @@ const Commerce = () => {
     ],
   };
 
+  const isDesktop = !isIOS && !isAndroid ? true : false;
+
   return (
     <Container>
       <Contents aria-labelledby='section-commerce' {...useScrollFadeIn('up', 1, 0, 2)}>
@@ -325,7 +339,10 @@ const Commerce = () => {
           <StyledSlider {...settings}>
             {product && product.map(item => (
               <div key={item._id}>
-                <ProductInfo>
+                <ProductInfo
+                  href='/'
+                  isDesktop={isDesktop}
+                >
                   <ProductImage aria-hidden='true'><ProductThumbnail src={item.thumbnail} alt={''} /></ProductImage>
                   <ProductFigure>
                     <ItemBrand>{item.brand}</ItemBrand>

@@ -1,11 +1,13 @@
 import React from 'react';
 import Slider from 'react-slick';
 import axios from 'axios';
+import { isIOS, isAndroid } from 'react-device-detect';
 import styled from '@emotion/styled';
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
 import { mq, styles, fontWeights, Clamp, Rem, Em } from '../../utils/designSystem';
 import useScrollFadeIn from '../../utils/useScrollFadeIn';
+import LinkButton from '../../utils/LinkButton';
 import { images } from '../../assets/';
 import ButtonGreen from '../../components/ButtonGreen';
 import HeadingPrimary from '../../components/HeadingPrimary';
@@ -281,7 +283,7 @@ const ButtonPrevious = styled.button({
   },
   '&::before': {
     zIndex: 1,
-    width: `calc(100% - ${Rem(4)})`,
+    width: `calc(100% - ${Rem(8)})`,
     opacity: 1,
     backgroundColor: '#f6f6f6',
   },
@@ -324,7 +326,7 @@ const ButtonNext = styled.button({
   },
   '&::before': {
     zIndex: 1,
-    width: `calc(100% - ${Rem(4)})`,
+    width: `calc(100% - ${Rem(8)})`,
     opacity: 1,
     backgroundColor: '#f6f6f6',
   },
@@ -344,16 +346,24 @@ const ButtonNext = styled.button({
   },
 });
 
-const ActionInfo = styled.div({
+const ActionInfo = styled(LinkButton)(({ isDesktop }) => ({
+  display: 'block',
   margin: Em(5),
   boxShadow: `0 ${Em(4)} ${Em(4)} rgba(0, 0, 0, .25)`,
   borderRadius: Em(20),
-  [mq.minTablet]: {
-    margin: Em(10),
+  transition: 'box-shadow .25s',
+  '&:hover': {
+    boxShadow: isDesktop ? `0 ${Em(8)} ${Em(8)} rgba(0, 0, 0, .25)` : `0 ${Em(4)} ${Em(4)} rgba(0, 0, 0, .25)`,
+    '& [aria-hidden] img': {
+      transform: isDesktop ? 'scale(1.1)' : 'scale(1)',
+    },
   },
-});
+  [mq.minTablet]: {
+    margin: `${Em(10)} ${Em(10)} ${Em(15)}`,
+  },
+}));
 
-const ActionImageModule = styled.div({
+const ActionImage = styled.div({
   position: 'relative',
   paddingTop: '89.6%',
   borderRadius: `${Em(20)} ${Em(20)} 0 0`,
@@ -361,13 +371,15 @@ const ActionImageModule = styled.div({
   height: 0,
 });
 
-const ActionImage = styled.img({
+const ActionThumbnail = styled.img({
   position: 'absolute',
   top: 0,
   left: 0,
   width: '100%',
   height: '100%',
   objectFit: 'cover',
+  transition: 'transform .25s',
+  transform: 'scale(1)',
 });
 
 const ActionFigure = styled.div({
@@ -390,6 +402,7 @@ const ItemSummary = styled.strong({
   margin: `${Em(8)} 0`,
   fontSize: Rem(20),
   fontWeight: fontWeights.SemiBold,
+  color: '#000000',
   ...styles.ellipsis,
   [mq.minXsmall]: {
     fontSize: Rem(24),
@@ -432,6 +445,7 @@ const ItemDescription = styled.div`
   height: ${Rem(33)};
   font-size: ${Rem(14)};
   font-weight: ${fontWeights.Regular};
+  color: #000000;
   ${mq.minXsmall} {
     ${Clamp(2, 38)};
     height: ${Rem(38)};
@@ -472,6 +486,7 @@ const ItemOptionStatus = styled.span({
   fontSize: Rem(14),
   letterSpacing: `-${Rem(.5)}`,
   fontWeight: fontWeights.Regular,
+  color: '#000000',
   [mq.minXsmall]: {
     fontSize: Rem(18),
   },
@@ -557,6 +572,8 @@ const Feature = () => {
     ],
   };
 
+  const isDesktop = !isIOS && !isAndroid ? true : false;
+
   return (
     <Container>
       <WrapperPractical>
@@ -582,8 +599,11 @@ const Feature = () => {
           <StyledSlider {...settings}>
             {action && action.map(item => (
               <div key={item._id}>
-                <ActionInfo>
-                  <ActionImageModule aria-hidden='true'><ActionImage src={item.thumbnail} alt={''} /></ActionImageModule>
+                <ActionInfo
+                  href='/'
+                  isDesktop={isDesktop}
+                >
+                  <ActionImage aria-hidden='true'><ActionThumbnail src={item.thumbnail} alt={''} /></ActionImage>
                   <ActionFigure>
                     <ItemCategory>{item.category}</ItemCategory>
                     <ItemSummary>{item.summary}</ItemSummary>
