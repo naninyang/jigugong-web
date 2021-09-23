@@ -25,6 +25,17 @@ $ yarn add
 $ yarn dev
 ```
 
+### .env
+* **Service ID**: [https://dashboard.emailjs.com/admin](https://dashboard.emailjs.com/admin)
+* **Template ID**: [https://dashboard.emailjs.com/admin/templates](https://dashboard.emailjs.com/admin/templates)
+* **User ID**: [https://dashboard.emailjs.com/admin/integration](https://dashboard.emailjs.com/admin/integration)
+
+```text
+NEXT_PUBLIC_EMAIL_SERVICE_ID=service_xxxxxxx
+NEXT_PUBLIC_EMAIL_TEMPLATE_ID=template_xxxxxxx
+NEXT_PUBLIC_EMAIL_USER_ID=user_xxxxxxxxxxxxxxxxxxxxx
+```
+
 ## Next.js README
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
