@@ -16,14 +16,13 @@ $ gh repo clone earthy2020/jigugong-web
 
 $ cd jijugong-web
 
-# npm packages install
-$ npm ci
-# npm i 또는 npm install 명령보다 npm ci 명령을 추천합니다. (npm@5.7.1부터 지원)
+# yarn packages install
+$ yarn add
 ```
 
 ### Development Env. Start
 ```bash
-$ npm run dev
+$ yarn dev
 ```
 
 ## Next.js README
@@ -35,6 +34,8 @@ First, run the development server:
 
 ```bash
 npm run dev
+# or
+yarn dev
 ```
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
