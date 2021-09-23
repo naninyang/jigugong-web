@@ -1,10 +1,14 @@
-import React, { useState } from 'react';
+import React, { useState, useRef } from 'react';
+import dotenv from 'dotenv';
 import { useForm } from 'react-hook-form';
-import { images } from '../../assets';
+import emailjs from 'emailjs-com';
 import styled from '@emotion/styled';
+import { images } from '../../assets';
 import { mq, fontWeights, Rem, Em } from '../../utils/designSystem';
 import useScrollFadeIn from '../../utils/useScrollFadeIn';
 import AgreementDocument from '../../components/AgreementDocument';
+
+dotenv.config();
 
 const Container = styled.div({
   backgroundColor: '#ffffff',
@@ -182,8 +186,20 @@ const Error = styled.div({
 const Proposal = () => {
   const [isChecked, setIsChecked] = useState(false);
   const { register, handleSubmit, formState: { errors } } = useForm();
+
+  const form = useRef();
+
+  const EMAIL_SERVICE_ID = process.env.NEXT_PUBLIC_EMAIL_SERVICE_ID;
+  const EMAIL_TEMPLATE_ID = process.env.NEXT_PUBLIC_EMAIL_TEMPLATE_ID;
+  const EMAIL_USER_ID = process.env.NEXT_PUBLIC_EMAIL_USER_ID;
+
   const onSubmit = (data) => {
-    alert(JSON.stringify(data));
+    emailjs.sendForm(EMAIL_SERVICE_ID, EMAIL_TEMPLATE_ID, form.current, EMAIL_USER_ID)
+      .then((result) => {
+        alert('정상적으로 등록되었습니다')
+      }, (error) => {
+        alert('등록에 실패하였습니다');
+      });
   };
 
   const handleChecked = (event) => {
@@ -194,7 +210,11 @@ const Proposal = () => {
     <Container>
       <Contents {...useScrollFadeIn('down', 1, 0, 2)}>
         <Heading>협업제안 및 문의</Heading>
-        <FormGroup role='form' onSubmit={handleSubmit(onSubmit)}>
+        <FormGroup
+          role='form'
+          ref={form}
+          onSubmit={handleSubmit(onSubmit)}
+        >
           <FormFieldset>
             <legend>협업제안 및 문의 양식</legend>
             <FieldGroup>

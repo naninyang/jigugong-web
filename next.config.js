@@ -2,6 +2,12 @@ const withImages = require('next-images')
 const withSass = require('path')
 module.exports = withImages({
   reactStrictMode: true,
+  webpack: (config, { isServer }) => {
+    if (!isServer) {
+      config.resolve.fallback.fs = false;
+    }
+    return config
+  },
   images: {
     disableStaticImages: true,
   },
