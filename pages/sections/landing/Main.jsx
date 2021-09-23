@@ -239,6 +239,12 @@ const Main = () => {
     setActive(!active);
   };
 
+  const iOSMobileURL = `itms-apps://itunes.apple.com/kr/app/id1550230253`;
+  const aOSMobileURL = `market://details?id=com.jigugong.app`;
+  const iOSDesktopURL = `https://apps.apple.com/kr/app/id1550230253`;
+  const aOSDesktopURL = `https://play.google.com/store/apps/details?id=com.jigugong.app`;
+  const earthyDocumentURL = `https://drive.google.com/u/1/uc?id=1066rIf9v3yBGJHkzOEFsDPX5Gajgu0xL&export=download`;
+
   return (
     <Container role='main'>
       <Contents aria-labelledby='section-main' {...useScrollFadeIn('up', 1, 0, 1)}>
@@ -253,8 +259,8 @@ const Main = () => {
         </Description>
         <LinkGroup>
           <LinkItem>
-            {isIOS && <ButtonGreen href='itms-apps://itunes.apple.com/kr/app/id1550230253'>앱 다운로드</ButtonGreen>}
-            {isAndroid && <ButtonGreen href='market://details?id=com.jigugong.app'>앱 다운로드</ButtonGreen>}
+            {isIOS && <ButtonGreen href={iOSMobileURL}>앱 다운로드</ButtonGreen>}
+            {isAndroid && <ButtonGreen href={aOSMobileURL}>앱 다운로드</ButtonGreen>}
             {
               isDesktop &&
               (
@@ -276,14 +282,14 @@ const Main = () => {
                     role='menu'
                     id='app-download'
                   >
-                    <StoreItem role='menuitem'><LinkButton href='https://apps.apple.com/kr/app/id1550230253'>애플 앱스토어</LinkButton></StoreItem>
-                    <StoreItem role='menuitem'><LinkButton href='https://play.google.com/store/apps/details?id=com.jigugong.app'>구글 플레이스토어</LinkButton></StoreItem>
+                    <StoreItem role='menuitem'><LinkButton href={iOSDesktopURL}>애플 앱스토어</LinkButton></StoreItem>
+                    <StoreItem role='menuitem'><LinkButton href={aOSDesktopURL}>구글 플레이스토어</LinkButton></StoreItem>
                   </StoreList>
                 </NotMobile>
               )
             }
           </LinkItem>
-          <LinkItem><ButtonGreen href='/'>회사소개서 다운로드</ButtonGreen></LinkItem>
+          <LinkItem><ButtonGreen href={earthyDocumentURL}>회사소개서 다운로드</ButtonGreen></LinkItem>
         </LinkGroup>
         <MockupImageModule>
           <MockupImages>
