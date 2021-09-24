@@ -10,8 +10,8 @@ const Container = styled.footer({
 const Wrapper = styled.div({
   ...styles.widthSettings,
   margin: '0 auto',
-  paddingTop: Em(45),
-  paddingBottom: Em(45),
+  paddingTop: Em(35),
+  paddingBottom: Em(35),
   display: 'flex',
   alignItems: 'flex-start',
   [mq.maxXsmall]: {
@@ -36,28 +36,32 @@ const LawInfoHeading = styled.h2({
 });
 
 const LawInfoList = styled.dl({
-  ...styles.clearfix,
+  display: 'flex',
+  flexWrap: 'wrap',
 });
 
 const LawInfoTerm = styled.dt({
-  padding: `${Em(7)} ${Em(28)} ${Em(7)} 0`,
-  float: 'left',
+  padding: `${Em(7)} 0`,
+  width: Rem(130),
   fontWeight: fontWeights.Medium,
-  fontSize: Rem(18),
+  fontSize: Rem(12),
   [mq.minTablet]: {
-    padding: `${Em(7)} ${Em(32)} ${Em(7)} 0`,
-    fontSize: Rem(22),
+    padding: `${Em(7)} 0`,
+    width: Rem(170),
+    fontSize: Rem(16),
   },
 });
 
 const LawInfoDescription = styled.dd({
   padding: `${Em(7)} 0`,
+  width: `calc(100% - ${Rem(130)})`,
   fontWeight: fontWeights.Regular,
-  fontSize: Rem(18),
+  fontSize: Rem(12),
   color: '#5a5a5a',
   [mq.minTablet]: {
     padding: `${Em(7)} 0`,
-    fontSize: Rem(22),
+    width: `calc(100% - ${Rem(170)})`,
+    fontSize: Rem(16),
   },
   '& address': {
     fontStyle: 'normal',
@@ -74,11 +78,13 @@ const ContactInfo = styled.div({
 const ContactInfoHeading = styled.h2({
   margin: `${Em(30)} 0 ${Em(10)}`,
   fontWeight: fontWeights.SemiBold,
-  fontSize: Rem(18),
+  fontSize: Rem(12),
   textTransform: 'uppercase',
   [mq.minTablet]: {
+    fontSize: Rem(16),
+  },
+  [mq.minXsmall]: {
     margin: `${Em(7)} 0 ${Em(10)}`,
-    fontSize: Rem(22),
   },
 });
 
@@ -88,11 +94,12 @@ const ContactInfoList = styled.dl({
 });
 
 const ContactInfoTerm = styled.dt({
-  margin: `${Rem(9)} 0`,
-  height: Rem(23),
-  flexBasis: Rem(33),
+  margin: `${Rem(5)} 0`,
+  height: Rem(19),
+  flexBasis: Rem(26),
   [mq.minXsmall]: {
-    height: Rem(27),
+    flexBasis: Rem(30),
+    height: Rem(23),
   },
   '& span': {
     ...styles.screenReaderOnly,
@@ -108,30 +115,31 @@ const ContactInfoTerm = styled.dt({
 const ContactInfoDescription = styled.dd({
   display: 'flex',
   alignItems: 'center',
-  margin: `${Rem(9)} 0`,
-  paddingLeft: Em(25),
-  width: `calc(100% - ${Rem(49)})`,
+  margin: `${Rem(5)} 0`,
+  paddingLeft: Em(24),
+  width: `calc(100% - ${Rem(26)})`,
   [mq.minSmall]: {
-    paddingLeft: Em(33),
+    paddingLeft: Em(28),
+    width: `calc(100% - ${Rem(30)})`,
   },
   '& a': {
     fontWeight: fontWeights.Regular,
-    fontSize: Rem(18),
+    fontSize: Rem(12),
     color: '#000000',
     [mq.minTablet]: {
-      fontSize: Rem(22),
+      fontSize: Rem(16),
     },
   },
 });
 
 const Notice = styled.div({
   marginTop: Em(15),
-  lineHeight: 1.36,
-  fontSize: Rem(18),
+  lineHeight: 1.88,
+  fontSize: Rem(12),
   fontWeight: fontWeights.Regular,
   color: '#5A5A5A',
   [mq.minSmall]: {
-    fontSize: Rem(22),
+    fontSize: Rem(16),
   },
 });
 
@@ -148,16 +156,16 @@ function Footer() {
           <LawInfoList>
             <LawInfoTerm>상호명</LawInfoTerm>
             <LawInfoDescription>얼씨 주식회사</LawInfoDescription>
-            <LawInfoTerm>대표이사</LawInfoTerm>
-            <LawInfoDescription>김지원</LawInfoDescription>
             <LawInfoTerm>사업자등록번호</LawInfoTerm>
             <LawInfoDescription>000-00-00000</LawInfoDescription>
             <LawInfoTerm>통신판매업번호</LawInfoTerm>
             <LawInfoDescription>000-00-00000</LawInfoDescription>
-            <LawInfoTerm>주소</LawInfoTerm>
-            <LawInfoDescription><address>서울시</address></LawInfoDescription>
             <LawInfoTerm>개인정보책임관리자</LawInfoTerm>
             <LawInfoDescription>김기섭</LawInfoDescription>
+            <LawInfoTerm>대표이사</LawInfoTerm>
+            <LawInfoDescription>김지원</LawInfoDescription>
+            <LawInfoTerm>주소</LawInfoTerm>
+            <LawInfoDescription><address>서울시</address></LawInfoDescription>
           </LawInfoList>
         </LawInfo>
         <ContactInfo>
