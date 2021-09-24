@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Children } from 'react';
 import { useMediaQuery } from 'react-responsive';
 import { isIOS, isAndroid } from 'react-device-detect';
 import Slider from 'react-slick';
@@ -10,11 +10,12 @@ import { mq, styles, Rem, Em, fontWeights } from '../../utils/designSystem';
 import useScrollFadeIn from '../../utils/useScrollFadeIn';
 import LinkButton from '../../utils/LinkButton';
 import { images } from '../../assets/';
-import ButtonGreen from '../../components/ButtonGreen';
-import HeadingPrimary from '../../components/HeadingPrimary';
-import HeadingSecondary from '../../components/HeadingSecondary';
-import Description from '../../components/Description';
-import ArticleList from '../../components/ArticleList';
+import ArticleList from '../../components/global/ArticleList';
+import ArticleListChildren from '../../components/global/ArticleListChildren';
+import ButtonGreen from '../../components/landing/ButtonGreen';
+import HeadingPrimary from '../../components/landing/HeadingPrimary';
+import HeadingSecondary from '../../components/landing/HeadingSecondary';
+import Description from '../../components/landing/Description';
 
 const Desktop = ({ children }) => {
   const isDesktop = useMediaQuery({ minWidth: 481 })
@@ -366,22 +367,24 @@ const Mission = () => {
           </Desktop>
         </MockupImages>
       </Contents>
-      <ArticleList aria={'section-organization'} heading={'지구공과 함께한 파트너'}>
-        <SliderControl>
-          <StyledSlider {...settings}>
-            {organization && organization.map(item => (
-              <div key={item._id}>
-                <OrganizationInfo
-                  href='/'
-                  isDesktop={isDesktop}
-                >
-                  <OrganizationImage aria-hidden='true'><OrganizationBanner src={item.picture} alt={''} /></OrganizationImage>
-                  <OrganizationName>{item.organization}</OrganizationName>
-                </OrganizationInfo>
-              </div>
-            ))}
-          </StyledSlider>
-        </SliderControl>
+      <ArticleList>
+        <ArticleListChildren label={'section-organization'} heading={'지구공과 함께한 파트너'}>
+          <SliderControl>
+            <StyledSlider {...settings}>
+              {organization && organization.map(item => (
+                <div key={item._id}>
+                  <OrganizationInfo
+                    href='/'
+                    isDesktop={isDesktop}
+                  >
+                    <OrganizationImage aria-hidden='true'><OrganizationBanner src={item.picture} alt={''} /></OrganizationImage>
+                    <OrganizationName>{item.organization}</OrganizationName>
+                  </OrganizationInfo>
+                </div>
+              ))}
+            </StyledSlider>
+          </SliderControl>
+        </ArticleListChildren>
       </ArticleList>
     </Container>
   )

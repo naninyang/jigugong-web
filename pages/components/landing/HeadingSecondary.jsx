@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from '@emotion/styled';
-import { mq, fontWeights, Rem, Em } from '../utils/designSystem';
+import { mq, fontWeights, Rem, Em } from '../../utils/designSystem';
 
 const SecondaryHeading = styled.h3({
   paddingBottom: Em(11.45),

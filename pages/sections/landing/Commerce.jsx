@@ -9,9 +9,10 @@ import { mq, styles, fontWeights, Rem, Em } from '../../utils/designSystem';
 import useScrollFadeIn from '../../utils/useScrollFadeIn';
 import LinkButton from '../../utils/LinkButton';
 import { images } from '../../assets/';
-import HeadingPrimary from '../../components/HeadingPrimary';
-import Description from '../../components/Description';
-import ArticleList from '../../components/ArticleList';
+import ArticleList from '../../components/global/ArticleList';
+import ArticleListChildren from '../../components/global/ArticleListChildren';
+import HeadingPrimary from '../../components/landing/HeadingPrimary';
+import Description from '../../components/landing/Description';
 
 const Container = styled.section({
   backgroundColor: '#dcf5e8',
@@ -334,41 +335,43 @@ const Commerce = () => {
           <MockupImage />
         </MockupImages>
       </Contents>
-      <ArticleList aria={'section-product'} heading={'인기 상품'}>
-        <SliderControl>
-          <StyledSlider {...settings}>
-            {product && product.map(item => (
-              <div key={item._id}>
-                <ProductInfo
-                  href='/'
-                  isDesktop={isDesktop}
-                >
-                  <ProductImage aria-hidden='true'><ProductThumbnail src={item.thumbnail} alt={''} /></ProductImage>
-                  <ProductFigure>
-                    <ItemBrand>{item.brand}</ItemBrand>
-                    <ItemProduct>{item.product}</ItemProduct>
-                    <ItemPrice>
-                      <PriceReduced>
-                        {item.price.reduced ?
-                          <>
-                            <PricePercentage>{Math.ceil((item.price.result - item.price.reduced) / item.price.result * 100)}%</PricePercentage>
-                            <PriceResult>{item.price.reduced.toLocaleString('ko-KR')}원</PriceResult>
-                            <PriceDiscount>{item.price.result.toLocaleString('ko-KR')}원</PriceDiscount>
-                          </>
-                          : <PriceResult>{item.price.result.toLocaleString('ko-KR')}원</PriceResult>
-                        }
-                      </PriceReduced>
-                      <PriceEarthy>
-                        <EarthyDiscount>{item.price.earthy.toLocaleString('ko-KR')}원</EarthyDiscount>
-                        <EarthyDescription>지구포인트 최대할인가</EarthyDescription>
-                      </PriceEarthy>
-                    </ItemPrice>
-                  </ProductFigure>
-                </ProductInfo>
-              </div>
-            ))}
-          </StyledSlider>
-        </SliderControl>
+      <ArticleList>
+        <ArticleListChildren label={'section-product'} heading={'인기 상품'}>
+          <SliderControl>
+            <StyledSlider {...settings}>
+              {product && product.map(item => (
+                <div key={item._id}>
+                  <ProductInfo
+                    href='/'
+                    isDesktop={isDesktop}
+                  >
+                    <ProductImage aria-hidden='true'><ProductThumbnail src={item.thumbnail} alt={''} /></ProductImage>
+                    <ProductFigure>
+                      <ItemBrand>{item.brand}</ItemBrand>
+                      <ItemProduct>{item.product}</ItemProduct>
+                      <ItemPrice>
+                        <PriceReduced>
+                          {item.price.reduced ?
+                            <>
+                              <PricePercentage>{Math.ceil((item.price.result - item.price.reduced) / item.price.result * 100)}%</PricePercentage>
+                              <PriceResult>{item.price.reduced.toLocaleString('ko-KR')}원</PriceResult>
+                              <PriceDiscount>{item.price.result.toLocaleString('ko-KR')}원</PriceDiscount>
+                            </>
+                            : <PriceResult>{item.price.result.toLocaleString('ko-KR')}원</PriceResult>
+                          }
+                        </PriceReduced>
+                        <PriceEarthy>
+                          <EarthyDiscount>{item.price.earthy.toLocaleString('ko-KR')}원</EarthyDiscount>
+                          <EarthyDescription>지구포인트 최대할인가</EarthyDescription>
+                        </PriceEarthy>
+                      </ItemPrice>
+                    </ProductFigure>
+                  </ProductInfo>
+                </div>
+              ))}
+            </StyledSlider>
+          </SliderControl>
+        </ArticleListChildren>
       </ArticleList>
     </Container>
   )

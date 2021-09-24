@@ -6,7 +6,7 @@ import styled from '@emotion/styled';
 import { images } from '../../assets';
 import { mq, fontWeights, Rem, Em } from '../../utils/designSystem';
 import useScrollFadeIn from '../../utils/useScrollFadeIn';
-import AgreementDocument from '../../components/AgreementDocument';
+import AgreementDocument from '../../components/landing/AgreementDocument';
 
 dotenv.config();
 

@@ -1,8 +1,8 @@
 import React from 'react';
 import styled from '@emotion/styled';
-import LinkButton from '../utils/LinkButton';
-import { Rem, styles } from '../utils/designSystem';
-import { images } from '../assets';
+import LinkButton from '../../utils/LinkButton';
+import { Rem, styles } from '../../utils/designSystem';
+import { images } from '../../assets';
 
 const Container = styled.header({
   position: 'absolute',

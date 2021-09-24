@@ -1,6 +1,6 @@
 import styled from '@emotion/styled';
-import LinkButton from '../utils/LinkButton';
-import { mq, fontWeights, Rem, Em } from '../utils/designSystem';
+import LinkButton from '../../utils/LinkButton';
+import { mq, fontWeights, Rem, Em } from '../../utils/designSystem';
 
 const Button = styled(LinkButton)({
   display: 'inline-flex',

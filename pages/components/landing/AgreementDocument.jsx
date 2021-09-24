@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from '@emotion/styled';
-import { mq, fontWeights, Rem, Em } from '../utils/designSystem';
+import { mq, fontWeights, Rem, Em } from '../../utils/designSystem';
 
 const Container = styled.div({
   padding: `${Em(15)} ${Em(20)}`,
@@ -20,7 +20,7 @@ const Contents = styled.div({
   },
 });
 
-const DOCUMENT = `내용
+const contextItem = `내용
 내용
 내용
 내용
@@ -31,6 +31,19 @@ const DOCUMENT = `내용
 내용
 내용`;
 
+const Document = ({ context }) => {
+  return (
+    <>
+      {context.split('\n').map((txt) => (
+        <>
+          {txt}
+          <br />
+        </>
+      ))}
+    </>
+  )
+};
+
 const AgreementDocument = ({ label }) => {
   return (
     <Container
@@ -39,9 +52,7 @@ const AgreementDocument = ({ label }) => {
       tabIndex={'0'}
     >
       <Contents>
-        <pre>
-          {DOCUMENT}
-        </pre>
+        <Document context={contextItem} />
       </Contents>
     </Container>
   )

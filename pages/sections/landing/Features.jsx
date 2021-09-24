@@ -9,11 +9,12 @@ import { mq, styles, fontWeights, Clamp, Rem, Em } from '../../utils/designSyste
 import useScrollFadeIn from '../../utils/useScrollFadeIn';
 import LinkButton from '../../utils/LinkButton';
 import { images } from '../../assets/';
-import ButtonGreen from '../../components/ButtonGreen';
-import HeadingPrimary from '../../components/HeadingPrimary';
-import HeadingSecondary from '../../components/HeadingSecondary';
-import Description from '../../components/Description';
-import ArticleList from '../../components/ArticleList';
+import ArticleList from '../../components/global/ArticleList';
+import ArticleListChildren from '../../components/global/ArticleListChildren';
+import ButtonGreen from '../../components/landing/ButtonGreen';
+import HeadingPrimary from '../../components/landing/HeadingPrimary';
+import HeadingSecondary from '../../components/landing/HeadingSecondary';
+import Description from '../../components/landing/Description';
 
 const Container = styled.section();
 
@@ -594,66 +595,68 @@ const Feature = () => {
           </Action>
         </Practical>
       </WrapperPractical>
-      <ArticleList aria={'section-action'} heading={'인기 실천글'}>
-        <SliderControl>
-          <StyledSlider {...settings}>
-            {action && action.map(item => (
-              <div key={item._id}>
-                <ActionInfo
-                  href='/'
-                  isDesktop={isDesktop}
-                >
-                  <ActionImage aria-hidden='true'><ActionThumbnail src={item.thumbnail} alt={''} /></ActionImage>
-                  <ActionFigure>
-                    <ItemCategory>{item.category}</ItemCategory>
-                    <ItemSummary>{item.summary}</ItemSummary>
-                    <ItemUser>
-                      <ItemUserImage><ItemUserAvartar src={item.user.avatar} alt={''} /></ItemUserImage>
-                      <ItemUserName>{item.user.name}</ItemUserName>
-                    </ItemUser>
-                    <ItemDescription>{item.description}</ItemDescription>
-                    <ItemOptions>
-                      <ItemOptionLike>
-                        <ItemOptionLikeIcon>
-                          {item.option.like.active ?
-                            <ItemOptionLikeIconImage
-                              src={`${images.icons.heartTrue}`}
-                              alt={'찜됨'}
-                            /> :
-                            <ItemOptionLikeIconImage
-                              src={`${images.icons.heartFalse}`}
-                              alt={'찜안됨'}
-                            />
-                          }
-                        </ItemOptionLikeIcon>
-                        <ItemOptionStatus aria-label={'찜 개수'}>{item.option.like.count}</ItemOptionStatus>
-                      </ItemOptionLike>
-                      <ItemOptionReply>
-                        <ItemOptionReplyIcon />
-                        <ItemOptionStatus aria-label={'댓글 개수'}>{item.option.reply}</ItemOptionStatus>
-                      </ItemOptionReply>
-                      <ItemOptionBookmark>
-                        <ItemOptionBookmarkIcon>
-                          {item.option.bookmark.active ?
-                            <ItemOptionBookmarkIconImage
-                              src={`${images.icons.bookmarkTrue}`}
-                              alt={'북마크 됨'}
-                            /> :
-                            <ItemOptionLikeIconImage
-                              src={`${images.icons.bookmarkFalse}`}
-                              alt={'북마크 안됨'}
-                            />
-                          }
-                        </ItemOptionBookmarkIcon>
-                        <ItemOptionStatus aria-label={'북마크 개수'}>{item.option.bookmark.count}</ItemOptionStatus>
-                      </ItemOptionBookmark>
-                    </ItemOptions>
-                  </ActionFigure>
-                </ActionInfo>
-              </div>
-            ))}
-          </StyledSlider>
-        </SliderControl>
+      <ArticleList>
+        <ArticleListChildren label={'section-action'} heading={'인기 실천글'}>
+          <SliderControl>
+            <StyledSlider {...settings}>
+              {action && action.map(item => (
+                <div key={item._id}>
+                  <ActionInfo
+                    href='/'
+                    isDesktop={isDesktop}
+                  >
+                    <ActionImage aria-hidden='true'><ActionThumbnail src={item.thumbnail} alt={''} /></ActionImage>
+                    <ActionFigure>
+                      <ItemCategory>{item.category}</ItemCategory>
+                      <ItemSummary>{item.summary}</ItemSummary>
+                      <ItemUser>
+                        <ItemUserImage><ItemUserAvartar src={item.user.avatar} alt={''} /></ItemUserImage>
+                        <ItemUserName>{item.user.name}</ItemUserName>
+                      </ItemUser>
+                      <ItemDescription>{item.description}</ItemDescription>
+                      <ItemOptions>
+                        <ItemOptionLike>
+                          <ItemOptionLikeIcon>
+                            {item.option.like.active ?
+                              <ItemOptionLikeIconImage
+                                src={`${images.icons.heartTrue}`}
+                                alt={'찜됨'}
+                              /> :
+                              <ItemOptionLikeIconImage
+                                src={`${images.icons.heartFalse}`}
+                                alt={'찜안됨'}
+                              />
+                            }
+                          </ItemOptionLikeIcon>
+                          <ItemOptionStatus aria-label={'찜 개수'}>{item.option.like.count}</ItemOptionStatus>
+                        </ItemOptionLike>
+                        <ItemOptionReply>
+                          <ItemOptionReplyIcon />
+                          <ItemOptionStatus aria-label={'댓글 개수'}>{item.option.reply}</ItemOptionStatus>
+                        </ItemOptionReply>
+                        <ItemOptionBookmark>
+                          <ItemOptionBookmarkIcon>
+                            {item.option.bookmark.active ?
+                              <ItemOptionBookmarkIconImage
+                                src={`${images.icons.bookmarkTrue}`}
+                                alt={'북마크 됨'}
+                              /> :
+                              <ItemOptionLikeIconImage
+                                src={`${images.icons.bookmarkFalse}`}
+                                alt={'북마크 안됨'}
+                              />
+                            }
+                          </ItemOptionBookmarkIcon>
+                          <ItemOptionStatus aria-label={'북마크 개수'}>{item.option.bookmark.count}</ItemOptionStatus>
+                        </ItemOptionBookmark>
+                      </ItemOptions>
+                    </ActionFigure>
+                  </ActionInfo>
+                </div>
+              ))}
+            </StyledSlider>
+          </SliderControl>
+        </ArticleListChildren>
       </ArticleList>
       <WrapperActivity>
         <Activity>

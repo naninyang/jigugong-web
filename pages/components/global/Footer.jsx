@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from '@emotion/styled';
-import { mq, fontWeights, Rem, Em, styles } from '../utils/designSystem';
-import { images } from '../assets';
+import { mq, fontWeights, Rem, Em, styles } from '../../utils/designSystem';
+import { images } from '../../assets';
 
 const Container = styled.footer({
   backgroundColor: '#f6f6f6',

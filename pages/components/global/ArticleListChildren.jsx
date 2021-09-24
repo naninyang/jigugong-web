@@ -1,13 +1,9 @@
 import React from 'react';
 import styled from '@emotion/styled';
-import { mq, styles, fontWeights, Rem, Em } from '../utils/designSystem';
-
-const Container = styled.div({
-  backgroundColor: '#f6f6f6',
-});
+import { mq, styles, fontWeights, Rem, Em } from '../../utils/designSystem';
 
 const Contents = styled.div({
-  padding: `${Em(40)} 0 ${Em(60)}`,
+  paddingBottom: Em(60),
 });
 
 const PrimaryHeading = styled.div({
@@ -29,15 +25,13 @@ const PrimaryHeading = styled.div({
   },
 });
 
-const ArticleList = ({ aria, heading, children }) => {
+const ArticleListChildren = ({ label, heading, children }) => {
   return (
-    <Container>
-      <Contents aria-labelledby={aria}>
-        <PrimaryHeading><h4 id={aria}>{heading}</h4></PrimaryHeading>
-        {children}
-      </Contents>
-    </Container>
+    <Contents aria-labelledby={label}>
+      <PrimaryHeading><h4 id={label}>{heading}</h4></PrimaryHeading>
+      {children}
+    </Contents>
   )
 }
 
-export default ArticleList;
+export default ArticleListChildren;
