@@ -6,11 +6,10 @@ const PrimaryHeading = styled.h2({
   paddingBottom: Em(11.45),
   fontWeight: fontWeights.Bold,
   fontSize: Rem(26),
-  textShadow: `0 ${Em(1)} ${Em(4)} #c4c4c4`,
+  textShadow: `0 ${Em(1)} ${Em(2)} #c4c4c4`,
   color: '#0EAA55',
   [mq.minXsmall]: {
     fontSize: Rem(42),
-    textShadow: `0 ${Em(1)} ${Em(4)} #c4c4c4`,
   },
 });
 

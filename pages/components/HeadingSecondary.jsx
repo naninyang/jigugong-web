@@ -7,7 +7,7 @@ const SecondaryHeading = styled.h3({
   lineHeight: 1.4,
   fontWeight: fontWeights.Bold,
   fontSize: Rem(30),
-  textShadow: '0 1px 4px #c4c4c4',
+  textShadow: `0 ${Em(1)} ${Em(2)} #c4c4c4`,
   color: '#5a5a5a',
   [mq.minXsmall]: {
     position: 'relative',
