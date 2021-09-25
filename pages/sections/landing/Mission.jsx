@@ -354,7 +354,7 @@ const Mission = () => {
           개인의 작은 실천이 모여 커다란 사회공헌이 됩니다.
         </Description>
         <LinkGroup>
-          <LinkItem><ButtonGreen href='/'>미션목록 보러가기</ButtonGreen></LinkItem>
+          <LinkItem><ButtonGreen href='/missions'>미션목록 보러가기</ButtonGreen></LinkItem>
         </LinkGroup>
         <MockupImages>
           <Mobile>

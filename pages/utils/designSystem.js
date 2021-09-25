@@ -35,12 +35,15 @@ export const colors = {
 export const styles = {
   widthSettings: {
     width: '100%',
-    maxWidth: `${Rem(totalWidth)}`,
-    paddingRight: `${Rem(paddingHorizontal)}`,
-    paddingLeft: `${Rem(paddingHorizontal)}`,
+    maxWidth: Rem(totalWidth),
+    paddingRight: Rem(paddingHorizontal),
+    paddingLeft: Rem(paddingHorizontal),
   },
-  flex: {
-    col: '1 0 0%',
+  col: {
+    display: 'block',
+    flex: '1 0 0%',
+    width: '100%',
+    maxWidth: '100%',
   },
   ellipsis: {
     overflow: 'hidden',

@@ -19,7 +19,7 @@ const Mobile = ({ children }) => {
 }
 
 const Container = styled.main({
-  paddingTop: `${Rem(97)}`,
+  paddingTop: Rem(97),
   backgroundImage: 'radial-gradient(circle at 0 0, #dcf5e8, #dcf5e8, #eaf7ff)',
   [mq.maxMobile]: {
     overflowX: 'hidden',
@@ -56,7 +56,7 @@ const MainHeading = styled.h1({
   flexDirection: 'column',
   fontWeight: fontWeights.ExtraBold,
   fontSize: Rem(32),
-  textShadow: '0 1px 4px #c4c4c4',
+  textShadow: `0 ${Em(1)} ${Em(4)} #c4c4c4`,
   color: '#0EAA55',
   [mq.minXsmall]: {
     position: 'relative',
