@@ -7,17 +7,8 @@ import LinkButton from './utils/LinkButton';
 import Tabs from './sections/missions/Tabs';
 import TabPane from './sections/missions/TabPane';
 
-const scrollVerticalTrue = `
-  body {
-    background-color: #F6F6F6;
-  }
-`;
-
-const scrollVerticalFalse = `
-  body {
-    background-color: #FFFFFF;
-  }
-`;
+const scrollVerticalTrue = `body{background-color:#F6F6F6}`;
+const scrollVerticalFalse = `body{background-color:#FFFFFF}`;
 
 const Container = styled.div({
   marginTop: Rem(97),
