@@ -14,6 +14,7 @@ export const images = {
     chatbox: require('./images/icons/chatbox.svg'),
     bookmarkFalse: require('./images/icons/bookmark-false.svg'),
     bookmarkTrue: require('./images/icons/bookmark-true.svg'),
+    historyBack: require('./images/icons/history-back.svg'),
   },
   logos: {
     jigugongHorizontal: require('./images/logos/jigugong-horizontal.svg'),

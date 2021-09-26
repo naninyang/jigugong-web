@@ -3,8 +3,9 @@ import Head from 'next/head';
 import axios from 'axios';
 import { isIOS, isAndroid } from 'react-device-detect';
 import styled from '@emotion/styled';
-import { mq, fontWeights, Rem, Em, styles } from '../../utils/designSystem';
+import { mq, fontWeights, Rem, Em } from '../../utils/designSystem';
 import LinkButton from '../../utils/LinkButton';
+import PageHeading from '../../components/global/PageHeading';
 import Tabs from '../../sections/missions/Tabs';
 import TabPane from '../../sections/missions/TabPane';
 
@@ -12,13 +13,12 @@ const scrollVerticalTrue = `body{background-color:#F6F6F6}`;
 const scrollVerticalFalse = `body{background-color:#FFFFFF}`;
 
 const Container = styled.div({
-  marginTop: Rem(97),
+  marginTop: Rem(70),
   borderTop: '1px solid #aaaaaa',
   backgroundColor: '#ffffff',
-});
-
-const PageHading = styled.h1({
-  ...styles.screenReaderOnly,
+  [mq.minXsmall]: {
+    marginTop: Rem(97),
+  },
 });
 
 const Contents = styled.div({
@@ -102,7 +102,7 @@ const MissionMouseOver = styled.div({
 
 function index() {
   const [scrollY, setScrollY] = useState(0);
-  const [mission, setMission] = React.useState(null);
+  const [missions, setMissions] = React.useState(null);
   useEffect(() => {
     const handleScroll = () => {
       setScrollY(window.scrollY);
@@ -122,7 +122,7 @@ function index() {
   const url = '/api/mission';
   React.useEffect(() => {
     axios.get(url).then((response) => {
-      setMission(response.data);
+      setMissions(response.data);
     });
   }, []);
 
@@ -139,15 +139,15 @@ function index() {
       <Container>
         {scrollVertical && <style>{scrollVerticalTrue}</style>}
         {!scrollVertical && <style>{scrollVerticalFalse}</style>}
-        <PageHading>미션목록</PageHading>
+        <PageHeading link={'/'} label={'미션목록'} />
         <Contents>
           <Tabs>
             <TabPane name='ongoing' key='0'>
-              {mission && mission.map(item => (
-                <MissionList key={item.uuid}>
+              {missions && missions.map(mission => (
+                <MissionList key={mission.uuid}>
                   <MissionItem>
-                    <MissionItemLink href={`/missions/${item.id}`}>
-                      <MissionThumbnail src={item.thumbnail} alt={item.subject} />
+                    <MissionItemLink href={`/missions/${mission.id}`}>
+                      <MissionThumbnail src={mission.thumbnail} alt={mission.subject} />
                       {isDesktop && <MissionMouseOver aria-label='미션상세 보러가기' />}
                     </MissionItemLink>
                   </MissionItem>
@@ -155,11 +155,11 @@ function index() {
               ))}
             </TabPane>
             <TabPane name='closed' key='1'>
-              {mission && mission.map(item => (
-                <MissionList key={item.uuid}>
+              {missions && missions.map(mission => (
+                <MissionList key={mission.uuid}>
                   <MissionItem>
-                    <MissionItemLink href={`/missions/${item.id}`}>
-                      <MissionThumbnail src={item.thumbnail} alt={item.subject} />
+                    <MissionItemLink href={`/missions/${mission.id}`}>
+                      <MissionThumbnail src={mission.thumbnail} alt={mission.subject} />
                       {isDesktop && <MissionMouseOver aria-label='미션결과 보러가기' />}
                     </MissionItemLink>
                   </MissionItem>

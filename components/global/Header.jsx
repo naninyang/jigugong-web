@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from '@emotion/styled';
 import LinkButton from '../../utils/LinkButton';
-import { Rem, styles } from '../../utils/designSystem';
+import { mq, Rem, Em, styles } from '../../utils/designSystem';
 import { images } from '../../assets';
 
 const Container = styled.header({
@@ -15,19 +15,29 @@ const Wrapper = styled.div({
   ...styles.widthSettings,
   margin: '0 auto',
   display: 'flex',
-  height: Rem(97),
   alignItems: 'center',
   justifyContent: 'space-between',
+  height: Rem(70),
+  [mq.minXsmall]: {
+    height: Rem(97),
+  },
 });
 
 const ServiceLogo = styled.h1({
-  width: Rem(143),
-  height: Rem(57),
+  width: Rem(38),
+  height: Rem(42),
+  [mq.minXsmall]: {
+    width: Rem(143),
+    height: Rem(57),
+  },
   '& a': {
     display: 'block',
     width: '100%',
     height: '100%',
-    background: `url(${images.logos.jigugongHorizontal}) no-repeat 50% 50%/contain`,
+    background: `url(${images.icons.jigugong}) no-repeat 50% 50%/contain`,
+    [mq.minXsmall]: {
+      backgroundImage: `url(${images.logos.jigugongHorizontal})`,
+    },
   },
   '& span': {
     ...styles.screenReaderOnly,
@@ -36,13 +46,25 @@ const ServiceLogo = styled.h1({
 
 const SocialMediaList = styled.ul({
   display: 'flex',
-  marginRight: `-${Rem(24)}`,
+  alignItems: 'center',
+  marginRight: `-${Rem(16)}`,
   height: Rem(80),
+  [mq.minLarge]: {
+    marginRight: `-${Rem(24)}`,
+  },
 });
 
 const SocialMediaItem = styled.li({
-  width: Rem(80),
-  height: Rem(80),
+  width: Rem(48),
+  height: Rem(48),
+  [mq.minXsmall]: {
+    width: Rem(64),
+    height: Rem(64),
+  },
+  [mq.minLarge]: {
+    width: Rem(80),
+    height: Rem(80),
+  },
   '& a': {
     width: '100%',
     height: '100%',
@@ -54,11 +76,17 @@ const SocialMediaItem = styled.li({
 });
 
 const InstagramLinkButton = styled(LinkButton)({
-  background: `url(${images.icons.instagram}) no-repeat 50% 50%/${Rem(32)}`,
+  background: `url(${images.icons.instagram}) no-repeat 50% 50%/${Rem(24)}`,
+  [mq.minXsmall]: {
+    backgroundSize: Rem(32),
+  },
 });
 
 const BlogLinkButton = styled(LinkButton)({
-  background: `url(${images.icons.naverBlog}) no-repeat 50% 50%/${Rem(32)}`,
+  background: `url(${images.icons.naverBlog}) no-repeat 50% 50%/${Rem(24)}`,
+  [mq.minXsmall]: {
+    backgroundSize: Rem(32),
+  },
 });
 
 function Header() {
