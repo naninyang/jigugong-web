@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from 'react';
 import styled from '@emotion/styled';
-import Main from './sections/landing/Main';
-import Mission from './sections/landing/Mission';
-import Feature from './sections/landing/Features';
-import Commerce from './sections/landing/Commerce';
-import Proposal from './sections/landing/Proposal';
+import Main from '../sections/landing/Main';
+import Mission from '../sections/landing/Mission';
+import Feature from '../sections/landing/Features';
+import Commerce from '../sections/landing/Commerce';
+import Proposal from '../sections/landing/Proposal';
 
 const Container = styled.div();
 

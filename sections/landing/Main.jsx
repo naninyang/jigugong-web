@@ -5,7 +5,7 @@ import styled from '@emotion/styled';
 import { mq, fontWeights, Rem, Em, styles } from '../../utils/designSystem';
 import LinkButton from '../../utils/LinkButton';
 import useScrollFadeIn from '../../utils/useScrollFadeIn';
-import { images } from '../../assets/';
+import { images } from '../../assets';
 import ButtonGreen from '../../components/landing/ButtonGreen';
 import Description from '../../components/landing/Description';
 

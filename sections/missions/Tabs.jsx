@@ -96,14 +96,13 @@ const Tabs = (props) => {
         <TabList className='TabList' id='nav-tab' role='tablist'>
           {tabHeader.map((item) => (
             <TabItem
-              id={'nav-' + item + '-tab'}
+              id={`nav-${item}-tab`}
               type='button'
               role='tab'
-              aria-controls={'nav-' + item}
+              aria-controls={`nav-${item}`}
               aria-selected={item === active ? 'true' : 'false'}
               onClick={() => changeTab(item)}
               key={item}
-              data-desc={item}
             >
               {item === 'ongoing' ? '진행중 미션' : '완료된 미션'}
             </TabItem>
@@ -116,9 +115,9 @@ const Tabs = (props) => {
             return (
               <TabPanel
                 class='TabPanel'
-                id={'nav-' + active}
+                id={`nav-${active}`}
                 role='tabpanel'
-                aria-labelledby={'nav-' + active + '-tab'}
+                aria-labelledby={`nav-${active}-tab`}
               >
                 {childContent[key]}
               </TabPanel>
@@ -135,8 +134,8 @@ const Tabs = (props) => {
 Tabs.propTypes = {
   children: function (props, propName, componentName) {
     const prop = props[propName];
-
     let error = null;
+
     React.Children.forEach(prop, function (child) {
       if (child.type !== TabPane) {
         error = new Error(

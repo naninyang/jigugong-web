@@ -8,7 +8,7 @@ import 'slick-carousel/slick/slick-theme.css';
 import { mq, styles, fontWeights, Rem, Em } from '../../utils/designSystem';
 import useScrollFadeIn from '../../utils/useScrollFadeIn';
 import LinkButton from '../../utils/LinkButton';
-import { images } from '../../assets/';
+import { images } from '../../assets';
 import ArticleList from '../../components/global/ArticleList';
 import ArticleListChildren from '../../components/global/ArticleListChildren';
 import HeadingPrimary from '../../components/landing/HeadingPrimary';

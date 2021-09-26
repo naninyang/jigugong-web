@@ -2,10 +2,10 @@ import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import { isIOS, isAndroid } from 'react-device-detect';
 import styled from '@emotion/styled';
-import { mq, fontWeights, Rem, Em, styles } from './utils/designSystem';
-import LinkButton from './utils/LinkButton';
-import Tabs from './sections/missions/Tabs';
-import TabPane from './sections/missions/TabPane';
+import { mq, fontWeights, Rem, Em, styles } from '../../utils/designSystem';
+import LinkButton from '../../utils/LinkButton';
+import Tabs from '../../sections/missions/Tabs';
+import TabPane from '../../sections/missions/TabPane';
 
 const scrollVerticalTrue = `body{background-color:#F6F6F6}`;
 const scrollVerticalFalse = `body{background-color:#FFFFFF}`;
@@ -99,7 +99,7 @@ const MissionMouseOver = styled.div({
   },
 });
 
-function missions() {
+function index() {
   const [scrollY, setScrollY] = useState(0);
   const [mission, setMission] = React.useState(null);
   useEffect(() => {
@@ -136,7 +136,7 @@ function missions() {
             {mission && mission.map(item => (
               <MissionList key={item.uuid}>
                 <MissionItem>
-                  <MissionItemLink href={'/missions/' + item.id}>
+                  <MissionItemLink href={`/missions/${item.id}`}>
                     <MissionThumbnail src={item.thumbnail} alt={item.subject} />
                     {isDesktop && <MissionMouseOver aria-label='미션상세 보러가기' />}
                   </MissionItemLink>
@@ -148,7 +148,7 @@ function missions() {
             {mission && mission.map(item => (
               <MissionList key={item.uuid}>
                 <MissionItem>
-                  <MissionItemLink href={'/missions/' + item.id}>
+                  <MissionItemLink href={`/missions/${item.id}`}>
                     <MissionThumbnail src={item.thumbnail} alt={item.subject} />
                     {isDesktop && <MissionMouseOver aria-label='미션결과 보러가기' />}
                   </MissionItemLink>
@@ -162,4 +162,4 @@ function missions() {
   )
 }
 
-export default missions;
+export default index;
