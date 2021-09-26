@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import Head from 'next/head';
 import axios from 'axios';
 import { isIOS, isAndroid } from 'react-device-detect';
 import styled from '@emotion/styled';
@@ -126,39 +127,49 @@ function index() {
   }, []);
 
   return (
-    <Container>
-      {scrollVertical && <style>{scrollVerticalTrue}</style>}
-      {!scrollVertical && <style>{scrollVerticalFalse}</style>}
-      <PageHading>미션목록</PageHading>
-      <Contents>
-        <Tabs>
-          <TabPane name='ongoing' key='0'>
-            {mission && mission.map(item => (
-              <MissionList key={item.uuid}>
-                <MissionItem>
-                  <MissionItemLink href={`/missions/${item.id}`}>
-                    <MissionThumbnail src={item.thumbnail} alt={item.subject} />
-                    {isDesktop && <MissionMouseOver aria-label='미션상세 보러가기' />}
-                  </MissionItemLink>
-                </MissionItem>
-              </MissionList>
-            ))}
-          </TabPane>
-          <TabPane name='closed' key='1'>
-            {mission && mission.map(item => (
-              <MissionList key={item.uuid}>
-                <MissionItem>
-                  <MissionItemLink href={`/missions/${item.id}`}>
-                    <MissionThumbnail src={item.thumbnail} alt={item.subject} />
-                    {isDesktop && <MissionMouseOver aria-label='미션결과 보러가기' />}
-                  </MissionItemLink>
-                </MissionItem>
-              </MissionList>
-            ))}
-          </TabPane>
-        </Tabs>
-      </Contents>
-    </Container>
+    <>
+      <Head>
+        <link rel='alternate' hrefLang='ko-KR' href='https://jigugong.com/missions/' key='alternate' />
+        <link rel='canonical' href='https://jigugong.com/missions/' key='canonical' />
+        <title key='title'>지구공 : 미션목록</title>
+        <meta property='og:title' content='지구공 : 미션목록' key='og:title' />
+        <meta property='og:url' content='https://jigugong.com/missions/' key='og:url' />
+        <meta property='og:site_name' content='지구공 : 미션목록' key='og:site_name' />
+      </Head>
+      <Container>
+        {scrollVertical && <style>{scrollVerticalTrue}</style>}
+        {!scrollVertical && <style>{scrollVerticalFalse}</style>}
+        <PageHading>미션목록</PageHading>
+        <Contents>
+          <Tabs>
+            <TabPane name='ongoing' key='0'>
+              {mission && mission.map(item => (
+                <MissionList key={item.uuid}>
+                  <MissionItem>
+                    <MissionItemLink href={`/missions/${item.id}`}>
+                      <MissionThumbnail src={item.thumbnail} alt={item.subject} />
+                      {isDesktop && <MissionMouseOver aria-label='미션상세 보러가기' />}
+                    </MissionItemLink>
+                  </MissionItem>
+                </MissionList>
+              ))}
+            </TabPane>
+            <TabPane name='closed' key='1'>
+              {mission && mission.map(item => (
+                <MissionList key={item.uuid}>
+                  <MissionItem>
+                    <MissionItemLink href={`/missions/${item.id}`}>
+                      <MissionThumbnail src={item.thumbnail} alt={item.subject} />
+                      {isDesktop && <MissionMouseOver aria-label='미션결과 보러가기' />}
+                    </MissionItemLink>
+                  </MissionItem>
+                </MissionList>
+              ))}
+            </TabPane>
+          </Tabs>
+        </Contents>
+      </Container>
+    </>
   )
 }
 
