@@ -7,12 +7,28 @@ const MissionNavigation = styled.nav({
   height: Rem(60),
   [mq.minXsmall]: {
     height: Rem(68),
+    '[data-container=article] &': {
+      height: Rem(60),
+    },
   },
 });
 
 const TabList = styled.div({
+  position: 'relative',
   display: 'flex',
   height: '100%',
+  '[data-container=article] &': {
+    justifyContent: 'space-around',
+  },
+  '&::after': {
+    content: '""',
+    position: 'absolute',
+    bottom: '2px',
+    left: 0,
+    width: '100%',
+    height: '1px',
+    backgroundColor: '#aaaaaa',
+  },
 });
 
 const TabItem = styled.button({
@@ -25,23 +41,29 @@ const TabItem = styled.button({
   fontWeight: fontWeights.Medium,
   color: '#aaaaaa',
   ...styles.col,
+  '[data-container=article] &': {
+    flex: 'none',
+    padding: `0 ${Em(20)}`,
+    width: 'auto',
+    maxWidth: 'none',
+    fontSize: Rem(18),
+  },
   [mq.minXsmall]: {
     fontSize: Rem(24),
-  },
-  '&::after': {
-    content: '""',
-    position: 'absolute',
-    bottom: '2px',
-    left: 0,
-    width: '100%',
-    height: '1px',
-    backgroundColor: '#aaaaaa',
+    '[data-container=article] &': {
+      fontSize: Rem(22),
+    },
   },
   '&[aria-selected=true]': {
     fontWeight: fontWeights.SemiBold,
     color: '#0aaa55',
     '&::after': {
+      content: '""',
+      position: 'absolute',
+      left: 0,
       bottom: 0,
+      zIndex: 9,
+      width: '100%',
       height: Rem(6),
       backgroundColor: '#0aaa55',
       boxShadow: `0 ${Em(2)} ${Em(2)} rgba(0, 0, 0, 0.25)`,
@@ -93,7 +115,7 @@ const Tabs = (props) => {
   return (
     <>
       <MissionNavigation>
-        <TabList className='TabList' id='nav-tab' role='tablist'>
+        <TabList id='nav-tab' role='tablist'>
           {tabHeader.map((item) => (
             <TabItem
               id={`nav-${item}-tab`}
@@ -104,17 +126,20 @@ const Tabs = (props) => {
               onClick={() => changeTab(item)}
               key={item}
             >
-              {item === 'ongoing' ? '진행중 미션' : '완료된 미션'}
+              {item === 'ongoing' ? '진행중 미션' : null}
+              {item === 'closed' ? '완료된 미션' : null}
+              {item === 'contents' ? '미션소개' : null}
+              {item === 'participants' ? '참여자' : null}
+              {item === 'articles' ? '인증사진' : null}
             </TabItem>
           ))}
         </TabList>
       </MissionNavigation>
-      <MissionContent className='tab-content MissionContent' id='nav-tabContent'>
+      <MissionContent id='nav-tabContent'>
         {Object.keys(childContent).map((key) => {
           if (key === active) {
             return (
               <TabPanel
-                class='TabPanel'
                 id={`nav-${active}`}
                 role='tabpanel'
                 aria-labelledby={`nav-${active}-tab`}

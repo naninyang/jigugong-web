@@ -102,7 +102,6 @@ const MissionMouseOver = styled.div({
 
 function index() {
   const [scrollY, setScrollY] = useState(0);
-  const [missions, setMissions] = React.useState(null);
   useEffect(() => {
     const handleScroll = () => {
       setScrollY(window.scrollY);
@@ -118,6 +117,7 @@ function index() {
 
   const scrollVertical = scrollY > 97 ? true : false
   const isDesktop = !isIOS && !isAndroid ? true : false;
+  const [missions, setMissions] = React.useState(null);
 
   const url = '/api/missions';
   React.useEffect(() => {

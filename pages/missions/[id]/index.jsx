@@ -3,8 +3,9 @@ import Head from 'next/head';
 import { RadialChart, makeVisFlexible } from 'react-vis';
 import styled from '@emotion/styled';
 import { mq, styles, fontWeights, Rem, Em } from '../../../utils/designSystem';
-import LinkButton from '../../../utils/LinkButton';
 import PageHeading from '../../../components/global/PageHeading';
+import Tabs from '../../../sections/missions/Tabs';
+import TabPane from '../../../sections/missions/TabPane';
 
 const scrollVerticalTrue = `body{background-color:#F6F6F6}`;
 const scrollVerticalFalse = `body{background-color:#FFFFFF}`;
@@ -28,6 +29,7 @@ const MissionGraph = [
 
 const Container = styled.div({
   marginTop: Rem(70),
+  paddingBottom: Rem(100),
   borderTop: '1px solid #aaaaaa',
   backgroundColor: '#ffffff',
   [mq.minXsmall]: {
@@ -98,6 +100,7 @@ const MissionInfoDescription = styled.dd({
 const MissionFigure = styled.div({
   display: 'flex',
   paddingBottom: Em(50),
+  borderBottom: '1px solid #C4C4C4',
 });
 
 const Percentage = styled.div({
@@ -183,7 +186,19 @@ const FigureTerm = styled.strong({
   },
 });
 
-function MissionItem({ mission }) {
+const MissionContents = styled.div({
+  margin: '0 auto',
+  maxWidth: Rem(439),
+  width: '100%',
+});
+
+const ContentsImage = styled.img({
+  marginTop: Em(13),
+  display: 'block',
+  width: '100%',
+});
+
+function MissionItem() {
   const [scrollY, setScrollY] = useState(0);
   const scrollVertical = scrollY > 97 ? true : false
 
@@ -203,21 +218,21 @@ function MissionItem({ mission }) {
   return (
     <>
       <Head>
-        <link rel='alternate' hrefLang='ko-KR' href={`https://jigugong.com/missions/${mission.id}`} key='alternate' />
-        <link rel='canonical' href={`https://jigugong.com/missions/${mission.id}`} key='canonical' />
-        <title key='title'>{`지구공 : ${mission.subject}`}</title>
-        <meta name='description' content={`지구공 : ${mission.context}`} key='description' />
-        <meta property='og:title' content={`지구공 : ${mission.subject}`} key='og:title' />
-        <meta property='og:description' content={`지구공 : ${mission.context}`} key='og:description' />
-        <meta property='og:image' content={`${mission.thumbnail}?${Math.random().toString(36).substr(2, 11)}`} key='og:image' />
-        <meta property='og:url' content={`https://jigugong.com/missions/${mission.id}`} key='og:url' />
+        <link rel='alternate' hrefLang='ko-KR' href={`https://jigugong.com/missions/{mission.id}`} key='alternate' />
+        <link rel='canonical' href={`https://jigugong.com/missions/{mission.id}`} key='canonical' />
+        <title key='title'>{`지구공 : {mission.subject}`}</title>
+        <meta name='description' content={`지구공 : {mission.context}`} key='description' />
+        <meta property='og:title' content={`지구공 : {mission.subject}`} key='og:title' />
+        <meta property='og:description' content={`지구공 : {mission.context}`} key='og:description' />
+        <meta property='og:image' content={`{mission.thumbnail}?${Math.random().toString(36).substr(2, 11)}`} key='og:image' />
+        <meta property='og:url' content={`https://jigugong.com/missions/{mission.id}`} key='og:url' />
         <meta property='og:type' content='article' key='og:type' />
-        <meta property='og:site_name' content={`지구공 : ${mission.subject}`} key='og:site_name' />
+        <meta property='og:site_name' content={`지구공 : {mission.subject}`} key='og:site_name' />
       </Head>
-      <Container>
+      <Container data-container='article'>
         {scrollVertical && <style>{scrollVerticalTrue}</style>}
         {!scrollVertical && <style>{scrollVerticalFalse}</style>}
-        <PageHeading link={'/'} label={mission.subject} />
+        <PageHeading link={'/'} label={'mission.subject'} />
         <Contents>
           <MissionImage>
             <MissionThumbnail
@@ -258,21 +273,27 @@ function MissionItem({ mission }) {
               <FigureTerm>참여 횟수</FigureTerm>
             </StatusInfo>
           </MissionFigure>
+          <Tabs>
+            <TabPane name='contents' key='0'>
+              <MissionContents>
+                <ContentsImage src={'https://dummyimage.com/489x489/0EAA5/fff.png'} alt='' />
+                <ContentsImage src={'https://dummyimage.com/489x489/0EAA5/fff.png'} alt='' />
+                <ContentsImage src={'https://dummyimage.com/489x489/0EAA5/fff.png'} alt='' />
+                <ContentsImage src={'https://dummyimage.com/489x489/0EAA5/fff.png'} alt='' />
+                <ContentsImage src={'https://dummyimage.com/489x489/0EAA5/fff.png'} alt='' />
+              </MissionContents>
+            </TabPane>
+            <TabPane name='participants' key='1'>
+              참여자 목록
+            </TabPane>
+            <TabPane name='articles' key='2'>
+              인증사진 목록
+            </TabPane>
+          </Tabs>
         </Contents>
       </Container>
     </>
   )
 }
-async function getInitialProps({ query }) {
-  const { id, subject } = query;
-  return {
-    mission: {
-      id,
-      subject,
-    },
-  };
-}
-
-MissionItem.getInitialProps = getInitialProps;
 
 export default MissionItem;
