@@ -83,7 +83,7 @@ const ContactInfoHeading = styled.h2({
   [mq.minTablet]: {
     fontSize: Rem(16),
   },
-  [mq.minXsmall]: {
+  [mq.minSmall]: {
     margin: `${Em(7)} 0 ${Em(10)}`,
   },
 });
@@ -97,7 +97,7 @@ const ContactInfoTerm = styled.dt({
   margin: `${Rem(5)} 0`,
   height: Rem(19),
   flexBasis: Rem(26),
-  [mq.minXsmall]: {
+  [mq.minSmall]: {
     flexBasis: Rem(30),
     height: Rem(23),
   },

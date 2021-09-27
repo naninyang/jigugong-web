@@ -119,7 +119,7 @@ function index() {
   const scrollVertical = scrollY > 97 ? true : false
   const isDesktop = !isIOS && !isAndroid ? true : false;
 
-  const url = '/api/mission';
+  const url = '/api/missions';
   React.useEffect(() => {
     axios.get(url).then((response) => {
       setMissions(response.data);
