@@ -178,7 +178,7 @@ function Footer() {
           <ContactInfoHeading>Contact</ContactInfoHeading>
           <ContactInfoList>
             <ContactInfoTerm data-item={'phone'}><span>Phone</span></ContactInfoTerm>
-            <ContactInfoDescription><a href='tel:1688-3290'>050-7148-60525</a></ContactInfoDescription>
+            <ContactInfoDescription><a href='tel:050-7148-60525'>050-7148-60525</a></ContactInfoDescription>
             <ContactInfoTerm data-item={'email'}><span>Email</span></ContactInfoTerm>
             <ContactInfoDescription><a href='mailto:info@jigugong.com'>info@jigugong.com</a></ContactInfoDescription>
           </ContactInfoList>
