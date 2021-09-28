@@ -2,7 +2,6 @@ import React from 'react';
 import styled from '@emotion/styled';
 import { fontWeights, Rem, Em } from '../../utils/designSystem';
 
-
 const MissionParticipants = styled.ul();
 
 const ParticipantsCount = styled.strong({

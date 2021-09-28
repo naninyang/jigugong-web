@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import Head from 'next/head';
 import { RadialChart, makeVisFlexible } from 'react-vis';
 import styled from '@emotion/styled';
@@ -8,6 +8,7 @@ import Tabs from '../../../sections/missions/Tabs';
 import TabPane from '../../../sections/missions/TabPane';
 import ArticleTabContents from '../../../sections/missions/ArticleTabContents';
 import ArticleTabParticipants from '../../../sections/missions/ArticleTabParticipants';
+import ArticleTabArticles from '../../../sections/missions/ArticleTabArticles';
 
 const scrollVerticalTrue = `body{background-color:#F6F6F6}`;
 const scrollVerticalFalse = `body{background-color:#FFFFFF}`;
@@ -283,7 +284,7 @@ function MissionItem() {
               <ArticleTabParticipants />
             </TabPane>
             <TabPane name='articles' key='2'>
-              인증사진 목록
+              <ArticleTabArticles />
             </TabPane>
           </Tabs>
         </Contents>
