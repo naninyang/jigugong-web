@@ -146,6 +146,8 @@ const CreatorName = styled.div({
 const Description = styled.div({
   padding: `${Em(16)} ${Em(7)}`,
   '& p': {
+    fontSize: Rem(18),
+    fontWeight: fontWeights.Regular,
     lineHeight: 1.56,
   },
 });
@@ -215,11 +217,120 @@ const ItemOptionBookmarkIconImage = styled.img({
 
 const CommentList = styled.ul();
 
-const CommentItem = styled.li();
+const CommentItem = styled.li({
+  paddingTop: Em(16),
+  borderTop: '1px solid #C4C4C4',
+  '&:first-of-type': {
+    borderTop: 0,
+  },
+});
 
-const ReplyList = styled.ul();
+const AsideCreator = styled.div({
+  display: 'flex',
+  alignItems: 'center',
+  padding: `0 ${Em(16)}`,
+});
 
-const ReplyItem = styled.li();
+const AsideAvatar = styled.div({
+  width: Rem(25),
+  height: Rem(25),
+  overflow: 'hidden',
+  borderRadius: '100%',
+});
+
+const AsideImage = styled.img({
+  width: '100%',
+  height: '100%',
+  objectFit: 'cover',
+});
+
+const AsideName = styled.div({
+  marginLeft: Em(12),
+  fontSize: Rem(18),
+  fontWeight: fontWeights.Regular,
+});
+
+const AsideDateTime = styled.time({
+  marginLeft: Em(16),
+  fontSize: Rem(16),
+  fontWeight: fontWeights.Regular,
+  color: '#5a5a5a',
+});
+
+const AsideDescription = styled.div({
+  padding: `${Em(12)} ${Em(16)} ${Em(8)}`,
+  '& p': {
+    fontSize: Rem(18),
+    fontWeight: fontWeights.Regular,
+    lineHeight: 1.56,
+  },
+});
+
+const AsideOptions = styled.div({
+  display: 'flex',
+  alignItems: 'center',
+  padding: `0 ${Em(16)} ${Em(11)}`,
+});
+
+const AsideOptionLike = styled.span({
+  display: 'flex',
+  alignItems: 'center',
+});
+
+const AsideOptionLikeIcon = styled.span({
+  display: 'flex',
+  alignItems: 'center',
+  width: Rem(20),
+  height: Rem(23),
+});
+
+const AsideOptionLikeIconImage = styled.img({
+  width: Rem(19),
+});
+
+const AsideOptionStatus = styled.span({
+  padding: `${Em(2)} 0 0 ${Em(5)}`,
+  fontSize: Rem(14),
+  letterSpacing: `-${Rem(.5)}`,
+  fontWeight: fontWeights.Regular,
+  color: '#000000',
+});
+
+const AsideOptionReply = styled.span({
+  display: 'flex',
+  alignItems: 'center',
+  padding: `0 ${Em(40)}`,
+});
+
+const AsideOptionReplyIcon = styled.span({
+  width: Rem(20),
+  height: Rem(23),
+  background: `url(${images.icons.chatbox}) no-repeat 50% 50%/${Rem(18)} ${Rem(22)}`,
+});
+
+const AsideMore = styled.div({
+  marginTop: `-${Em(8)}`,
+});
+
+const AsideMoreButton = styled.button({
+  padding: `${Em(8)} ${Em(16)}`,
+  border: 0,
+  backgroundColor: '#ffffff',
+  fontSize: Rem(18),
+  fontWeight: fontWeights.Regular,
+  color: '#000000',
+});
+
+const ReplyList = styled.ul({
+  marginLeft: Em(16),
+});
+
+const ReplyItem = styled.li({
+  margin: Em(8),
+  paddingTop: Em(16),
+  borderRadius: Em(10),
+  backgroundColor: '#f6f6f6',
+});
 
 function ArticleItem() {
   const [scrollY, setScrollY] = useState(0);
@@ -335,20 +446,144 @@ function ArticleItem() {
           </ItemOptions>
 
           <CommentList>
+            {/* {} */}
             <CommentItem>
-              comment #1
+              <AsideCreator>
+                <AsideAvatar><AsideImage src={'https://dummyimage.com/25x25/0EAA5/fff.png'} alt='' /></AsideAvatar>
+                <AsideName>이먼지</AsideName>
+                <AsideDateTime datetime='2021-08-16'>2021.08.16</AsideDateTime>
+              </AsideCreator>
+              <AsideDescription>
+                <p>안녕하세요 안녕하세요 안녕하세요 안녕하세요 안녕하세요</p>
+                <p>안녕하세요 안녕하세요 안녕하세요 안녕하세요 안녕하세요 안녕하세요</p>
+              </AsideDescription>
+              <AsideOptions>
+                <AsideOptionLike>
+                  <AsideOptionLikeIcon>
+                    <AsideOptionLikeIconImage
+                      src={`${images.icons.heartFalse}`}
+                      alt={'찜안됨'}
+                    />
+                  </AsideOptionLikeIcon>
+                  <AsideOptionStatus aria-label={'찜 개수'}>12</AsideOptionStatus>
+                </AsideOptionLike>
+                <AsideOptionReply>
+                  <AsideOptionReplyIcon />
+                  <AsideOptionStatus aria-label={'댓글 개수'}>10</AsideOptionStatus>
+                </AsideOptionReply>
+              </AsideOptions>
+              {/* {} */}
             </CommentItem>
             <CommentItem>
-              comment #2
-              <button type='button'>대댓글 1개 더보기</button>
+              <AsideCreator>
+                <AsideAvatar><AsideImage src={'https://dummyimage.com/25x25/0EAA5/fff.png'} alt='' /></AsideAvatar>
+                <AsideName>이먼지</AsideName>
+                <AsideDateTime datetime='2021-08-16'>2021.08.16</AsideDateTime>
+              </AsideCreator>
+              <AsideDescription>
+                <p>안녕하세요 안녕하세요 안녕하세요 안녕하세요 안녕하세요</p>
+                <p>안녕하세요 안녕하세요 안녕하세요 안녕하세요 안녕하세요 안녕하세요</p>
+              </AsideDescription>
+              <AsideOptions>
+                <AsideOptionLike>
+                  <AsideOptionLikeIcon>
+                    <AsideOptionLikeIconImage
+                      src={`${images.icons.heartTrue}`}
+                      alt={'찜됨'}
+                    />
+                  </AsideOptionLikeIcon>
+                  <AsideOptionStatus aria-label={'찜 개수'}>12</AsideOptionStatus>
+                </AsideOptionLike>
+                <AsideOptionReply>
+                  <AsideOptionReplyIcon />
+                  <AsideOptionStatus aria-label={'댓글 개수'}>10</AsideOptionStatus>
+                </AsideOptionReply>
+              </AsideOptions>
+              <AsideMore><AsideMoreButton type='button'>대댓글 1개 더보기</AsideMoreButton></AsideMore>
               <ReplyList>
+                {/*  */}
                 <ReplyItem>
-                  reply #2_1
+                  <AsideCreator>
+                    <AsideAvatar><AsideImage src={'https://dummyimage.com/25x25/0EAA5/fff.png'} alt='' /></AsideAvatar>
+                    <AsideName>이먼지</AsideName>
+                    <AsideDateTime datetime='2021-08-16'>2021.08.16</AsideDateTime>
+                  </AsideCreator>
+                  <AsideDescription>
+                    <p>안녕하세요 안녕하세요 안녕하세요 안녕하세요 안녕하세요</p>
+                    <p>안녕하세요 안녕하세요 안녕하세요 안녕하세요 안녕하세요 안녕하세요</p>
+                  </AsideDescription>
+                  <AsideOptions>
+                    <AsideOptionLike>
+                      <AsideOptionLikeIcon>
+                        <AsideOptionLikeIconImage
+                          src={`${images.icons.heartTrue}`}
+                          alt={'찜됨'}
+                        />
+                      </AsideOptionLikeIcon>
+                      <AsideOptionStatus aria-label={'찜 개수'}>12</AsideOptionStatus>
+                    </AsideOptionLike>
+                    <AsideOptionReply>
+                      <AsideOptionReplyIcon />
+                      <AsideOptionStatus aria-label={'댓글 개수'}>10</AsideOptionStatus>
+                    </AsideOptionReply>
+                  </AsideOptions>
                 </ReplyItem>
+                {/*  */}
                 <ReplyItem>
-                  reply #2_2
+                  <AsideCreator>
+                    <AsideAvatar><AsideImage src={'https://dummyimage.com/25x25/0EAA5/fff.png'} alt='' /></AsideAvatar>
+                    <AsideName>이먼지</AsideName>
+                    <AsideDateTime datetime='2021-08-16'>2021.08.16</AsideDateTime>
+                  </AsideCreator>
+                  <AsideDescription>
+                    <p>안녕하세요 안녕하세요 안녕하세요 안녕하세요 안녕하세요</p>
+                    <p>안녕하세요 안녕하세요 안녕하세요 안녕하세요 안녕하세요 안녕하세요</p>
+                  </AsideDescription>
+                  <AsideOptions>
+                    <AsideOptionLike>
+                      <AsideOptionLikeIcon>
+                        <AsideOptionLikeIconImage
+                          src={`${images.icons.heartFalse}`}
+                          alt={'찜안됨'}
+                        />
+                      </AsideOptionLikeIcon>
+                      <AsideOptionStatus aria-label={'찜 개수'}>12</AsideOptionStatus>
+                    </AsideOptionLike>
+                    <AsideOptionReply>
+                      <AsideOptionReplyIcon />
+                      <AsideOptionStatus aria-label={'댓글 개수'}>10</AsideOptionStatus>
+                    </AsideOptionReply>
+                  </AsideOptions>
                 </ReplyItem>
+                {/*  */}
               </ReplyList>
+            </CommentItem>
+            <CommentItem>
+              <AsideCreator>
+                <AsideAvatar><AsideImage src={'https://dummyimage.com/25x25/0EAA5/fff.png'} alt='' /></AsideAvatar>
+                <AsideName>이먼지</AsideName>
+                <AsideDateTime datetime='2021-08-16'>2021.08.16</AsideDateTime>
+              </AsideCreator>
+              <AsideDescription>
+                <p>안녕하세요 안녕하세요 안녕하세요 안녕하세요 안녕하세요</p>
+                <p>안녕하세요 안녕하세요 안녕하세요 안녕하세요 안녕하세요 안녕하세요</p>
+              </AsideDescription>
+              <AsideOptions>
+                <AsideOptionLike>
+                  <AsideOptionLikeIcon>
+                    <AsideOptionLikeIconImage
+                      src={`${images.icons.heartFalse}`}
+                      alt={'찜안됨'}
+                    />
+                  </AsideOptionLikeIcon>
+                  <AsideOptionStatus aria-label={'찜 개수'}>12</AsideOptionStatus>
+                </AsideOptionLike>
+                <AsideOptionReply>
+                  <AsideOptionReplyIcon />
+                  <AsideOptionStatus aria-label={'댓글 개수'}>10</AsideOptionStatus>
+                </AsideOptionReply>
+              </AsideOptions>
+              {/* {} */}
             </CommentItem>
           </CommentList>
 
