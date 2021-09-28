@@ -2,6 +2,7 @@ import React from 'react';
 import styled from '@emotion/styled';
 import { mq, fontWeights, Rem, Em, styles } from '../../utils/designSystem';
 import { images } from '../../assets';
+import LinkButton from '../../utils/LinkButton';
 
 const Container = styled.footer({
   backgroundColor: '#f6f6f6',
@@ -58,6 +59,9 @@ const LawInfoDescription = styled.dd({
   fontWeight: fontWeights.Regular,
   fontSize: Rem(12),
   color: '#5a5a5a',
+  '& a': {
+    color: '#5a5a5a',
+  },
   [mq.minTablet]: {
     padding: `${Em(7)} 0`,
     width: `calc(100% - ${Rem(170)})`,
@@ -157,22 +161,24 @@ function Footer() {
             <LawInfoTerm>상호명</LawInfoTerm>
             <LawInfoDescription>얼씨 주식회사</LawInfoDescription>
             <LawInfoTerm>사업자등록번호</LawInfoTerm>
-            <LawInfoDescription>000-00-00000</LawInfoDescription>
-            <LawInfoTerm>통신판매업번호</LawInfoTerm>
-            <LawInfoDescription>000-00-00000</LawInfoDescription>
-            <LawInfoTerm>개인정보책임관리자</LawInfoTerm>
-            <LawInfoDescription>김기섭</LawInfoDescription>
+            <LawInfoDescription>253-86-01951</LawInfoDescription>
+            <LawInfoTerm>통신판매번호</LawInfoTerm>
+            <LawInfoDescription>
+              <LinkButton href='https://www.ftc.go.kr/www/bizCommView.do?key=232&apv_perm_no=2021316015930202263'>2021-서울구로-2336</LinkButton>
+            </LawInfoDescription>
             <LawInfoTerm>대표이사</LawInfoTerm>
             <LawInfoDescription>김지원</LawInfoDescription>
+            <LawInfoTerm>개인정보책임관리자</LawInfoTerm>
+            <LawInfoDescription>김지원</LawInfoDescription>
             <LawInfoTerm>주소</LawInfoTerm>
-            <LawInfoDescription><address>서울시</address></LawInfoDescription>
+            <LawInfoDescription><address>서울특별시 구로구 신도림로13길 51, 2층 (신도림동)</address></LawInfoDescription>
           </LawInfoList>
         </LawInfo>
         <ContactInfo>
           <ContactInfoHeading>Contact</ContactInfoHeading>
           <ContactInfoList>
             <ContactInfoTerm data-item={'phone'}><span>Phone</span></ContactInfoTerm>
-            <ContactInfoDescription><a href='tel:1688-3290'>1688-3290</a></ContactInfoDescription>
+            <ContactInfoDescription><a href='tel:1688-3290'>050-7148-60525</a></ContactInfoDescription>
             <ContactInfoTerm data-item={'email'}><span>Email</span></ContactInfoTerm>
             <ContactInfoDescription><a href='mailto:info@jigugong.com'>info@jigugong.com</a></ContactInfoDescription>
           </ContactInfoList>
