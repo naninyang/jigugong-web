@@ -1,9 +1,9 @@
-import React, { Children } from 'react';
+import React from 'react';
 import { useMediaQuery } from 'react-responsive';
 import { isIOS, isAndroid } from 'react-device-detect';
-import Slider from 'react-slick';
 import axios from 'axios';
 import styled from '@emotion/styled';
+import Slider from 'react-slick';
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
 import { mq, styles, Rem, Em, fontWeights } from '../../utils/designSystem';
