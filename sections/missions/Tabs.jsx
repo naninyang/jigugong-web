@@ -105,7 +105,6 @@ const Tabs = (props) => {
     setTabHeader(headers);
     setActive(headers[0]);
     setChildConent({ ...childCnt });
-    console.log(childCnt);
   }, [props, children]);
 
   const changeTab = (name) => {
