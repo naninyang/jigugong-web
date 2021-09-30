@@ -1,8 +1,8 @@
 import React from 'react';
-import Slider from 'react-slick';
 import axios from 'axios';
 import { isIOS, isAndroid } from 'react-device-detect';
 import styled from '@emotion/styled';
+import Slider from 'react-slick';
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
 import { mq, styles, fontWeights, Clamp, Rem, Em } from '../../utils/designSystem';
@@ -350,11 +350,11 @@ const ButtonNext = styled.button({
 const ActionInfo = styled(LinkButton)(({ isDesktop }) => ({
   display: 'block',
   margin: Em(5),
-  boxShadow: `0 ${Em(4)} ${Em(4)} rgba(0, 0, 0, .25)`,
+  boxShadow: isDesktop ? `-${Em(10)} -${Em(10)} ${Em(20)} #F3F3F3` : `0 ${Em(4)} ${Em(4)} rgba(0, 0, 0, .25)`,
   borderRadius: Em(20),
   transition: 'box-shadow .25s',
   '&:hover': {
-    boxShadow: isDesktop ? `0 ${Em(8)} ${Em(8)} rgba(0, 0, 0, .25)` : `0 ${Em(4)} ${Em(4)} rgba(0, 0, 0, .25)`,
+    boxShadow: isDesktop ? `0 ${Em(4)} ${Em(4)} rgba(0, 0, 0, .25)` : `0 ${Em(4)} ${Em(4)} rgba(0, 0, 0, .25)`,
     '& [aria-hidden] img': {
       transform: isDesktop ? 'scale(1.1)' : 'scale(1)',
     },

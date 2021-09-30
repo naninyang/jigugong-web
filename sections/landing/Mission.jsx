@@ -244,10 +244,10 @@ const OrganizationInfo = styled(LinkButton)(({ isDesktop }) => ({
   display: 'block',
   margin: `${Em(5)} ${Em(5)} ${Em(15)}`,
   borderRadius: Em(20),
-  boxShadow: `0 ${Em(4)} ${Em(4)} rgba(0, 0, 0, .25)`,
+  boxShadow: isDesktop ? `-${Em(10)} -${Em(10)} ${Em(20)} #F3F3F3` : `0 ${Em(4)} ${Em(4)} rgba(0, 0, 0, .25)`,
   transition: 'box-shadow .25s',
   '&:hover': {
-    boxShadow: isDesktop ? `0 ${Em(8)} ${Em(8)} rgba(0, 0, 0, .25)` : `0 ${Em(4)} ${Em(4)} rgba(0, 0, 0, .25)`,
+    boxShadow: isDesktop ? `0 ${Em(4)} ${Em(4)} rgba(0, 0, 0, .25)` : `0 ${Em(4)} ${Em(4)} rgba(0, 0, 0, .25)`,
     '& img': {
       transform: isDesktop ? 'scale(1.1)' : 'scale(1)',
     },
@@ -265,7 +265,7 @@ const OrganizationImage = styled.div({
   height: 0,
 });
 
-const OrganizationBanner = styled.img(({ isDesktop }) => ({
+const OrganizationBanner = styled.img({
   position: 'absolute',
   top: 0,
   left: 0,
@@ -274,7 +274,7 @@ const OrganizationBanner = styled.img(({ isDesktop }) => ({
   objectFit: 'cover',
   transition: 'transform .25s',
   transform: 'scale(1)',
-}));
+});
 
 const OrganizationName = styled.strong({
   display: 'flex',

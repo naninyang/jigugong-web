@@ -102,7 +102,7 @@ const ButtonPrevious = styled.button({
   zIndex: 9,
   width: Rem(25),
   height: '100%',
-  background: `#f6f6f6 url(${images.icons.sliderPrevious}) no-repeat 50% 50%/${Rem(13)} ${Rem(23)}`,
+  background: 'none',
   [mq.minTablet]: {
     left: `-${Rem(28)}`,
     width: Rem(40),
@@ -110,16 +110,33 @@ const ButtonPrevious = styled.button({
   [mq.minSmall]: {
     left: `-${Rem(60)}`,
     width: Rem(70),
-    backgroundSize: `${Rem(18)} ${Rem(33)}`,
   },
-  '&:hover, &:focus': {
+  '&::before, &::after': {
+    content: '""',
+    position: 'absolute',
+    top: 0,
+    left: 0,
+    height: '100%',
+  },
+  '&::before': {
+    zIndex: 1,
+    width: `calc(100% - ${Rem(8)})`,
+    opacity: 1,
+    backgroundColor: '#f6f6f6',
+  },
+  '&::after': {
+    width: '100%',
+    zIndex: 2,
     background: `url(${images.icons.sliderPrevious}) no-repeat 50% 50%/${Rem(13)} ${Rem(23)}`,
     [mq.minSmall]: {
       backgroundSize: `${Rem(18)} ${Rem(33)}`,
     },
-  },
-  '&::before': {
-    display: 'none',
+    '&:hover, &:focus': {
+      background: `url(${images.icons.sliderPrevious}) no-repeat 50% 50%/${Rem(13)} ${Rem(23)}`,
+      [mq.minSmall]: {
+        backgroundSize: `${Rem(18)} ${Rem(33)}`,
+      },
+    },
   },
 });
 
@@ -128,7 +145,7 @@ const ButtonNext = styled.button({
   zIndex: 9,
   width: Rem(25),
   height: '100%',
-  background: `url(${images.icons.sliderNext}) no-repeat 50% 50%/${Rem(13)} ${Rem(23)}`,
+  background: 'none',
   [mq.minTablet]: {
     right: `-${Rem(28)}`,
     width: Rem(40),
@@ -136,36 +153,57 @@ const ButtonNext = styled.button({
   [mq.minSmall]: {
     right: `-${Rem(60)}`,
     width: Rem(70),
-    backgroundSize: `${Rem(18)} ${Rem(33)}`,
   },
-  '&:hover, &:focus': {
+  '&::before, &::after': {
+    content: '""',
+    position: 'absolute',
+    top: 0,
+    right: 0,
+    height: '100%',
+  },
+  '&::before': {
+    zIndex: 1,
+    width: `calc(100% - ${Rem(8)})`,
+    opacity: 1,
+    backgroundColor: '#f6f6f6',
+  },
+  '&::after': {
+    width: '100%',
+    zIndex: 2,
     background: `url(${images.icons.sliderNext}) no-repeat 50% 50%/${Rem(13)} ${Rem(23)}`,
     [mq.minSmall]: {
       backgroundSize: `${Rem(18)} ${Rem(33)}`,
     },
-  },
-  '&::before': {
-    display: 'none',
+    '&:hover, &:focus': {
+      background: `url(${images.icons.sliderNext}) no-repeat 50% 50%/${Rem(13)} ${Rem(23)}`,
+      [mq.minSmall]: {
+        backgroundSize: `${Rem(18)} ${Rem(33)}`,
+      },
+    },
   },
 });
 
 const ProductInfo = styled(LinkButton)(({ isDesktop }) => ({
   display: 'block',
-  margin: `0 ${Em(5)}`,
+  margin: `${Em(5)} ${Em(5)} ${Em(15)}`,
+  borderRadius: Em(20),
+  boxShadow: isDesktop ? `-${Em(10)} -${Em(10)} ${Em(20)} #F3F3F3` : `0 ${Em(4)} ${Em(4)} rgba(0, 0, 0, .25)`,
+  transition: 'box-shadow .25s',
   '&:hover': {
+    boxShadow: isDesktop ? `0 ${Em(4)} ${Em(4)} rgba(0, 0, 0, .25)` : `0 ${Em(4)} ${Em(4)} rgba(0, 0, 0, .25)`,
     '& [aria-hidden] img': {
       transform: isDesktop ? 'scale(1.1)' : 'scale(1)',
     },
   },
   [mq.minTablet]: {
-    margin: `0 ${Em(10)}`,
+    margin: `${Em(10)} ${Em(10)} ${Em(15)}`,
   },
 }));
 
 const ProductImage = styled.div({
   position: 'relative',
   paddingTop: '89.6%',
-  borderRadius: Em(5),
+  borderRadius: `${Em(20)} ${Em(20)} 0 0`,
   overflow: 'hidden',
   height: 0,
 });
@@ -183,6 +221,8 @@ const ProductThumbnail = styled.img({
 
 const ProductFigure = styled.div({
   padding: `${Em(10)} 0 ${Em(10)} ${Em(16)}`,
+  backgroundColor: '#ffffff',
+  borderRadius: `0 0 ${Em(16.2)} ${Em(16.2)}`,
   [mq.minSmall]: {
     padding: `${Em(14)} 0 ${Em(14)} ${Em(20)}`,
   },
