@@ -8,30 +8,30 @@ import Proposal from '../sections/landing/Proposal';
 
 const Container = styled.div();
 
-const scrollVerticalTrue = `body{background-color:#F6F6F6}`;
-const scrollVerticalFalse = `body{background-color:#DCF5E8}`;
+// const scrollVerticalTrue = `body{background-color:#F6F6F6}`;
+// const scrollVerticalFalse = `body{background-color:#DCF5E8}`;
 
 function index() {
-  const [scrollY, setScrollY] = useState(0);
-  useEffect(() => {
-    const handleScroll = () => {
-      setScrollY(window.scrollY);
-    };
+  // const [scrollY, setScrollY] = useState(0);
+  // useEffect(() => {
+  //   const handleScroll = () => {
+  //     setScrollY(window.scrollY);
+  //   };
 
-    handleScroll();
+  //   handleScroll();
 
-    window.addEventListener('scroll', handleScroll);
-    return () => {
-      window.removeEventListener('scroll', handleScroll);
-    };
-  }, []);
+  //   window.addEventListener('scroll', handleScroll);
+  //   return () => {
+  //     window.removeEventListener('scroll', handleScroll);
+  //   };
+  // }, []);
 
-  const scrollVertical = scrollY > 700 ? true : false
+  // const scrollVertical = scrollY > 700 ? true : false
 
   return (
     <Container>
-      {scrollVertical && <style>{scrollVerticalTrue}</style>}
-      {!scrollVertical && <style>{scrollVerticalFalse}</style>}
+      {/* {scrollVertical && <style>{scrollVerticalTrue}</style>}
+      {!scrollVertical && <style>{scrollVerticalFalse}</style>} */}
       <Main />
       <Mission />
       <Feature />

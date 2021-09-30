@@ -8,8 +8,8 @@ import { mq, styles, fontWeights, Rem, Em } from '../../../../utils/designSystem
 import { images } from '../../../../assets';
 import PageHeading from '../../../../components/global/PageHeading';
 
-const scrollVerticalTrue = `body{background-color:#F6F6F6}`;
-const scrollVerticalFalse = `body{background-color:#FFFFFF}`;
+// const scrollVerticalTrue = `body{background-color:#F6F6F6}`;
+// const scrollVerticalFalse = `body{background-color:#FFFFFF}`;
 
 const Container = styled.div({
   marginTop: Rem(70),
@@ -333,21 +333,21 @@ const ReplyItem = styled.li({
 });
 
 function ArticleItem() {
-  const [scrollY, setScrollY] = useState(0);
-  const scrollVertical = scrollY > 97 ? true : false
+  // const [scrollY, setScrollY] = useState(0);
+  // const scrollVertical = scrollY > 97 ? true : false
 
-  React.useEffect(() => {
-    const handleScroll = () => {
-      setScrollY(window.scrollY);
-    };
+  // React.useEffect(() => {
+  //   const handleScroll = () => {
+  //     setScrollY(window.scrollY);
+  //   };
 
-    handleScroll();
+  //   handleScroll();
 
-    window.addEventListener('scroll', handleScroll);
-    return () => {
-      window.removeEventListener('scroll', handleScroll);
-    };
-  }, []);
+  //   window.addEventListener('scroll', handleScroll);
+  //   return () => {
+  //     window.removeEventListener('scroll', handleScroll);
+  //   };
+  // }, []);
 
   const settings = {
     dots: true,
@@ -378,8 +378,8 @@ function ArticleItem() {
         <meta property='og:site_name' content={`지구공 : {article.subject}`} key='og:site_name' />
       </Head>
       <Container data-container='article'>
-        {scrollVertical && <style>{scrollVerticalTrue}</style>}
-        {!scrollVertical && <style>{scrollVerticalFalse}</style>}
+        {/* {scrollVertical && <style>{scrollVerticalTrue}</style>}
+        {!scrollVertical && <style>{scrollVerticalFalse}</style>} */}
         <PageHeading link={'/'} label={'article.subject'} />
         <Contents>
 

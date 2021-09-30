@@ -34,10 +34,11 @@ export const colors = {
 
 export const styles = {
   widthSettings: {
-    width: '100%',
-    maxWidth: Rem(totalWidth),
+    margin: '0 auto',
     paddingRight: Rem(paddingHorizontal),
     paddingLeft: Rem(paddingHorizontal),
+    width: '100%',
+    maxWidth: Rem(totalWidth),
   },
   col: {
     display: 'block',

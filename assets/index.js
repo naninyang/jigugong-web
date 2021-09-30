@@ -32,6 +32,13 @@ export const images = {
     featuresStore: require('./images/mockups/features-store.png'),
     commerce: require('./images/mockups/commerce.png'),
   },
+  // TEST IMAGES
+  test: {
+    organizationName: require('./images/test/organization-name.png'),
+    missionThumbnail: require('./images/test/mission-thumbnail.png'),
+    pressThumbnail1: require('./images/test/press-thumbnail1.png'),
+    pressThumbnail2: require('./images/test/press-thumbnail2.png'),
+  },
 }
 
 export default {};

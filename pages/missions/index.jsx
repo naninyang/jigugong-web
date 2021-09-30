@@ -9,8 +9,8 @@ import PageHeading from '../../components/global/PageHeading';
 import Tabs from '../../sections/missions/Tabs';
 import TabPane from '../../sections/missions/TabPane';
 
-const scrollVerticalTrue = `body{background-color:#F6F6F6}`;
-const scrollVerticalFalse = `body{background-color:#FFFFFF}`;
+// const scrollVerticalTrue = `body{background-color:#F6F6F6}`;
+// const scrollVerticalFalse = `body{background-color:#FFFFFF}`;
 
 const Container = styled.div({
   marginTop: Rem(70),
@@ -101,21 +101,21 @@ const MissionMouseOver = styled.div({
 });
 
 function index() {
-  const [scrollY, setScrollY] = useState(0);
-  useEffect(() => {
-    const handleScroll = () => {
-      setScrollY(window.scrollY);
-    };
+  // const [scrollY, setScrollY] = useState(0);
+  // useEffect(() => {
+  //   const handleScroll = () => {
+  //     setScrollY(window.scrollY);
+  //   };
 
-    handleScroll();
+  //   handleScroll();
 
-    window.addEventListener('scroll', handleScroll);
-    return () => {
-      window.removeEventListener('scroll', handleScroll);
-    };
-  }, []);
+  //   window.addEventListener('scroll', handleScroll);
+  //   return () => {
+  //     window.removeEventListener('scroll', handleScroll);
+  //   };
+  // }, []);
 
-  const scrollVertical = scrollY > 97 ? true : false
+  // const scrollVertical = scrollY > 97 ? true : false
   const isDesktop = !isIOS && !isAndroid ? true : false;
   const [missions, setMissions] = React.useState(null);
 
@@ -137,8 +137,8 @@ function index() {
         <meta property='og:site_name' content='지구공 : 미션목록' key='og:site_name' />
       </Head>
       <Container>
-        {scrollVertical && <style>{scrollVerticalTrue}</style>}
-        {!scrollVertical && <style>{scrollVerticalFalse}</style>}
+        {/* {scrollVertical && <style>{scrollVerticalTrue}</style>}
+        {!scrollVertical && <style>{scrollVerticalFalse}</style>} */}
         <PageHeading link={'/'} label={'미션목록'} />
         <Contents>
           <Tabs>
