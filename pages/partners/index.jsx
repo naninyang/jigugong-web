@@ -30,6 +30,7 @@ const Container = styled.div({
 
 const Contents = styled.div({
   ...styles.widthSettings,
+  paddingTop: Em(40),
 });
 
 const SecondaryHeading = styled.h2({

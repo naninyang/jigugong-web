@@ -4,9 +4,9 @@ import styled from '@emotion/styled';
 import Slider from 'react-slick';
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
-import { mq, styles, fontWeights, Rem, Em } from '../../../../utils/designSystem';
-import { images } from '../../../../assets';
-import PageHeading from '../../../../components/global/PageHeading';
+import { mq, styles, fontWeights, Rem, Em } from '../../utils/designSystem';
+import { images } from '../../assets';
+import PageHeading from '../../components/global/PageHeading';
 
 // const scrollVerticalTrue = `body{background-color:#F6F6F6}`;
 // const scrollVerticalFalse = `body{background-color:#FFFFFF}`;
@@ -107,6 +107,35 @@ const DateTime = styled.time({
   fontSize: Rem(16),
   fontWeight: fontWeights.Regular,
   color: '#5a5a5a',
+});
+
+const HashtagsList = styled.ul({
+  display: 'flex',
+  marginLeft: Em(10),
+  paddingTop: Em(10),
+});
+
+const HashtagsItem = styled.li({
+  display: 'flex',
+  justifyContent: 'center',
+  alignItems: 'center',
+  padding: `0 ${Em(5)}`,
+});
+
+const HashtagName = styled.span({
+  display: 'flex',
+  justifyContent: 'center',
+  alignItems: 'center',
+  padding: `0 ${Em(12)}`,
+  height: Rem(31),
+  border: '1px solid #5a5a5a',
+  borderRadius: Em(15),
+  fontSize: Rem(16),
+  fontWeight: fontWeights.Regular,
+  '&::before': {
+    content: '"#"',
+    paddingRight: '2px',
+  },
 });
 
 const Summary = styled.h1({
@@ -336,7 +365,7 @@ const ReplyItem = styled.li({
   backgroundColor: '#f6f6f6',
 });
 
-function ArticleItem() {
+function ActionsItem() {
   // const [scrollY, setScrollY] = useState(0);
   // const scrollVertical = scrollY > 97 ? true : false
 
@@ -413,6 +442,11 @@ function ArticleItem() {
           <Article>
             <CategoryName>미션명</CategoryName>
             <DateTime datetime='2021-08-16'>2021.08.16</DateTime>
+            <HashtagsList>
+              <HashtagsItem><HashtagName>장바구니</HashtagName></HashtagsItem>
+              <HashtagsItem><HashtagName>채식</HashtagName></HashtagsItem>
+              <HashtagsItem><HashtagName>친환경</HashtagName></HashtagsItem>
+            </HashtagsList>
             <Summary>잘 먹고 잘 살기</Summary>
             <Creator>
               <CreatorAvatar><AvatarImage src={'https://dummyimage.com/25x25/0EAA5/fff.png'} alt='' /></CreatorAvatar>
@@ -597,4 +631,4 @@ function ArticleItem() {
   )
 }
 
-export default ArticleItem;
+export default ActionsItem;
