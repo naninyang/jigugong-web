@@ -5,6 +5,7 @@ import { mq, styles, fontWeights, Rem, Em } from '../../utils/designSystem';
 import { images } from '../../assets';
 import PageHeading from '../../components/global/PageHeading';
 import CategorySelect from '../../sections/stores/CategorySelect';
+import StoreList from '../../sections/stores/StoreList';
 
 // const scrollVerticalTrue = `body{background-color:#F6F6F6}`;
 // const scrollVerticalFalse = `body{background-color:#FFFFFF}`;
@@ -59,9 +60,7 @@ function index() {
         {!scrollVertical && <style>{scrollVerticalFalse}</style>} */}
         <PageHeading link={'/'} label={'article.subject'} />
         <CategorySelect />
-        <Contents>
-          매장 목록
-        </Contents>
+        <StoreList />
       </Container>
     </>
   )
