@@ -16,6 +16,8 @@ export const images = {
     bookmarkTrue: require('./images/icons/bookmark-true.svg'),
     historyBack: require('./images/icons/history-back.svg'),
     marker: require('./images/icons/marker.svg'),
+    locationArrow: require('./images/icons/location-arrow.svg'),
+    reviewStar: require('./images/icons/review-star.svg'),
   },
   logos: {
     jigugongHorizontal: require('./images/logos/jigugong-horizontal.svg'),
@@ -39,6 +41,7 @@ export const images = {
     missionThumbnail: require('./images/test/mission-thumbnail.png'),
     pressThumbnail1: require('./images/test/press-thumbnail1.png'),
     pressThumbnail2: require('./images/test/press-thumbnail2.png'),
+    productThumbnail: require('./images/test/product-thumbnail.png'),
   },
 }
 
