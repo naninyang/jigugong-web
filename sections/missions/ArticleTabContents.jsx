@@ -4,7 +4,7 @@ import { Rem, Em } from '../../utils/designSystem';
 
 const MissionContents = styled.div({
   margin: '0 auto',
-  maxWidth: Rem(439),
+  maxWidth: Rem(756),
   width: '100%',
 });
 
@@ -17,11 +17,8 @@ const ContentsImage = styled.img({
 function ArticleTabContents() {
   return (
     <MissionContents>
-      <ContentsImage src={'https://dummyimage.com/489x489/0EAA5/fff.png'} alt='' />
-      <ContentsImage src={'https://dummyimage.com/489x489/0EAA5/fff.png'} alt='' />
-      <ContentsImage src={'https://dummyimage.com/489x489/0EAA5/fff.png'} alt='' />
-      <ContentsImage src={'https://dummyimage.com/489x489/0EAA5/fff.png'} alt='' />
-      <ContentsImage src={'https://dummyimage.com/489x489/0EAA5/fff.png'} alt='' />
+      <ContentsImage src={'https://dummyimage.com/706x706/0EAA5/fff.png'} alt='' />
+      <ContentsImage src={'https://dummyimage.com/706x706/0EAA5/fff.png'} alt='' />
     </MissionContents>
   )
 }

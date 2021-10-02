@@ -204,7 +204,7 @@ const ResultContext = styled.div({
   '& img': {
     display: 'block',
     margin: `${Em(30)} auto`,
-    maxWidth: Rem(276),
+    maxWidth: Rem(706),
     width: '100%',
   },
 });
