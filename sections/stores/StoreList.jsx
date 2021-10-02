@@ -11,68 +11,106 @@ const Container = styled.div({
 });
 
 const Contents = styled.div({
-  marginTop: Em(30),
-  padding: `0 ${Em(35)}`,
+  marginTop: Em(22),
+  [mq.minTablet]: {
+    padding: `0 ${Em(27)}`,
+  },
+  [mq.minSmall]: {
+    marginTop: Em(30),
+    padding: `0 ${Em(35)}`,
+  },
 });
 
 const StoreItem = styled.article({
   display: 'flex',
-  margin: `${Em(20)} 0`,
+  flexDirection: 'column',
+  margin: `${Em(12)} 0`,
+  padding: `${Em(12)} 0`,
   border: '1px solid #aaaaaa',
-  borderRadius: Em(20),
+  [mq.minTablet]: {
+    flexDirection: 'row',
+  },
+  [mq.minSmall]: {
+    margin: `${Em(20)} 0`,
+    padding: `${Em(20)} 0`,
+  },
 });
 
 const StoreInfo = styled.div({
   position: 'relative',
-  margin: `0 ${Em(20)}`,
-  paddingTop: Em(40),
+  margin: `0 ${Em(12)}`,
+  paddingTop: Em(32),
+  [mq.minSmall]: {
+    margin: `0 ${Em(20)}`,
+    paddingTop: Em(40),
+  },
 });
 
 const StoreName = styled.h2({
-  fontSize: Rem(24),
+  fontSize: Rem(20),
   fontWeight: fontWeights.SemiBold,
+  [mq.minSmall]: {
+    fontSize: Rem(24),
+  },
 });
 
 const StoreCategory = styled.strong({
   position: 'absolute',
   top: 0,
   left: 0,
-  fontSize: Rem(18),
+  fontSize: Rem(14),
   fontWeight: fontWeights.Regular,
   color: '#5a5a5a',
   lineHeight: 1.77777778,
+  [mq.minSmall]: {
+    fontSize: Rem(18),
+  },
 });
 
 const StoreAddress = styled.address({
   display: 'flex',
   alignItems: 'center',
-  padding: `${Em(11)} 0 ${Em(9)}`,
-  fontSize: Rem(18),
+  padding: `${Em(7)} 0 ${Em(5)}`,
+  fontSize: Rem(14),
   fontWeight: fontWeights.Regular,
   fontStyle: 'normal',
   lineHeight: 1,
+  [mq.minSmall]: {
+    padding: `${Em(11)} 0 ${Em(9)}`,
+    fontSize: Rem(18),
+  },
   '&::before': {
     content: '""',
     display: 'block',
-    marginRight: Rem(8),
-    width: Rem(24),
-    height: Rem(27),
+    marginRight: Rem(4),
+    width: Rem(20),
+    height: Rem(24),
     background: `url(${images.icons.marker}) no-repeat 50% 50%/contain`,
+    [mq.minSmall]: {
+      marginRight: Rem(8),
+      width: Rem(24),
+      height: Rem(27),
+    },
   }
 });
 
 const StoreDescription = styled.div({
-  fontSize: Rem(18),
+  fontSize: Rem(14),
   fontWeight: fontWeights.Regular,
   lineHeight: 1.55555556,
+  [mq.minSmall]: {
+    fontSize: Rem(18),
+  },
 });
 
 const SliderControl = styled.div({
-  width: Rem(400),
+  padding: `0 ${Em(25)}`,
   [mq.minTablet]: {
+    width: Rem(300),
     padding: `0 ${Em(28)}`,
   },
   [mq.minSmall]: {
+    width: Rem(400),
     padding: `0 ${Em(60)}`,
   },
 });
@@ -80,12 +118,45 @@ const SliderControl = styled.div({
 const StyledSlider = styled(Slider)({
   width: '100%',
   '& .slick-dots': {
-    display: 'none!important',
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center',
+    position: 'static',
+    bottom: 0,
+    height: Rem(36),
+    backgroundColor: '#ffffff',
+    '& li': {
+      width: 'auto',
+      height: 'auto',
+      margin: 0,
+      '&.slick-active button::before': {
+        opacity: 1,
+      },
+      '& button': {
+        padding: Rem(3),
+        width: 'auto',
+        height: 'auto',
+        '&:hover::before': {
+          opacity: 0.7,
+        },
+        '&::before': {
+          content: '""',
+          position: 'static',
+          display: 'block',
+          width: Rem(8),
+          height: Rem(8),
+          backgroundColor: '#000000',
+          borderRadius: '100%',
+          opacity: 0.37,
+          lineHeight: 'normal',
+        },
+      },
+    },
   },
 });
 
 const ButtonPrevious = styled.button({
-  left: `-${Rem(20)}`,
+  left: `-${Rem(25)}`,
   zIndex: 9,
   width: Rem(25),
   height: '100%',
@@ -128,7 +199,7 @@ const ButtonPrevious = styled.button({
 });
 
 const ButtonNext = styled.button({
-  right: `-${Rem(20)}`,
+  right: `-${Rem(25)}`,
   zIndex: 9,
   width: Rem(25),
   height: '100%',
@@ -175,7 +246,6 @@ const ThubnailItem = styled.div();
 const ThubnailImage = styled.div({
   position: 'relative',
   paddingTop: '100%',
-  borderRadius: Em(20),
   overflow: 'hidden',
   height: 0,
 });
@@ -210,6 +280,12 @@ function StoreList({ stores, loading }) {
     slidesToScroll: 1,
     prevArrow: <PreviousArrow label={'이전으로 이동'} />,
     nextArrow: <NextArrow label={'다음으로 이동'} />,
+    appendDots: dots => (
+      <ul><li>{dots}</li></ul>
+    ),
+    customPaging: i => (
+      <button type='button' />
+    ),
   };
 
   return (

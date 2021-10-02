@@ -14,7 +14,7 @@ $ git clone git@github.com:earthy2020/jigugong-web.git
 # 또는
 $ gh repo clone earthy2020/jigugong-web
 
-$ cd jijugong-web
+$ cd jigugong-web
 
 # yarn packages install
 $ yarn add

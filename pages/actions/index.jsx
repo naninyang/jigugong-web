@@ -393,7 +393,7 @@ function ActionsItem() {
     ),
     customPaging: i => (
       <button type='button' />
-    )
+    ),
   };
 
   return (
