@@ -12,6 +12,9 @@ const MissionArticles = styled.div({
 
 const ArticleItem = styled.div({
   flexBasis: '50%',
+  [mq.minSmall]: {
+    flexBasis: '25%',
+  }
 });
 
 const ArticleInfo = styled(LinkButton)(({ isDesktop }) => ({

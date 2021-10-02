@@ -103,7 +103,6 @@ const MissionInfoDescription = styled.dd({
 const MissionFigure = styled.div({
   display: 'flex',
   paddingBottom: Em(50),
-  borderBottom: '1px solid #C4C4C4',
 });
 
 const Percentage = styled.div({
@@ -189,15 +188,10 @@ const FigureTerm = styled.strong({
   },
 });
 
-const MissionContents = styled.div({
+const Wrapper = styled.div({
   margin: '0 auto',
-  maxWidth: Rem(439),
-  width: '100%',
-});
-
-const ContentsImage = styled.img({
-  marginTop: Em(13),
-  display: 'block',
+  maxWidth: Rem(1194),
+  borderTop: '1px solid #C4C4C4',
   width: '100%',
 });
 
@@ -276,6 +270,8 @@ function MissionItem() {
               <FigureTerm>참여 횟수</FigureTerm>
             </StatusInfo>
           </MissionFigure>
+        </Contents>
+        <Wrapper>
           <Tabs>
             <TabPane name='contents' key='0'>
               <ArticleTabContents />
@@ -287,7 +283,7 @@ function MissionItem() {
               <ArticleTabArticles />
             </TabPane>
           </Tabs>
-        </Contents>
+        </Wrapper>
       </Container>
     </>
   )
