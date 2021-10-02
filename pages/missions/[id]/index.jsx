@@ -232,7 +232,11 @@ function MissionItem() {
       <Head>
         <link rel='alternate' hrefLang='ko-KR' href={`https://jigugong.com/missions/{mission.id}`} key='alternate' />
         <link rel='canonical' href={`https://jigugong.com/missions/{mission.id}`} key='canonical' />
-        <title key='title'>지구공 : 미션 [내 용기는 이만큼 커!]</title>
+        <title key='title'>
+          지구공 :
+          {router.query.id === '1' ? ' 완료된 미션 ' : ' 진행중 미션 '}
+          [내 용기는 이만큼 커!]
+        </title>
         <meta name='description' content={`지구공 : {mission.context}`} key='description' />
         <meta property='og:title' content={`지구공 : {mission.subject}`} key='og:title' />
         <meta property='og:description' content={`지구공 : {mission.context}`} key='og:description' />
@@ -244,7 +248,7 @@ function MissionItem() {
       <Container data-container='article'>
         {/* {scrollVertical && <style>{scrollVerticalTrue}</style>}
         {!scrollVertical && <style>{scrollVerticalFalse}</style>} */}
-        <PageHeading link={'/missions'} label={'미션'} />
+        <PageHeading link={'/missions'} label={router.query.id === '1' ? '완료된 미션' : '진행중 미션'} />
         <Contents>
           <MissionImage>
             <MissionThumbnail

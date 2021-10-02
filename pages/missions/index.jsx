@@ -132,21 +132,21 @@ function index() {
         <link rel='alternate' hrefLang='ko-KR' href='https://jigugong.com/missions/' key='alternate' />
         <link rel='canonical' href='https://jigugong.com/missions/' key='canonical' />
         <title key='title'>지구공 : 미션</title>
-        <meta property='og:title' content='지구공 : 미션목록' key='og:title' />
+        <meta property='og:title' content='지구공 : 미션' key='og:title' />
         <meta property='og:url' content='https://jigugong.com/missions/' key='og:url' />
-        <meta property='og:site_name' content='지구공 : 미션목록' key='og:site_name' />
+        <meta property='og:site_name' content='지구공 : 미션' key='og:site_name' />
       </Head>
       <Container>
         {/* {scrollVertical && <style>{scrollVerticalTrue}</style>}
         {!scrollVertical && <style>{scrollVerticalFalse}</style>} */}
-        <PageHeading link={'/'} label={'미션목록'} />
+        <PageHeading link={'/'} label={'미션'} />
         <Contents>
           <Tabs>
             <TabPane name='ongoing' key='0'>
               {missions && missions.map(mission => (
                 <MissionList key={mission.uuid}>
                   <MissionItem>
-                    <MissionItemLink href={`/missions/${mission.id}`}>
+                    <MissionItemLink href={`/missions/0`}>
                       <MissionThumbnail src={mission.thumbnail} alt={mission.subject} />
                       {isDesktop && <MissionMouseOver aria-label='미션상세 보러가기' />}
                     </MissionItemLink>
@@ -158,7 +158,7 @@ function index() {
               {missions && missions.map(mission => (
                 <MissionList key={mission.uuid}>
                   <MissionItem>
-                    <MissionItemLink href={`/missions/${mission.id}`}>
+                    <MissionItemLink href={`/missions/1`}>
                       <MissionThumbnail src={mission.thumbnail} alt={mission.subject} />
                       {isDesktop && <MissionMouseOver aria-label='미션결과 보러가기' />}
                     </MissionItemLink>
