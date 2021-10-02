@@ -374,7 +374,7 @@ const Mission = () => {
               {organization && organization.map(item => (
                 <div key={item._id}>
                   <OrganizationInfo
-                    href='/'
+                    href='/partners'
                     isDesktop={isDesktop}
                   >
                     <OrganizationImage aria-hidden='true'><OrganizationBanner src={item.picture} alt={''} /></OrganizationImage>

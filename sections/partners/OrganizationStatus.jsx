@@ -20,10 +20,14 @@ const StatusItem = styled.dl({
 
 const StatusTerm = styled.dt({
   justifyContent: 'center',
-  marginTop: Em(24),
-  fontSize: Rem(16),
+  marginTop: Em(16),
+  fontSize: Rem(12),
   fontWeight: fontWeights.SemiBold,
+  [mq.minTablet]: {
+    fontSize: Rem(16),
+  },
   [mq.minSmall]: {
+    marginTop: Em(24),
     fontSize: Rem(22),
   },
 });
@@ -32,14 +36,19 @@ const StatusDescription = styled.dd({
   display: 'flex',
   justifyContent: 'center',
   alignItems: 'center',
-  width: Rem(115),
-  height: Rem(115),
+  width: Rem(100),
+  height: Rem(100),
   borderRadius: '100%',
   backgroundColor: '#0eaa55',
-  fontSize: Rem(20),
+  fontSize: Rem(16),
   fontWeight: fontWeights.Bold,
   color: '#ffffff',
   textAlign: 'center',
+  [mq.minTablet]: {
+    width: Rem(115),
+    height: Rem(115),
+    fontSize: Rem(20),
+  },
   [mq.minSmall]: {
     width: Rem(187),
     height: Rem(187),

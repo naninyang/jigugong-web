@@ -382,7 +382,7 @@ const Commerce = () => {
               {product && product.map(item => (
                 <div key={item._id}>
                   <ProductInfo
-                    href='/'
+                    href='/products'
                     isDesktop={isDesktop}
                   >
                     <ProductImage aria-hidden='true'><ProductThumbnail src={item.thumbnail} alt={''} /></ProductImage>

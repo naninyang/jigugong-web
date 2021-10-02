@@ -602,7 +602,7 @@ const Feature = () => {
               {action && action.map(item => (
                 <div key={item._id}>
                   <ActionInfo
-                    href='/'
+                    href='/actions'
                     isDesktop={isDesktop}
                   >
                     <ActionImage aria-hidden='true'><ActionThumbnail src={item.thumbnail} alt={''} /></ActionImage>
@@ -685,7 +685,7 @@ const Feature = () => {
                 환경을 위한 실천에 동참하는
                 <strong>제로웨이스트/비건 매장을 소개해드릴게요.</strong>
                 <LinkGroup>
-                  <LinkItem><ButtonGreen href='/'>매장목록 보러가기</ButtonGreen></LinkItem>
+                  <LinkItem><ButtonGreen href='/stores'>매장목록 보러가기</ButtonGreen></LinkItem>
                 </LinkGroup>
               </Description>
             </Contents>

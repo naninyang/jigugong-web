@@ -4,9 +4,9 @@ import styled from '@emotion/styled';
 import Slider from 'react-slick';
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
-import { mq, styles, fontWeights, Rem, Em } from '../../../../utils/designSystem';
-import { images } from '../../../../assets';
-import PageHeading from '../../../../components/global/PageHeading';
+import { mq, styles, fontWeights, Rem, Em } from '../../../utils/designSystem';
+import { images } from '../../../assets';
+import PageHeading from '../../../components/global/PageHeading';
 
 // const scrollVerticalTrue = `body{background-color:#F6F6F6}`;
 // const scrollVerticalFalse = `body{background-color:#FFFFFF}`;
