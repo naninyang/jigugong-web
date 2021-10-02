@@ -401,7 +401,7 @@ function ActionsItem() {
       <Head>
         <link rel='alternate' hrefLang='ko-KR' href={`https://jigugong.com/missions/{mission.id}`} key='alternate' />
         <link rel='canonical' href={`https://jigugong.com/missions/{mission.id}`} key='canonical' />
-        <title key='title'>{`지구공 : {article.subject}`}</title>
+        <title key='title'>지구공 : 실천 [잘 먹고 잘 살기]</title>
         <meta name='description' content={`지구공 : {article.context}`} key='description' />
         <meta property='og:title' content={`지구공 : {article.subject}`} key='og:title' />
         <meta property='og:description' content={`지구공 : {article.context}`} key='og:description' />
@@ -413,7 +413,7 @@ function ActionsItem() {
       <Container data-container='article'>
         {/* {scrollVertical && <style>{scrollVerticalTrue}</style>}
         {!scrollVertical && <style>{scrollVerticalFalse}</style>} */}
-        <PageHeading link={'/'} label={'article.subject'} />
+        <PageHeading link={'/'} label={'실천'} />
         <Contents>
 
           <SliderControl>

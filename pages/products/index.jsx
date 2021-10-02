@@ -6,8 +6,9 @@ import styled from '@emotion/styled';
 import { images } from '../../assets';
 import { mq, fontWeights, Rem, Em } from '../../utils/designSystem';
 import LinkButton from '../../utils/LinkButton';
-import Tabs from '../../sections/missions/Tabs';
-import TabPane from '../../sections/missions/TabPane';
+import Tabs from '../../components/tabs/Tabs';
+import TabPane from '../../components/tabs/TabPane';
+import PageHeading from '../../components/global/PageHeading';
 import ReviewList from '../../sections/products/ReviewList';
 import Pagination from '../../sections/products/Pagination';
 
@@ -31,7 +32,7 @@ const Contents = styled.div({
   minHeight: `calc(100vh - ${Rem(97)})`,
 });
 
-const PageHeading = styled.div({
+const PageLocation = styled.div({
   display: 'flex',
   alignItems: 'center',
   height: Rem(64),
@@ -307,7 +308,7 @@ function index() {
       <Head>
         <link rel='alternate' hrefLang='ko-KR' href='https://jigugong.com/missions/' key='alternate' />
         <link rel='canonical' href='https://jigugong.com/missions/' key='canonical' />
-        <title key='title'>지구공 : 미션목록</title>
+        <title key='title'>지구공 : 상품 [가제지게미 주방비누]</title>
         <meta property='og:title' content='지구공 : 미션목록' key='og:title' />
         <meta property='og:url' content='https://jigugong.com/missions/' key='og:url' />
         <meta property='og:site_name' content='지구공 : 미션목록' key='og:site_name' />
@@ -315,11 +316,12 @@ function index() {
       <Container>
         {/* {scrollVertical && <style>{scrollVerticalTrue}</style>}
         {!scrollVertical && <style>{scrollVerticalFalse}</style>} */}
+        <PageHeading link={'/'} label={'상품'} />
         <Contents>
-          <PageHeading>
+          <PageLocation>
             <LocationParent>주방</LocationParent>
             <LocationChildren>가제지게미 주방비누</LocationChildren>
-          </PageHeading>
+          </PageLocation>
           <ProductSummary>
             <SummaryThunbmail>
               <SummaryThunbmailImage>

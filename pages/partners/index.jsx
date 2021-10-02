@@ -424,7 +424,7 @@ function ParnerDetail() {
       <Head>
         <link rel='alternate' hrefLang='ko-KR' href={`https://jigugong.com/missions/{mission.id}`} key='alternate' />
         <link rel='canonical' href={`https://jigugong.com/missions/{mission.id}`} key='canonical' />
-        <title key='title'>{`지구공 : {article.subject}`}</title>
+        <title key='title'>지구공 : 파트너 [서울환경운동연합]</title>
         <meta name='description' content={`지구공 : {article.context}`} key='description' />
         <meta property='og:title' content={`지구공 : {article.subject}`} key='og:title' />
         <meta property='og:description' content={`지구공 : {article.context}`} key='og:description' />

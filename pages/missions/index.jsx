@@ -6,8 +6,8 @@ import styled from '@emotion/styled';
 import { mq, fontWeights, Rem, Em } from '../../utils/designSystem';
 import LinkButton from '../../utils/LinkButton';
 import PageHeading from '../../components/global/PageHeading';
-import Tabs from '../../sections/missions/Tabs';
-import TabPane from '../../sections/missions/TabPane';
+import Tabs from '../../components/tabs/Tabs';
+import TabPane from '../../components/tabs/TabPane';
 
 // const scrollVerticalTrue = `body{background-color:#F6F6F6}`;
 // const scrollVerticalFalse = `body{background-color:#FFFFFF}`;
@@ -131,7 +131,7 @@ function index() {
       <Head>
         <link rel='alternate' hrefLang='ko-KR' href='https://jigugong.com/missions/' key='alternate' />
         <link rel='canonical' href='https://jigugong.com/missions/' key='canonical' />
-        <title key='title'>지구공 : 미션목록</title>
+        <title key='title'>지구공 : 미션</title>
         <meta property='og:title' content='지구공 : 미션목록' key='og:title' />
         <meta property='og:url' content='https://jigugong.com/missions/' key='og:url' />
         <meta property='og:site_name' content='지구공 : 미션목록' key='og:site_name' />

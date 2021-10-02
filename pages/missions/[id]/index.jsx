@@ -5,8 +5,8 @@ import { RadialChart, makeVisFlexible } from 'react-vis';
 import styled from '@emotion/styled';
 import { mq, styles, fontWeights, Rem, Em } from '../../../utils/designSystem';
 import PageHeading from '../../../components/global/PageHeading';
-import Tabs from '../../../sections/missions/Tabs';
-import TabPane from '../../../sections/missions/TabPane';
+import Tabs from '../../../components/tabs/Tabs';
+import TabPane from '../../../components/tabs/TabPane';
 import ArticleTabContents from '../../../sections/missions/ArticleTabContents';
 import ArticleTabParticipants from '../../../sections/missions/ArticleTabParticipants';
 import ArticleTabArticles from '../../../sections/missions/ArticleTabArticles';
@@ -232,7 +232,7 @@ function MissionItem() {
       <Head>
         <link rel='alternate' hrefLang='ko-KR' href={`https://jigugong.com/missions/{mission.id}`} key='alternate' />
         <link rel='canonical' href={`https://jigugong.com/missions/{mission.id}`} key='canonical' />
-        <title key='title'>{`지구공 : {mission.subject}`}</title>
+        <title key='title'>지구공 : 미션 [내 용기는 이만큼 커!]</title>
         <meta name='description' content={`지구공 : {mission.context}`} key='description' />
         <meta property='og:title' content={`지구공 : {mission.subject}`} key='og:title' />
         <meta property='og:description' content={`지구공 : {mission.context}`} key='og:description' />
@@ -244,7 +244,7 @@ function MissionItem() {
       <Container data-container='article'>
         {/* {scrollVertical && <style>{scrollVerticalTrue}</style>}
         {!scrollVertical && <style>{scrollVerticalFalse}</style>} */}
-        <PageHeading link={'/'} label={'mission.subject'} />
+        <PageHeading link={'/missions'} label={'미션'} />
         <Contents>
           <MissionImage>
             <MissionThumbnail
