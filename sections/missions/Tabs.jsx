@@ -130,6 +130,8 @@ const Tabs = (props) => {
               {item === 'contents' ? '미션소개' : null}
               {item === 'participants' ? '참여자' : null}
               {item === 'articles' ? '인증사진' : null}
+              {item === 'descriptions' ? '상품설명' : null}
+              {item === 'reviews' ? '상품후기 (1)' : null}
             </TabItem>
           ))}
         </TabList>

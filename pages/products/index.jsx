@@ -8,6 +8,8 @@ import { mq, fontWeights, Rem, Em } from '../../utils/designSystem';
 import LinkButton from '../../utils/LinkButton';
 import Tabs from '../../sections/missions/Tabs';
 import TabPane from '../../sections/missions/TabPane';
+import ReviewList from '../../sections/products/ReviewList';
+import Pagination from '../../sections/products/Pagination';
 
 // const scrollVerticalTrue = `body{background-color:#F6F6F6}`;
 // const scrollVerticalFalse = `body{background-color:#FFFFFF}`;
@@ -23,9 +25,9 @@ const Container = styled.div({
 
 const Contents = styled.div({
   margin: '0 auto',
-  padding: `0 ${Em(25)}`,
+  padding: `0 ${Em(25)} ${Em(100)}`,
   width: '100%',
-  maxWidth: Rem(586),
+  maxWidth: Rem(1244),
   minHeight: `calc(100vh - ${Rem(97)})`,
 });
 
@@ -63,6 +65,10 @@ const LocationChildren = styled.span();
 
 const ProductSummary = styled.div({
   display: 'flex',
+  paddingBottom: Em(46),
+  [mq.minXsmall]: {
+    paddingBottom: Em(62),
+  },
 });
 
 const SummaryThunbmail = styled.div({
@@ -201,6 +207,51 @@ const ReviewLevelItem = styled.div({
   },
 });
 
+const DescriptionItem = styled.div({
+  margin: '0 auto',
+  maxWidth: Rem(706),
+  width: '100%',
+});
+
+const DescriptionImage = styled.img({
+  display: 'block',
+  margin: `${Em(20)} 0`,
+  maxWidth: '100%',
+});
+
+const ReviewTab = styled.div({
+  padding: `0 ${Em(25)}`,
+});
+
+const ReviewSummary = styled.dl({
+  display: 'flex',
+  flexDirection: 'column',
+  justifyContent: 'center',
+  alignItems: 'center',
+  height: Rem(157),
+  backgroundColor: '#f6f6f6',
+  borderRadius: Em(5),
+  textAlign: 'center',
+});
+
+const ReviewSummaryTerm = styled.dt({
+  fontSize: Rem(18),
+  fontWeight: fontWeights.Light,
+});
+
+const ReviewSummaryDescription = styled.dd({
+  paddingTop: Em(12),
+});
+
+const ReviewPoint = styled.strong({
+  fontSize: Rem(40),
+  fontWeight: fontWeights.SemiBold,
+});
+
+const ReviewLevels = styled.div({
+  transform: 'scale(1.1)',
+});
+
 function index() {
   // const [scrollY, setScrollY] = useState(0);
   // useEffect(() => {
@@ -221,16 +272,35 @@ function index() {
   const [productDescriptions, setProductDescriptions] = React.useState(null);
   const [productReviews, setProductReviews] = React.useState(null);
 
-  const url_description = '/api/product-descriptions';
+  const [reviews, setReviews] = useState([]);
+  const [loading, setLoading] = useState(false);
+  const [currentPage, setCurrentPage] = useState(1);
+  const [reviewsPerPage, setReviewsPerPage] = useState(10);
+
+  const url_description = '/api/product-description';
   const url_review = '/api/product-reviews';
   React.useEffect(() => {
-    // axios.get(url_description).then((response) => {
-    //   setProductDescriptions(response.data);
-    // });
-    // axios.get(url_review).then((response) => {
-    //   setProductReviews(response.data);
-    // });
+    axios.get(url_description).then((response) => {
+      setProductDescriptions(response.data);
+    });
+    async function fetchData() {
+      setLoading(true);
+      const response = await axios.get(
+        url_review
+      );
+      setReviews(response.data);
+      setLoading(false);
+    }
+    fetchData();
   }, []);
+
+  const indexOfLast = currentPage * reviewsPerPage;
+  const indexOfFirst = indexOfLast - reviewsPerPage;
+  function currentReviews(tmp) {
+    let currentReviews = 0;
+    currentReviews = tmp.slice(indexOfFirst, indexOfLast);
+    return currentReviews;
+  }
 
   return (
     <>
@@ -278,7 +348,7 @@ function index() {
               </ReviewLevel>
             </SummaryInfo>
           </ProductSummary>
-          {/* <Tabs>
+          <Tabs>
             <TabPane name='descriptions' key='0'>
               {productDescriptions && productDescriptions.map(productDescription => (
                 <DescriptionItem key={productDescription.uuid}>
@@ -287,9 +357,34 @@ function index() {
               ))}
             </TabPane>
             <TabPane name='reviews' key='1'>
-              상품후기
+              <ReviewTab>
+                <ReviewSummary>
+                  <ReviewSummaryTerm>6건의 후기</ReviewSummaryTerm>
+                  <ReviewSummaryDescription>
+                    <ReviewPoint>4.9</ReviewPoint>
+                    <ReviewLevels>
+                      <ReviewLevel>
+                        <ReviewLevelItem />
+                        <ReviewLevelItem />
+                        <ReviewLevelItem />
+                        <ReviewLevelItem />
+                      </ReviewLevel>
+                    </ReviewLevels>
+                  </ReviewSummaryDescription>
+                </ReviewSummary>
+                <ReviewList
+                  reviews={currentReviews(reviews)}
+                  loading={loading}
+                />
+                <Pagination
+                  reviewsPerPage={reviewsPerPage}
+                  totalReviews={reviews.length}
+                  paginate={setCurrentPage}
+                  currentPage={currentPage}
+                />
+              </ReviewTab>
             </TabPane>
-          </Tabs> */}
+          </Tabs>
         </Contents>
       </Container>
     </>
