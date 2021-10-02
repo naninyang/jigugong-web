@@ -1,11 +1,12 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Head from 'next/head';
+import axios from 'axios';
 import styled from '@emotion/styled';
 import { mq, styles, fontWeights, Rem, Em } from '../../utils/designSystem';
-import { images } from '../../assets';
 import PageHeading from '../../components/global/PageHeading';
 import CategorySelect from '../../sections/stores/CategorySelect';
 import StoreList from '../../sections/stores/StoreList';
+import Pagination from '../../sections/stores/Pagination';
 
 // const scrollVerticalTrue = `body{background-color:#F6F6F6}`;
 // const scrollVerticalFalse = `body{background-color:#FFFFFF}`;
@@ -18,10 +19,6 @@ const Container = styled.div({
   [mq.minXsmall]: {
     marginTop: Rem(97),
   },
-});
-
-const Contents = styled.div({
-  ...styles.widthSettings,
 });
 
 function index() {
@@ -40,6 +37,32 @@ function index() {
   //     window.removeEventListener('scroll', handleScroll);
   //   };
   // }, []);
+
+  const [stores, setStores] = useState([]);
+  const [loading, setLoading] = useState(false);
+  const [currentPage, setCurrentPage] = useState(1);
+  const [storesPerPage, setStoresPerPage] = useState(10);
+  const url = '/api/store-list';
+
+  useEffect(() => {
+    async function fetchData() {
+      setLoading(true);
+      const response = await axios.get(
+        url
+      );
+      setStores(response.data);
+      setLoading(false);
+    }
+    fetchData();
+  }, []);
+
+  const indexOfLast = currentPage * storesPerPage;
+  const indexOfFirst = indexOfLast - storesPerPage;
+  function currentStores(tmp) {
+    let currentStores = 0;
+    currentStores = tmp.slice(indexOfFirst, indexOfLast);
+    return currentStores;
+  }
 
   return (
     <>
@@ -60,7 +83,16 @@ function index() {
         {!scrollVertical && <style>{scrollVerticalFalse}</style>} */}
         <PageHeading link={'/'} label={'article.subject'} />
         <CategorySelect />
-        <StoreList />
+        <StoreList
+          stores={currentStores(stores)}
+          loading={loading}
+        />
+        <Pagination
+          storesPerPage={storesPerPage}
+          totalStores={stores.length}
+          paginate={setCurrentPage}
+          currentPage={currentPage}
+        />
       </Container>
     </>
   )

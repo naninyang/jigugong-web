@@ -1,12 +1,10 @@
 import React, { useState } from 'react';
-import axios from 'axios';
 import styled from '@emotion/styled';
 import Slider from 'react-slick';
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
 import { images } from '../../assets';
 import { mq, styles, fontWeights, Rem, Em } from '../../utils/designSystem';
-import LinkButton from '../../utils/LinkButton';
 
 const Container = styled.div({
   ...styles.widthSettings,
@@ -203,15 +201,7 @@ function NextArrow(props) {
   return <ButtonNext className={className} onClick={onClick} aria-label={label} />
 }
 
-function StoreList() {
-  const [getStore, setStore] = React.useState(null);
-  const url = '/api/store-list';
-  React.useEffect(() => {
-    axios.get(url).then((response) => {
-      setStore(response.data);
-    });
-  }, []);
-
+function StoreList({ stores, loading }) {
   const settings = {
     dots: true,
     infinite: true,
@@ -225,11 +215,12 @@ function StoreList() {
   return (
     <Container>
       <Contents>
-        {getStore && getStore.map(item => (
-          <StoreItem key={item.uuid}>
+        {loading && <div> loading... </div>}
+        {stores.map((store) => (
+          <StoreItem key={store.id}>
             <SliderControl>
               <StyledSlider {...settings}>
-                {item.thumbnails.map((thumbnail) => (
+                {store.thumbnails.map((thumbnail) => (
                   <ThubnailItem>
                     <ThubnailImage>
                       <ThubnailThumbnail src={thumbnail} alt='' />
@@ -239,10 +230,10 @@ function StoreList() {
               </StyledSlider>
             </SliderControl>
             <StoreInfo>
-              <StoreName>{item.storeName}</StoreName>
-              <StoreCategory>{item.categoryName}</StoreCategory>
-              <StoreAddress>{item.storeAddr}</StoreAddress>
-              <StoreDescription>{item.description}</StoreDescription>
+              <StoreName>{store.storeName}</StoreName>
+              <StoreCategory>{store.categoryName}</StoreCategory>
+              <StoreAddress>{store.storeAddr}</StoreAddress>
+              <StoreDescription>{store.description}</StoreDescription>
             </StoreInfo>
           </StoreItem>
         ))}
