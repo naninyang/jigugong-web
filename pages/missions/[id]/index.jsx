@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import Head from 'next/head';
+import { useRouter } from 'next/router';
 import { RadialChart, makeVisFlexible } from 'react-vis';
 import styled from '@emotion/styled';
 import { mq, styles, fontWeights, Rem, Em } from '../../../utils/designSystem';
@@ -195,6 +196,19 @@ const Wrapper = styled.div({
   width: '100%',
 });
 
+const ResultContext = styled.div({
+  padding: `0 ${Em(25)}`,
+  fontSize: Rem(18),
+  fontWeight: fontWeights.Regular,
+  lineHeight: 1.55555556,
+  '& img': {
+    display: 'block',
+    margin: `${Em(30)} auto`,
+    maxWidth: Rem(276),
+    width: '100%',
+  },
+});
+
 function MissionItem() {
   // const [scrollY, setScrollY] = useState(0);
   // const scrollVertical = scrollY > 97 ? true : false
@@ -211,6 +225,7 @@ function MissionItem() {
   //     window.removeEventListener('scroll', handleScroll);
   //   };
   // }, []);
+  const router = useRouter();
 
   return (
     <>
@@ -273,10 +288,23 @@ function MissionItem() {
         </Contents>
         <Wrapper>
           <Tabs>
-            <TabPane name='contents' key='0'>
+            {router.query.id === '1' ?
+              <TabPane name='result' key='0'>
+                <ResultContext>
+                  <img src='https://dummyimage.com/706x706/0EAA5/fff.png' alt='' />
+                  미션결과 내용 미션결과 내용 미션결과 내용 미션결과 내용 미션결과 내용 미션결과 내용 미션결과 내용 미션결과 내용 미션결과 내용 미션결과 내용 미션결과 내용 미션결과 내용 미션결과 내용 미션결과 내용 미션결과 내용 미션결과 내용
+                  <img src='https://dummyimage.com/706x706/0EAA5/fff.png' alt='' />
+                  미션결과 내용 미션결과 내용 미션결과 내용 미션결과 내용 미션결과 내용 미션결과 내용 미션결과 내용 미션결과 내용 미션결과 내용 미션결과 내용 미션결과 내용 미션결과 내용 미션결과 내용 미션결과 내용 미션결과 내용 미션결과 내용
+                  <img src='https://dummyimage.com/706x706/0EAA5/fff.png' alt='' />
+                  미션결과 내용 미션결과 내용 미션결과 내용 미션결과 내용 미션결과 내용 미션결과 내용 미션결과 내용 미션결과 내용 미션결과 내용 미션결과 내용 미션결과 내용 미션결과 내용 미션결과 내용 미션결과 내용 미션결과 내용 미션결과 내용
+                </ResultContext>
+              </TabPane>
+              : false
+            }
+            <TabPane name='contents' key='1'>
               <ArticleTabContents />
             </TabPane>
-            <TabPane name='participants' key='1'>
+            <TabPane name='participants' key='2'>
               <ArticleTabParticipants />
             </TabPane>
             <TabPane name='articles' key='2'>

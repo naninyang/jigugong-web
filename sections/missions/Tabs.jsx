@@ -43,10 +43,13 @@ const TabItem = styled.button({
   ...styles.col,
   '[data-container=article] &': {
     flex: 'none',
-    padding: `0 ${Em(20)}`,
+    padding: `0 ${Em(15)}`,
     width: 'auto',
     maxWidth: 'none',
     fontSize: Rem(18),
+    [mq.minTablet]: {
+      padding: `0 ${Em(20)}`,
+    },
   },
   [mq.minXsmall]: {
     fontSize: Rem(24),
@@ -128,6 +131,7 @@ const Tabs = (props) => {
               {item === 'ongoing' ? '진행중 미션' : null}
               {item === 'closed' ? '완료된 미션' : null}
               {item === 'contents' ? '미션소개' : null}
+              {item === 'result' ? '미션결과' : null}
               {item === 'participants' ? '참여자' : null}
               {item === 'articles' ? '인증사진' : null}
               {item === 'descriptions' ? '상품설명' : null}
